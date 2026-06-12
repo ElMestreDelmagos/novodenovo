@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovoDeNovo – Brechós, Bazares e Eventos Sustentáveis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --chocolate: #4A3428; --bordeaux: #6A2F36;
+  --beige: #EAE2D6; --offwhite: #F7F4EF;
+  --black: #222222; --olive: #70815D;
+  --T: 300ms ease;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--black); overflow-x: hidden; }
+h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── HEADER ─── */
+#header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 16px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background var(--T), box-shadow var(--T);
+}
+#header.scrolled { background: rgba(247,244,239,0.97); box-shadow: 0 2px 20px rgba(74,52,40,0.1); }
+.logo { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--chocolate); text-decoration:none; }
+.logo span { color: var(--olive); }
+.nav-desktop { display:flex; gap:28px; align-items:center; }
+.nav-desktop a { font-size:.875rem; font-weight:500; color:var(--chocolate); text-decoration:none; transition:color var(--T); }
+.nav-desktop a:hover { color:var(--bordeaux); }
+.btn-header { background:var(--chocolate); color:var(--offwhite)!important; padding:10px 20px; border-radius:6px; font-size:.85rem!important; transition:background var(--T)!important; }
+.btn-header:hover { background:var(--bordeaux)!important; }
+
+/* Mobile header bottom bar */
+.mobile-nav-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(247,244,239,0.98);
+  box-shadow: 0 -2px 16px rgba(74,52,40,0.12);
+  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  justify-content: space-around; align-items: center;
+}
+.mobile-nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  color: var(--chocolate); text-decoration: none; font-size: .65rem; font-weight:500;
+  opacity: .65; transition: opacity var(--T);
+  min-width: 48px;
+}
+.mobile-nav-item:hover, .mobile-nav-item.active { opacity: 1; }
+.mobile-nav-item svg { width:22px; height:22px; }
+.mobile-nav-cta {
+  background: var(--chocolate); color: var(--offwhite)!important;
+  border-radius: 12px; padding: 8px 14px; font-size:.65rem!important;
+  opacity: 1!important;
+}
+
+/* ─── SHARED ─── */
+section { padding: 80px 5%; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-header { text-align:center; margin-bottom:48px; }
+.section-eyebrow { font-size:.72rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--olive); margin-bottom:10px; }
+.section-title { font-size:clamp(1.6rem,3vw,2.4rem); color:var(--chocolate); line-height:1.2; }
+.section-sub { margin-top:10px; color:#6a5a50; font-size:1rem; line-height:1.6; }
+.fade-in { opacity:0; transform:translateY(22px); transition:opacity .6s ease,transform .6s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+.btn-primary { background:var(--chocolate); color:var(--offwhite); padding:13px 26px; border-radius:6px; font-size:.95rem; font-weight:500; cursor:pointer; border:none; transition:background var(--T),transform var(--T); text-decoration:none; display:inline-block; }
+.btn-primary:hover { background:var(--bordeaux); transform:translateY(-1px); }
+.btn-secondary { background:transparent; color:var(--chocolate); padding:13px 26px; border-radius:6px; font-size:.95rem; font-weight:500; cursor:pointer; border:1.5px solid var(--chocolate); transition:all var(--T); text-decoration:none; display:inline-block; }
+.btn-secondary:hover { background:var(--chocolate); color:var(--offwhite); }
+.btn-sm { background:var(--chocolate); color:var(--offwhite); padding:9px 18px; border-radius:6px; font-size:.82rem; font-weight:500; cursor:pointer; border:none; transition:background var(--T); display:inline-block; text-decoration:none; }
+.btn-sm:hover { background:var(--bordeaux); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh; padding: 90px 5% 60px;
+  display: flex; align-items: center;
+  background: linear-gradient(135deg,var(--offwhite) 55%,var(--beige) 100%);
+}
+.hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; width:100%; }
+.hero-text h1 { font-size:clamp(1.9rem,3.8vw,3.1rem); line-height:1.15; color:var(--chocolate); margin-bottom:18px; }
+.hero-text h1 em { font-style:italic; color:var(--bordeaux); }
+.hero-text p { font-size:1.05rem; line-height:1.7; color:#5a4a40; margin-bottom:32px; }
+.hero-btns { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
+.trust-badges { display:flex; flex-direction:column; gap:9px; }
+.trust-badge { display:flex; align-items:center; gap:9px; font-size:.86rem; color:#5a4a40; }
+.trust-badge .check { width:19px; height:19px; background:var(--olive); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:.65rem; flex-shrink:0; }
+
+/* Hero image carousel */
+.hero-visual { position:relative; }
+.hero-carousel { border-radius:16px; overflow:hidden; position:relative; height: 420px; }
+.hero-slides { display:flex; width:300%; height:100%; transition:transform .7s cubic-bezier(.4,0,.2,1); }
+.hero-slide { width:33.333%; height:100%; flex-shrink:0; position:relative; }
+.hero-slide img { width:100%; height:100%; object-fit:cover; }
+.hero-slide-overlay {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(transparent,rgba(74,52,40,.65));
+  padding:28px 22px 20px; color:white;
+}
+.hero-slide-overlay h3 { font-size:1.15rem; font-style:italic; }
+.hero-slide-overlay p { font-size:.8rem; opacity:.85; margin-top:4px; }
+.hero-carousel-dots { display:flex; justify-content:center; gap:8px; margin-top:14px; }
+.hero-dot { width:7px; height:7px; border-radius:50%; background:rgba(74,52,40,.25); border:none; cursor:pointer; transition:background var(--T); padding:0; }
+.hero-dot.active { background:var(--chocolate); }
+.hero-tag { position:absolute; bottom:-14px; right:-14px; background:var(--chocolate); color:var(--offwhite); padding:14px 18px; border-radius:12px; font-size:.85rem; font-family:'Playfair Display',serif; font-style:italic; z-index:1; }
+
+/* ─── EVENTOS ─── */
+#eventos { background:var(--beige); }
+.infinite-carousel-wrapper { overflow:hidden; position:relative; }
+.infinite-carousel-track { display:flex; gap:20px; width:max-content; }
+.infinite-carousel-track.animating { transition: transform .45s ease; }
+.event-card { flex:0 0 300px; background:var(--offwhite); border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(74,52,40,.08); transition:transform var(--T),box-shadow var(--T); }
+.event-card:hover { transform:translateY(-4px); box-shadow:0 8px 30px rgba(74,52,40,.15); }
+.event-card-img { height:160px; position:relative; overflow:hidden; background:var(--beige); }
+.event-card-img img { width:100%; height:100%; object-fit:cover; }
+.event-date-badge { position:absolute; top:12px; left:12px; background:var(--chocolate); color:var(--offwhite); padding:5px 11px; border-radius:6px; font-size:.72rem; font-weight:600; }
+.event-card-body { padding:18px; }
+.event-card-body h3 { font-size:1.05rem; color:var(--chocolate); margin-bottom:8px; }
+.event-meta { display:flex; flex-direction:column; gap:4px; margin-bottom:14px; }
+.event-meta span { font-size:.8rem; color:#7a6a60; display:flex; align-items:center; gap:6px; }
+.carousel-arrows { display:flex; justify-content:center; gap:12px; margin-top:24px; }
+.carousel-btn { width:42px; height:42px; border-radius:50%; background:var(--chocolate); color:var(--offwhite); border:none; cursor:pointer; font-size:1.1rem; transition:background var(--T); display:flex; align-items:center; justify-content:center; }
+.carousel-btn:hover { background:var(--bordeaux); }
+
+/* ─── BRECHÓS ─── */
+#brechos { background:var(--offwhite); }
+.brechos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.brecho-card { background:var(--offwhite); border:1px solid rgba(74,52,40,.1); border-radius:12px; overflow:hidden; transition:transform var(--T),box-shadow var(--T); cursor:pointer; }
+.brecho-card:hover { transform:translateY(-4px); box-shadow:0 10px 32px rgba(74,52,40,.14); }
+.brecho-img { height:170px; position:relative; overflow:hidden; background:var(--beige); }
+.brecho-img img { width:100%; height:100%; object-fit:cover; }
+.brecho-tag { position:absolute; bottom:10px; left:10px; background:var(--olive); color:white; padding:3px 10px; border-radius:20px; font-size:.7rem; font-weight:600; }
+.brecho-body { padding:16px; }
+.brecho-body h3 { font-size:1rem; color:var(--chocolate); margin-bottom:5px; }
+.brecho-meta { font-size:.8rem; color:#7a6a60; margin-bottom:12px; display:flex; flex-direction:column; gap:3px; }
+.stars { color:#c49a3c; font-size:.85rem; }
+.btn-brecho { width:100%; text-align:center; display:block; }
+
+/* ─── PRODUTOS ─── */
+#produtos { background:var(--beige); }
+.filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+.filter-chip { padding:7px 16px; border-radius:20px; border:1.5px solid rgba(74,52,40,.25); background:transparent; color:var(--chocolate); font-size:.82rem; font-weight:500; cursor:pointer; transition:all var(--T); }
+.filter-chip:hover,.filter-chip.active { background:var(--chocolate); color:var(--offwhite); border-color:var(--chocolate); }
+.produtos-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:18px; margin-bottom:28px; }
+.produto-card { background:var(--offwhite); border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(74,52,40,.07); transition:transform var(--T),box-shadow var(--T); cursor:pointer; }
+.produto-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(74,52,40,.14); }
+.produto-img { height:190px; position:relative; overflow:hidden; background:var(--beige); }
+.produto-img img { width:100%; height:100%; object-fit:cover; }
+.produto-badge { position:absolute; top:10px; right:10px; background:var(--bordeaux); color:white; padding:3px 8px; border-radius:4px; font-size:.68rem; font-weight:600; }
+.produto-body { padding:13px; }
+.produto-body h4 { font-size:.92rem; color:var(--chocolate); margin-bottom:3px; font-family:'Inter',sans-serif; font-weight:600; }
+.produto-price { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--bordeaux); margin-bottom:3px; }
+.produto-info { font-size:.73rem; color:#8a7060; margin-bottom:10px; }
+.btn-ver-mais { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; max-width:220px; margin:0 auto; padding:12px 24px; border-radius:8px; border:1.5px solid var(--chocolate); background:transparent; color:var(--chocolate); font-size:.88rem; font-weight:500; cursor:pointer; transition:all var(--T); }
+.btn-ver-mais:hover { background:var(--chocolate); color:var(--offwhite); }
+.btn-ver-mais svg { width:16px; height:16px; transition:transform var(--T); }
+.btn-ver-mais:hover svg { transform:translateY(2px); }
+
+/* ─── CALENDÁRIO ─── */
+#calendario { background:var(--offwhite); padding:60px 5%; }
+.calendar-layout { display:grid; grid-template-columns:1fr 320px; gap:36px; align-items:start; }
+.calendar-widget { background:var(--beige); border-radius:16px; padding:22px; }
+.cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.cal-header h3 { font-size:1.05rem; color:var(--chocolate); }
+.cal-nav-btn { background:none; border:none; cursor:pointer; color:var(--chocolate); font-size:1.1rem; padding:4px 10px; transition:color var(--T); }
+.cal-nav-btn:hover { color:var(--bordeaux); }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; text-align:center; }
+.cal-day-label { font-size:.68rem; font-weight:600; color:#8a7060; padding:5px 0; text-transform:uppercase; }
+.cal-day { aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:.8rem; border-radius:50%; cursor:pointer; transition:all var(--T); color:var(--chocolate); position:relative; }
+.cal-day:hover { background:rgba(74,52,40,.1); }
+.cal-day.has-event { font-weight:600; }
+.cal-day.has-event::after { content:''; position:absolute; bottom:3px; left:50%; transform:translateX(-50%); width:4px; height:4px; border-radius:50%; background:var(--olive); }
+.cal-day.selected { background:var(--chocolate); color:white!important; }
+.cal-day.selected::after { background:white; }
+.cal-day.empty { cursor:default; }
+.cal-day.other-month { color:#c0b0a8; }
+.event-panel { background:var(--beige); border-radius:16px; padding:22px; min-height:180px; }
+.event-panel h4 { font-size:.95rem; color:var(--chocolate); margin-bottom:14px; border-bottom:1px solid rgba(74,52,40,.15); padding-bottom:10px; }
+.event-item { padding:10px 0; border-bottom:1px solid rgba(74,52,40,.1); }
+.event-item:last-child { border-bottom:none; }
+.event-item h5 { font-size:.88rem; color:var(--chocolate); margin-bottom:3px; }
+.event-item .event-detail { font-size:.76rem; color:#7a6a60; }
+.no-events { color:#8a7060; font-size:.85rem; font-style:italic; }
+
+/* ─── IMPACTO ─── */
+#impacto { background:var(--chocolate); }
+#impacto .section-eyebrow { color:var(--olive); }
+#impacto .section-title { color:var(--offwhite); }
+#impacto .section-sub { color:rgba(234,226,214,.75); }
+.impacto-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; margin-top:44px; }
+.impacto-card { background:rgba(255,255,255,.06); border:1px solid rgba(234,226,214,.15); border-radius:14px; padding:26px 22px; text-align:center; transition:transform var(--T),background var(--T); }
+.impacto-card:hover { transform:translateY(-4px); background:rgba(255,255,255,.1); }
+.impacto-icon { font-size:2rem; margin-bottom:12px; }
+.impacto-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:var(--offwhite); line-height:1; }
+.impacto-label { font-size:.85rem; color:rgba(234,226,214,.8); margin-top:7px; line-height:1.4; }
+
+/* ─── MAPA ─── */
+#mapa { background:var(--beige); padding:80px 0; }
+#mapa .container { padding:0 5%; }
+.map-wrapper { position:relative; background:#d4c8b8; border-radius:16px; overflow:hidden; height:440px; margin-top:36px; }
+.map-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#d4c8b8,#c4b8a8); position:relative; overflow:hidden; }
+.map-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(74,52,40,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(74,52,40,.06) 1px,transparent 1px); background-size:48px 48px; }
+.map-pin { position:absolute; cursor:pointer; display:flex; flex-direction:column; align-items:center; transition:transform var(--T); }
+.map-pin:hover { transform:scale(1.15); z-index:2; }
+.map-pin-icon { width:34px; height:34px; background:var(--chocolate); border-radius:50% 50% 50% 0; transform:rotate(-45deg); border:3px solid white; box-shadow:0 2px 8px rgba(0,0,0,.25); }
+.map-pin-label { margin-top:8px; background:white; padding:3px 8px; border-radius:4px; font-size:.68rem; font-weight:600; color:var(--chocolate); box-shadow:0 2px 6px rgba(0,0,0,.1); white-space:nowrap; }
+.map-popup { position:absolute; background:white; border-radius:12px; padding:14px; width:210px; box-shadow:0 8px 28px rgba(0,0,0,.18); pointer-events:none; opacity:0; transition:opacity var(--T); z-index:10; }
+.map-popup.visible { opacity:1; pointer-events:auto; }
+.map-popup h4 { font-size:.92rem; color:var(--chocolate); margin-bottom:5px; }
+.map-popup p { font-size:.76rem; color:#7a6a60; line-height:1.5; }
+.map-filters { display:flex; align-items:center; gap:8px; margin-top:18px; flex-wrap:wrap; }
+.map-filters span { font-size:.82rem; color:#6a5a50; font-weight:500; }
+.radius-chip { padding:6px 14px; border-radius:20px; border:1.5px solid rgba(74,52,40,.25); background:transparent; color:var(--chocolate); font-size:.8rem; cursor:pointer; transition:all var(--T); }
+.radius-chip.active,.radius-chip:hover { background:var(--chocolate); color:white; border-color:var(--chocolate); }
+
+/* ─── CTA PARCEIROS ─── */
+#parceiros { background:var(--bordeaux); padding:90px 5%; text-align:center; position:relative; overflow:hidden; }
+#parceiros::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 50%,rgba(255,255,255,.06),transparent 60%); }
+.parceiros-content { position:relative; max-width:580px; margin:0 auto; }
+.parceiros-content h2 { font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--offwhite); margin-bottom:14px; }
+.parceiros-content p { color:rgba(234,226,214,.85); font-size:1rem; line-height:1.7; margin-bottom:32px; }
+.btn-large { background:var(--offwhite); color:var(--bordeaux); padding:15px 34px; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; border:none; transition:all var(--T); display:inline-block; text-decoration:none; }
+.btn-large:hover { background:var(--beige); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.15); }
+.parceiros-badges { display:flex; justify-content:center; gap:24px; margin-top:36px; flex-wrap:wrap; }
+.p-badge { display:flex; align-items:center; gap:7px; color:rgba(234,226,214,.75); font-size:.85rem; }
+
+/* ─── FOOTER ─── */
+footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28px; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:36px; max-width:1200px; margin:0 auto; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.08); }
+.footer-brand .logo { color:var(--beige); font-size:1.25rem; }
+.footer-brand p { font-size:.83rem; line-height:1.7; margin-top:10px; max-width:230px; }
+.footer-social { display:flex; gap:10px; margin-top:14px; }
+.social-btn { width:34px; height:34px; border-radius:8px; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; color:var(--beige); font-size:.85rem; cursor:pointer; transition:background var(--T); text-decoration:none; border:none; }
+.social-btn:hover { background:rgba(255,255,255,.18); }
+.footer-col h4 { color:var(--beige); font-size:.85rem; font-family:'Inter',sans-serif; font-weight:600; margin-bottom:12px; letter-spacing:.4px; }
+.footer-col a { display:block; color:rgba(234,226,214,.6); text-decoration:none; font-size:.8rem; margin-bottom:7px; transition:color var(--T); }
+.footer-col a:hover { color:var(--beige); }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; margin-top:22px; font-size:.76rem; max-width:1200px; margin-left:auto; margin-right:auto; flex-wrap:wrap; gap:6px; }
+
+/* ════════════════════════════════════════
+   MODAIS / OVERLAYS
+════════════════════════════════════════ */
+.overlay {
+  position:fixed; inset:0; z-index:500;
+  background:rgba(34,26,22,.65); backdrop-filter:blur(4px);
+  opacity:0; pointer-events:none; transition:opacity .3s ease;
+  display:flex; align-items:center; justify-content:center; padding:16px;
+}
+.overlay.open { opacity:1; pointer-events:all; }
+.modal {
+  background:var(--offwhite); border-radius:20px; overflow:hidden;
+  width:100%; max-width:680px; max-height:90vh; overflow-y:auto;
+  transform:translateY(30px) scale(.97); transition:transform .35s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+.overlay.open .modal { transform:translateY(0) scale(1); }
+.modal-close {
+  position:absolute; top:14px; right:14px; z-index:2;
+  width:36px; height:36px; border-radius:50%;
+  background:rgba(255,255,255,.85); border:none; cursor:pointer;
+  font-size:1.1rem; display:flex; align-items:center; justify-content:center;
+  color:var(--chocolate); transition:background var(--T); backdrop-filter:blur(4px);
+}
+.modal-close:hover { background:white; }
+
+/* ── Modal Evento ── */
+.modal-event-img { height:240px; overflow:hidden; position:relative; background:var(--beige); }
+.modal-event-img img { width:100%; height:100%; object-fit:cover; }
+.modal-event-body { padding:28px; }
+.modal-event-body h2 { font-size:1.6rem; color:var(--chocolate); margin-bottom:18px; }
+.modal-info-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px; }
+.modal-info-item { background:var(--beige); border-radius:10px; padding:14px; }
+.modal-info-item .label { font-size:.7rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--olive); margin-bottom:4px; }
+.modal-info-item .value { font-size:.9rem; color:var(--chocolate); font-weight:500; }
+.modal-event-desc { font-size:.9rem; line-height:1.7; color:#5a4a40; }
+
+/* ── Modal Brechó ── */
+.modal-brecho-header { background:var(--beige); padding:24px 28px; display:flex; align-items:center; gap:18px; border-bottom:1px solid rgba(74,52,40,.1); }
+.modal-brecho-avatar { width:72px; height:72px; border-radius:14px; overflow:hidden; flex-shrink:0; background:var(--beige); border:2px solid rgba(74,52,40,.12); }
+.modal-brecho-avatar img { width:100%; height:100%; object-fit:cover; }
+.modal-brecho-info h2 { font-size:1.35rem; color:var(--chocolate); }
+.modal-brecho-info .stars { font-size:.95rem; }
+.modal-brecho-info p { font-size:.82rem; color:#6a5a50; margin-top:3px; }
+.modal-fav-btn {
+  margin-left:auto; background:none; border:1.5px solid rgba(74,52,40,.2);
+  border-radius:50%; width:42px; height:42px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; transition:all var(--T); flex-shrink:0;
+}
+.modal-fav-btn:hover,.modal-fav-btn.faved { background:var(--bordeaux); border-color:var(--bordeaux); }
+.modal-fav-btn.faved { color:white; }
+.modal-brecho-body { padding:24px 28px; }
+.modal-contato { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; }
+.contato-chip { display:flex; align-items:center; gap:7px; padding:9px 14px; border-radius:8px; background:var(--beige); font-size:.82rem; color:var(--chocolate); font-weight:500; text-decoration:none; transition:background var(--T); }
+.contato-chip:hover { background:#ddd5c6; }
+.modal-brecho-produtos h3 { font-size:1.1rem; color:var(--chocolate); margin-bottom:14px; }
+.modal-produtos-filters { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
+.modal-prod-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:13px; }
+.modal-prod-card { background:var(--beige); border-radius:10px; overflow:hidden; cursor:pointer; transition:transform var(--T); }
+.modal-prod-card:hover { transform:translateY(-3px); }
+.modal-prod-img { height:120px; overflow:hidden; background:#d4c8b8; }
+.modal-prod-img img { width:100%; height:100%; object-fit:cover; }
+.modal-prod-info { padding:9px; }
+.modal-prod-info h4 { font-size:.78rem; color:var(--chocolate); font-family:'Inter',sans-serif; font-weight:600; margin-bottom:2px; }
+.modal-prod-info .price { font-size:.88rem; color:var(--bordeaux); font-family:'Playfair Display',serif; }
+
+/* ── Modal Produto ── */
+.modal-produto { max-width:760px; }
+.produto-img-carousel { position:relative; height:300px; background:var(--beige); overflow:hidden; }
+.produto-slides { display:flex; height:100%; transition:transform .4s ease; }
+.produto-slide { flex:0 0 100%; height:100%; }
+.produto-slide img { width:100%; height:100%; object-fit:cover; }
+.prod-slide-btn {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:38px; height:38px; border-radius:50%;
+  background:rgba(255,255,255,.85); border:none; cursor:pointer;
+  font-size:1rem; display:flex; align-items:center; justify-content:center;
+  color:var(--chocolate); transition:background var(--T); z-index:2;
+}
+.prod-slide-btn:hover { background:white; }
+.prod-slide-btn.prev { left:12px; }
+.prod-slide-btn.next { right:12px; }
+.prod-slide-dots { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
+.prod-slide-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.55); border:none; cursor:pointer; transition:background var(--T); }
+.prod-slide-dot.active { background:white; }
+.modal-produto-body { padding:26px 28px; }
+.modal-produto-body h2 { font-size:1.5rem; color:var(--chocolate); margin-bottom:6px; }
+.modal-produto-price { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--bordeaux); margin-bottom:18px; }
+.especificacoes { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; }
+.espec-item { background:var(--beige); border-radius:9px; padding:12px; }
+.espec-item .label { font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--olive); margin-bottom:4px; }
+.espec-item .value { font-size:.88rem; color:var(--chocolate); font-weight:500; }
+.produto-descricao { font-size:.88rem; line-height:1.7; color:#5a4a40; margin-bottom:22px; padding:16px; background:var(--beige); border-radius:10px; }
+.pagamento-section h3 { font-size:1rem; color:var(--chocolate); margin-bottom:14px; }
+.pagamento-opcoes { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.pag-opcao {
+  border:2px solid rgba(74,52,40,.15); border-radius:12px; padding:16px;
+  cursor:pointer; transition:all var(--T); background:transparent;
+  text-align:left; position:relative;
+}
+.pag-opcao:hover { border-color:var(--chocolate); background:rgba(74,52,40,.03); }
+.pag-opcao.selected { border-color:var(--chocolate); background:rgba(74,52,40,.05); }
+.pag-opcao .pag-title { font-size:.88rem; font-weight:600; color:var(--chocolate); margin-bottom:4px; display:flex; align-items:center; gap:8px; }
+.pag-opcao .pag-desc { font-size:.76rem; color:#7a6a60; line-height:1.5; }
+.pag-radio { width:16px; height:16px; border-radius:50%; border:2px solid rgba(74,52,40,.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.pag-opcao.selected .pag-radio { border-color:var(--chocolate); background:var(--chocolate); }
+.pag-opcao.selected .pag-radio::after { content:''; width:6px; height:6px; border-radius:50%; background:white; }
+.btn-comprar { width:100%; margin-top:16px; padding:15px; border-radius:10px; background:var(--chocolate); color:white; font-size:1rem; font-weight:600; border:none; cursor:pointer; transition:background var(--T); }
+.btn-comprar:hover { background:var(--bordeaux); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:1100px) {
+  .brechos-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:900px) {
+  .nav-desktop { display:none; }
+  .mobile-nav-bar { display:flex; }
+  body { padding-bottom:72px; }
+  .hero-inner { grid-template-columns:1fr; gap:36px; padding-top:20px; }
+  .hero-visual { order:-1; }
+  .hero-carousel { height:300px; }
+  .hero-tag { display:none; }
+  .calendar-layout { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .modal-info-grid { grid-template-columns:1fr; }
+  .pagamento-opcoes { grid-template-columns:1fr; }
+  .especificacoes { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:600px) {
+  section { padding:56px 4%; }
+  #calendario { padding:56px 4%; }
+  #mapa { padding:56px 0; }
+  .brechos-grid { grid-template-columns:1fr 1fr; gap:14px; }
+  .footer-grid { grid-template-columns:1fr; }
+  .hero-btns { flex-direction:column; }
+  .hero-btns a { text-align:center; }
+  .modal-brecho-header { flex-wrap:wrap; }
+  .modal-fav-btn { margin-left:auto; }
+  .evento-img-carousel { height:200px; }
+  .modal-prod-grid { grid-template-columns:repeat(2,1fr); }
+  .modal-produto-body { padding:18px; }
+  .especificacoes { grid-template-columns:1fr; }
+}
+@media (max-width:400px) {
+  .brechos-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header id="header">
+  <a href="#" class="logo">Novo<span>De</span>Novo</a>
+  <nav class="nav-desktop">
+    <a href="#produtos">Produtos</a>
+    <a href="#brechos">Brechós</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#impacto">Impacto</a>
+    <a href="#mapa">Mapa</a>
+    <a href="#parceiros" class="btn-header">Quero Participar</a>
+  </nav>
+</header>
+
+<!-- Mobile Bottom Nav -->
+<nav class="mobile-nav-bar" id="mobileNav">
+  <a href="#produtos" class="mobile-nav-item" onclick="setMobileActive(this)">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18"/></svg>
+    Produtos
+  </a>
+  <a href="#brechos" class="mobile-nav-item" onclick="setMobileActive(this)">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+    Brechós
+  </a>
+  <a href="#eventos" class="mobile-nav-item" onclick="setMobileActive(this)">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+    Eventos
+  </a>
+  <a href="#mapa" class="mobile-nav-item" onclick="setMobileActive(this)">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    Mapa
+  </a>
+  <a href="#parceiros" class="mobile-nav-item mobile-nav-cta" onclick="setMobileActive(this)">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+    Participar
+  </a>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-inner container">
+    <div class="hero-text fade-in">
+      <h1>Descubra peças únicas e apoie <em>brechós</em> da sua região.</h1>
+      <p>Conectamos pessoas a bazares, brechós e eventos sustentáveis. Moda consciente ao alcance de todos.</p>
+      <div class="hero-btns">
+        <a href="#produtos" class="btn-primary">Explorar Produtos</a>
+        <a href="#eventos" class="btn-secondary">Ver Eventos</a>
+      </div>
+      <div class="trust-badges">
+        <div class="trust-badge"><div class="check">✓</div><span>+40 brechós parceiros</span></div>
+        <div class="trust-badge"><div class="check">✓</div><span>+10.000 produtos cadastrados</span></div>
+        <div class="trust-badge"><div class="check">✓</div><span>Eventos mensais em sua cidade</span></div>
+      </div>
+    </div>
+    <div class="hero-visual fade-in" style="transition-delay:.15s">
+      <div class="hero-carousel" id="heroCarousel">
+        <div class="hero-slides" id="heroSlides">
+          <div class="hero-slide">
+            <img src="https://i.pinimg.com/736x/21/75/49/2175490ad56263ac8aa31016645eb533.jpg" alt="Roupas vintage coloridas em araras">
+            <div class="hero-slide-overlay"><h3>Peças que têm história</h3><p>Roupas vintage com personalidade</p></div>
+          </div>
+          <div class="hero-slide">
+            <img src="https://i.pinimg.com/736x/c8/8e/ae/c88eaec4d5b7e06b98d42bc7c48484b5.jpg" alt="Brechó organizado e iluminado">
+            <div class="hero-slide-overlay"><h3>Brechós curados</h3><p>Espaços únicos, selecionados com cuidado</p></div>
+          </div>
+          <div class="hero-slide">
+            <img src="https://i.pinimg.com/736x/87/d8/8a/87d88a2df2e39b8ef10195c30e423249.jpg" alt="Pessoas em feira e evento sustentável">
+            <div class="hero-slide-overlay"><h3>Eventos cheios de vida</h3><p>Feiras sustentáveis perto de você</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-carousel-dots">
+        <button class="hero-dot active" onclick="goHeroSlide(0)"></button>
+        <button class="hero-dot" onclick="goHeroSlide(1)"></button>
+        <button class="hero-dot" onclick="goHeroSlide(2)"></button>
+      </div>
+      <div class="hero-tag">"Moda que conta histórias"</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRÓXIMOS EVENTOS ══════════ -->
+<section id="eventos">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Na sua agenda</p>
+      <h2 class="section-title">Próximos Eventos</h2>
+      <p class="section-sub">Bazares e feiras sustentáveis acontecendo perto de você</p>
+    </div>
+    <div class="infinite-carousel-wrapper fade-in" id="infiniteWrapper">
+      <div class="infinite-carousel-track" id="infiniteTrack"></div>
+    </div>
+    <div class="carousel-arrows">
+      <button class="carousel-btn" id="prevBtn">←</button>
+      <button class="carousel-btn" id="nextBtn">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BRECHÓS ══════════ -->
+<section id="brechos">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Curadoria especial</p>
+      <h2 class="section-title">Brechós em Destaque</h2>
+      <p class="section-sub">Espaços com curadoria única, prontos para você explorar</p>
+    </div>
+    <div class="brechos-grid" id="brechosGrid"></div>
+  </div>
+</section>
+
+<!-- ══════════ PRODUTOS ══════════ -->
+<section id="produtos">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Garimpo do dia</p>
+      <h2 class="section-title">Produtos em Destaque</h2>
+    </div>
+    <div class="filters fade-in" id="categoryFilters">
+      <button class="filter-chip active" data-cat="todos">Todos</button>
+      <button class="filter-chip" data-cat="camisetas">Camisetas</button>
+      <button class="filter-chip" data-cat="calcas">Calças</button>
+      <button class="filter-chip" data-cat="jaquetas">Jaquetas</button>
+      <button class="filter-chip" data-cat="vestidos">Vestidos</button>
+      <button class="filter-chip" data-cat="sapatos">Sapatos</button>
+      <button class="filter-chip" data-cat="acessorios">Acessórios</button>
+    </div>
+    <div class="produtos-grid" id="produtosGrid"></div>
+    <div style="text-align:center">
+      <button class="btn-ver-mais" id="btnVerMais" onclick="loadMoreProdutos()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        Ver mais produtos
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CALENDÁRIO ══════════ -->
+<section id="calendario">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Planeje sua visita</p>
+      <h2 class="section-title">Calendário de Eventos</h2>
+      <p class="section-sub">Clique em uma data para ver os eventos do dia</p>
+    </div>
+    <div class="calendar-layout fade-in">
+      <div class="calendar-widget">
+        <div class="cal-header">
+          <button class="cal-nav-btn" onclick="changeMonth(-1)">‹</button>
+          <h3 id="calTitle"></h3>
+          <button class="cal-nav-btn" onclick="changeMonth(1)">›</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+      <div class="event-panel" id="eventPanel">
+        <h4 id="eventPanelTitle">Selecione uma data</h4>
+        <div id="eventPanelBody"><p class="no-events">Clique em um dia com evento para ver os detalhes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ IMPACTO ══════════ -->
+<section id="impacto">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Nossa pegada verde</p>
+      <h2 class="section-title">Impacto Real</h2>
+      <p class="section-sub">Cada compra é um passo rumo a um futuro mais sustentável</p>
+    </div>
+    <div class="impacto-grid">
+      <div class="impacto-card fade-in"><div class="impacto-icon">♻️</div><div class="impacto-num" data-target="3500">0</div><div class="impacto-label">peças reutilizadas</div></div>
+      <div class="impacto-card fade-in" style="transition-delay:.1s"><div class="impacto-icon">🌱</div><div class="impacto-num" data-target="1.2" data-decimal="true" data-suffix=" t">0</div><div class="impacto-label">toneladas de resíduos evitados</div></div>
+      <div class="impacto-card fade-in" style="transition-delay:.2s"><div class="impacto-icon">🤝</div><div class="impacto-num" data-target="40" data-suffix="+">0</div><div class="impacto-label">brechós parceiros</div></div>
+      <div class="impacto-card fade-in" style="transition-delay:.3s"><div class="impacto-icon">👕</div><div class="impacto-num" data-target="12000">0</div><div class="impacto-label">produtos anunciados</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MAPA ══════════ -->
+<section id="mapa">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-eyebrow">Perto de você</p>
+      <h2 class="section-title">Brechós no Mapa</h2>
+      <p class="section-sub">Explore brechós e bazares na sua região</p>
+    </div>
+    <div class="map-wrapper fade-in">
+      <div class="map-placeholder">
+        <div class="map-grid"></div>
+        <div class="map-pin" style="left:22%;top:35%" onclick="showPopup(event,this,'Brechó das Artes','Rua Augusta, 1200 · Próx. evento: 28/06 · 240 produtos')"><div class="map-pin-icon"></div><div class="map-pin-label">Brechó das Artes</div></div>
+        <div class="map-pin" style="left:45%;top:55%" onclick="showPopup(event,this,'Feirinha Sustentável','Av. Paulista, 900 · Próx. evento: 05/07 · 180 produtos')"><div class="map-pin-icon"></div><div class="map-pin-label">Feirinha Sust.</div></div>
+        <div class="map-pin" style="left:68%;top:30%" onclick="showPopup(event,this,'Mercado Vintage','R. Consolação, 450 · Próx. evento: 12/07 · 310 produtos')"><div class="map-pin-icon"></div><div class="map-pin-label">Mercado Vintage</div></div>
+        <div class="map-pin" style="left:32%;top:70%" onclick="showPopup(event,this,'Bazar do Bem','R. dos Pinheiros, 78 · Próx. evento: 19/07 · 95 produtos')"><div class="map-pin-icon"></div><div class="map-pin-label">Bazar do Bem</div></div>
+        <div class="map-pin" style="left:76%;top:65%" onclick="showPopup(event,this,'Achados & Perdidos','R. Harmonia, 320 · Próx. evento: 26/07 · 150 produtos')"><div class="map-pin-icon"></div><div class="map-pin-label">Achados & Perdidos</div></div>
+        <div id="mapPopup" class="map-popup"><h4 id="popupName"></h4><p id="popupInfo"></p><a href="#" class="btn-sm" style="margin-top:10px;display:inline-block;font-size:.75rem">Ver Brechó →</a></div>
+      </div>
+    </div>
+    <div class="map-filters fade-in">
+      <span>Raio:</span>
+      <button class="radius-chip" onclick="setRadius(this)">1km</button>
+      <button class="radius-chip active" onclick="setRadius(this)">5km</button>
+      <button class="radius-chip" onclick="setRadius(this)">10km</button>
+      <button class="radius-chip" onclick="setRadius(this)">20km</button>
+      <button class="radius-chip" onclick="setRadius(this)">50km</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA PARCEIROS ══════════ -->
+<section id="parceiros">
+  <div class="parceiros-content fade-in">
+    <h2>Seu brechó merece ser descoberto.</h2>
+    <p>Cadastre seu brechó gratuitamente e alcance mais pessoas que valorizam moda consciente e produtos únicos.</p>
+    <a href="#" class="btn-large">Quero me tornar parceiro</a>
+    <div class="parceiros-badges">
+      <div class="p-badge">✓ Cadastro gratuito</div>
+      <div class="p-badge">✓ Visibilidade regional</div>
+      <div class="p-badge">✓ Suporte dedicado</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Novo<span style="color:var(--olive)">De</span>Novo</a>
+      <p>Conectamos pessoas a brechós, bazares e eventos sustentáveis em todo o Brasil.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">ig</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="#" class="social-btn">tw</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Links Rápidos</h4><a href="#produtos">Produtos</a><a href="#brechos">Brechós</a><a href="#eventos">Eventos</a><a href="#impacto">Impacto</a><a href="#mapa">Mapa</a></div>
+    <div class="footer-col"><h4>Para Brechós</h4><a href="#parceiros">Seja Parceiro</a><a href="#">Como Funciona</a><a href="#">Planos</a><a href="#">Suporte</a></div>
+    <div class="footer-col"><h4>Contato</h4><a href="mailto:oi@novodenovo.com.br">oi@novodenovo.com.br</a><a href="tel:+551140028922">(11) 4002-8922</a><a href="#">Central de Ajuda</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 NovoDeNovo. Todos os direitos reservados.</span>
+    <span>Feito com 💚 pelo clima</span>
+  </div>
+</footer>
+
+<!-- ══════════ MODAL EVENTO ══════════ -->
+<div class="overlay" id="overlayEvento" onclick="closeOverlay('overlayEvento',event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayEvento')">✕</button>
+    <div class="modal-event-img"><img id="modalEventoImg" src="" alt=""></div>
+    <div class="modal-event-body">
+      <h2 id="modalEventoNome"></h2>
+      <div class="modal-info-grid">
+        <div class="modal-info-item"><div class="label">📍 Local</div><div class="value" id="modalEventoLocal"></div></div>
+        <div class="modal-info-item"><div class="label">📅 Data</div><div class="value" id="modalEventoData"></div></div>
+        <div class="modal-info-item"><div class="label">⏰ Horário</div><div class="value" id="modalEventoHora"></div></div>
+        <div class="modal-info-item"><div class="label">🏪 Expositores</div><div class="value" id="modalEventoExp"></div></div>
+      </div>
+      <p class="modal-event-desc" id="modalEventoDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL BRECHÓ ══════════ -->
+<div class="overlay" id="overlayBrecho" onclick="closeOverlay('overlayBrecho',event)">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:720px">
+    <button class="modal-close" onclick="closeOverlayById('overlayBrecho')">✕</button>
+    <div class="modal-brecho-header">
+      <div class="modal-brecho-avatar"><img id="modalBrechoAvatar" src="" alt=""></div>
+      <div class="modal-brecho-info">
+        <h2 id="modalBrechoNome"></h2>
+        <div class="stars" id="modalBrechoStars"></div>
+        <p id="modalBrechoLocal"></p>
+      </div>
+      <button class="modal-fav-btn" id="favBtn" onclick="toggleFav()">♡</button>
+    </div>
+    <div class="modal-brecho-body">
+      <div class="modal-contato" id="modalContato"></div>
+      <div class="modal-brecho-produtos">
+        <h3>Produtos disponíveis</h3>
+        <div class="modal-produtos-filters" id="modalProdFilters">
+          <button class="filter-chip active" data-cat="todos" onclick="filterModalProd(this)">Todos</button>
+          <button class="filter-chip" data-cat="camisetas" onclick="filterModalProd(this)">Camisetas</button>
+          <button class="filter-chip" data-cat="vestidos" onclick="filterModalProd(this)">Vestidos</button>
+          <button class="filter-chip" data-cat="jaquetas" onclick="filterModalProd(this)">Jaquetas</button>
+          <button class="filter-chip" data-cat="acessorios" onclick="filterModalProd(this)">Acessórios</button>
+        </div>
+        <div class="modal-prod-grid" id="modalProdGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL PRODUTO ══════════ -->
+<div class="overlay" id="overlayProduto" onclick="closeOverlay('overlayProduto',event)">
+  <div class="modal modal-produto" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayProduto')">✕</button>
+    <div class="produto-img-carousel" id="prodCarousel">
+      <div class="produto-slides" id="prodSlides"></div>
+      <button class="prod-slide-btn prev" onclick="slideProd(-1)">←</button>
+      <button class="prod-slide-btn next" onclick="slideProd(1)">→</button>
+      <div class="prod-slide-dots" id="prodDots"></div>
+    </div>
+    <div class="modal-produto-body">
+      <h2 id="modalProdNome"></h2>
+      <div class="modal-produto-price" id="modalProdPreco"></div>
+      <div class="especificacoes" id="modalProdEspec"></div>
+      <div class="produto-descricao" id="modalProdDesc"></div>
+      <div class="pagamento-section">
+        <h3>Como você quer receber?</h3>
+        <div class="pagamento-opcoes">
+          <button class="pag-opcao selected" onclick="selectPag(this)">
+            <div class="pag-title"><div class="pag-radio"></div>Comprar com entrega</div>
+            <div class="pag-desc">Pague pela peça + frete e receba em casa.</div>
+          </button>
+          <button class="pag-opcao" onclick="selectPag(this)">
+            <div class="pag-title"><div class="pag-radio"></div>Reservar para retirar</div>
+            <div class="pag-desc">Pague pela peça e reserve para buscar no brechó.</div>
+          </button>
+        </div>
+        <button class="btn-comprar">Confirmar compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ════════ DATA ════════ */
+const EVENTOS_DATA = [
+  { nome:'Bazar das Artes', data:'28 Jun', cidade:'São Paulo, SP', expositores:32,
+    img:'https://i.pinimg.com/736x/20/2a/64/202a64635e07bf5cc0da1bd0718a5f98.jpg',
+    local:'Parque Augusta, São Paulo', hora:'9h – 18h',
+    desc:'Um encontro vibrante de artistas, costureiras e colecionadores. Mais de 30 expositores com peças únicas, arte handmade e moda vintage selecionada com carinho.' },
+  { nome:'Feirinha Vintage', data:'05 Jul', cidade:'Campinas, SP', expositores:18,
+    img:'https://i.pinimg.com/736x/53/14/f2/5314f2b2f5eaa971f0242a5f3da52dbc.jpg',
+    local:'Largo do Rosário, Campinas', hora:'10h – 17h',
+    desc:'A maior feira de roupas de segunda mão de Campinas. Encontre jeans raros, acessórios dos anos 80 e muito mais em um ambiente acolhedor e sustentável.' },
+  { nome:'Eco Brechó', data:'12 Jul', cidade:'Santos, SP', expositores:24,
+    img:'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=700&q=80',
+    local:'Orla de Santos, Santos', hora:'8h – 16h',
+    desc:'Moda consciente à beira-mar. O Eco Brechó traz expositores comprometidos com consumo responsável, produtos de qualidade e preços acessíveis para todos.' },
+  { nome:'Mercado de Achados', data:'19 Jul', cidade:'Ribeirão Preto, SP', expositores:41,
+    img:'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=700&q=80',
+    local:'Praça XV, Ribeirão Preto', hora:'9h – 18h',
+    desc:'O maior evento de brechó do interior paulista. 41 expositores, workshops de customização e muito estilo. Venha garimpear peças que ninguém mais vai ter.' },
+  { nome:'Arte & Moda', data:'26 Jul', cidade:'São Paulo, SP', expositores:29,
+    img:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&q=80',
+    local:'Vila Madalena, São Paulo', hora:'10h – 19h',
+    desc:'Onde arte e moda se encontram. Uma curadoria especial de peças vintage, instalações artísticas e música ao vivo no coração da Vila Madalena.' },
+  { nome:'Feira Sustentável', data:'02 Ago', cidade:'Sorocaba, SP', expositores:15,
+    img:'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=700&q=80',
+    local:'Parque Chico Mendes, Sorocaba', hora:'9h – 15h',
+    desc:'Consumo consciente e natureza juntos. A Feira Sustentável de Sorocaba reúne brechós, produtos orgânicos e artesanato local num ambiente verde e familiar.' },
+];
+
+const BRECHOS_DATA = [
+  { nome:'Brechó das Artes', cidade:'São Paulo, SP', rating:4.9, produtos:240, evento:'28 Jun', tag:'Destaque',
+    img:'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=500&q=80',
+    local:'Rua Augusta, 1200 – Consolação, São Paulo',
+    contato:[ { tipo:'WhatsApp', icon:'💬', link:'#' }, { tipo:'Instagram', icon:'📸', link:'#' }, { tipo:'Email', icon:'✉️', link:'#' } ],
+    produtosModal: [
+      { nome:'Blazer Xadrez', preco:'R$ 170', cat:'jaquetas', img:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&q=80' },
+      { nome:'Vestido Floral', preco:'R$ 89', cat:'vestidos', img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80' },
+      { nome:'Camiseta Vintage', preco:'R$ 55', cat:'camisetas', img:'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=300&q=80' },
+      { nome:'Bolsa Couro', preco:'R$ 120', cat:'acessorios', img:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=300&q=80' },
+      { nome:'Jaqueta Jeans', preco:'R$ 145', cat:'jaquetas', img:'https://i.pinimg.com/1200x/cc/63/5c/cc635cf9716062e8bd15061fa41cf5d7.jpg' },
+      { nome:'Calça Palazzo', preco:'R$ 98', cat:'calcas', img:'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=300&q=80' },
+    ]
+  },
+  { nome:'Eco Vintage Store', cidade:'Campinas, SP', rating:4.7, produtos:180, evento:'05 Jul', tag:'Sustentável',
+    img:'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=500&q=80',
+    local:'Rua Barão de Jaguara, 400 – Centro, Campinas',
+    contato:[ { tipo:'WhatsApp', icon:'💬', link:'#' }, { tipo:'Instagram', icon:'📸', link:'#' } ],
+    produtosModal: [
+      { nome:'Vestido Listrado', preco:'R$ 75', cat:'vestidos', img:'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=300&q=80' },
+      { nome:'Tênis Retrô', preco:'R$ 65', cat:'sapatos', img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80' },
+      { nome:'Colar Vintage', preco:'R$ 38', cat:'acessorios', img:'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&q=80' },
+      { nome:'Camisa Social', preco:'R$ 55', cat:'camisetas', img:'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=300&q=80' },
+    ]
+  },
+  { nome:'Mercado Retrô', cidade:'Santos, SP', rating:4.8, produtos:310, evento:'12 Jul', tag:'Novo',
+    img:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=80',
+    local:'Av. Ana Costa, 250 – Gonzaga, Santos',
+    contato:[ { tipo:'WhatsApp', icon:'💬', link:'#' }, { tipo:'Instagram', icon:'📸', link:'#' }, { tipo:'Site', icon:'🌐', link:'#' } ],
+    produtosModal: [
+      { nome:'Jaqueta de Couro', preco:'R$ 220', cat:'jaquetas', img:'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&q=80' },
+      { nome:'Vestido Midi', preco:'R$ 110', cat:'vestidos', img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&q=80' },
+      { nome:'Óculos Retrô', preco:'R$ 45', cat:'acessorios', img:'https://i.pinimg.com/736x/9d/d9/9c/9dd99cf5149e11dbe1440539431a9dc6.jpg' },
+      { nome:'Calça Mom', preco:'R$ 88', cat:'calcas', img:'https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&q=80' },
+    ]
+  },
+  { nome:'Garimpeiro Feliz', cidade:'Sorocaba, SP', rating:4.5, produtos:130, evento:'02 Ago', tag:'Popular',
+    img:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=80',
+    local:'Rua Comendador Oetterer, 55 – Centro, Sorocaba',
+    contato:[ { tipo:'WhatsApp', icon:'💬', link:'#' }, { tipo:'Instagram', icon:'📸', link:'#' } ],
+    produtosModal: [
+      { nome:'Blusa Cropped', preco:'R$ 42', cat:'camisetas', img:'https://images.unsplash.com/photo-1554568218-0f1715e72254?w=300&q=80' },
+      { nome:'Sandália Plataforma', preco:'R$ 72', cat:'sapatos', img:'https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=300&q=80' },
+      { nome:'Brincos Dourados', preco:'R$ 28', cat:'acessorios', img:'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300&q=80' },
+    ]
+  },
+];
+
+const ALL_PRODUTOS = [
+  { nome:'Vestido Floral Vintage', preco:'R$ 89', bazar:'Brechó das Artes', dist:'1,2km', cat:'vestidos', badge:'Oferta',
+    imgs:['https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=700&q=80','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80','https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=80'],
+    cor:'Floral multicolorido', tecido:'Viscose', desc:'Vestido midi com estampa floral exclusiva dos anos 70. Corte evasê, alças finas ajustáveis e cinto de tecido no tom. Estado de conservação excelente — usado apenas 2 vezes.' },
+  { nome:'Jaqueta Jeans Clássica', preco:'R$ 145', bazar:'Eco Vintage', dist:'2,4km', cat:'jaquetas', badge:null,
+    imgs:['https://i.pinimg.com/1200x/cc/63/5c/cc635cf9716062e8bd15061fa41cf5d7.jpg','https://i.pinimg.com/1200x/cc/63/5c/cc635cf9716062e8bd15061fa41cf5d7.jpg'],
+    cor:'Azul médio', tecido:'Denim 100% algodão', desc:'Jaqueta jeans clássica com lavagem média, botões de metal originais e bolsos internos funcionais. Tamanho M. Peça atemporal que combina com tudo.' },
+  { nome:'Tênis Retrô Branco', preco:'R$ 65', bazar:'Mercado Retrô', dist:'3,1km', cat:'sapatos', badge:'Novo',
+    imgs:['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&q=80','https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=700&q=80'],
+    cor:'Branco/Bege', tecido:'Couro sintético', desc:'Tênis retrô estilo court com sola baixa e lateral em bege. Nunca usado — ainda com etiqueta original. Número 38. Ideal para um look minimalista chic.' },
+  { nome:'Bolsa de Couro Natural', preco:'R$ 120', bazar:'Fio a Fio', dist:'4,0km', cat:'acessorios', badge:null,
+    imgs:['https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=80','https://images.unsplash.com/photo-1591561954557-26941169b49e?w=700&q=80'],
+    cor:'Caramelo', tecido:'Couro bovino legítimo', desc:'Bolsa média em couro legítimo caramelo com fivelas douradas e alça removível. Forro interno em cetim. Pequena marca na alça, detalhada nas fotos. Inclui sachê.' },
+  { nome:'Camisa Social Listrada', preco:'R$ 55', bazar:'Garimpeiro Feliz', dist:'0,8km', cat:'camisetas', badge:'Destaque',
+    imgs:['https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=700&q=80','https://images.unsplash.com/photo-1562157873-818bc0726f68?w=700&q=80'],
+    cor:'Branco/Azul', tecido:'Algodão egípcio', desc:'Camisa social slim fit em algodão de alta qualidade com listras azul e branco. Tamanho P/M. Lavada e passada, pronta para usar. Perfeita para o casual chic do dia a dia.' },
+  { nome:'Calça Palazzo Bege', preco:'R$ 98', bazar:'Brechó das Artes', dist:'1,5km', cat:'calcas', badge:null,
+    imgs:['https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=700&q=80','https://images.unsplash.com/photo-1542272604-787c3835535d?w=700&q=80'],
+    cor:'Bege areia', tecido:'Crepe de seda', desc:'Calça palazzo fluida em crepe de seda bege com cós elástico e bolsos laterais. Tamanho 38. Cai de forma elegante — perfeita para eventos e ocasiões especiais.' },
+  { nome:'Blazer Feminino Xadrez', preco:'R$ 170', bazar:'Achados do Passado', dist:'2,0km', cat:'jaquetas', badge:'Raro',
+    imgs:['https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=700&q=80','https://images.unsplash.com/photo-1591561954557-26941169b49e?w=700&q=80'],
+    cor:'Marrom/Creme', tecido:'Lã e poliéster', desc:'Blazer xadrez em tom quente marrom e creme, estruturado com ombreiras discretas e botões dourados. Tamanho M. Peça rara da coleção vintage de 1992. Impecável.' },
+  { nome:'Óculos Retrô Oval', preco:'R$ 45', bazar:'Mercado Retrô', dist:'3,5km', cat:'acessorios', badge:null,
+    imgs:['https://i.pinimg.com/736x/9d/d9/9c/9dd99cf5149e11dbe1440539431a9dc6.jpg'],
+    cor:'Tartaruga', tecido:'Acetato', desc:'Armação oval em acetato padrão tartaruga, lentes neutras. Hastes ajustáveis e borrachinhas novas. Acompanha case rígido original. Tamanho M/G.' },
+  { nome:'Vestido Midi Floral', preco:'R$ 105', bazar:'Eco Vintage', dist:'2,8km', cat:'vestidos', badge:'Popular',
+    imgs:['https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=80','https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=700&q=80'],
+    cor:'Verde/Rosa', tecido:'Chiffon', desc:'Vestido midi com estampa botânica em tons de verde e rosa. Decote envelope, mangas bufantes e amarração na cintura. Tamanho P. Usado 1 vez. Deslumbrante.' },
+  { nome:'Sandália Plataforma', preco:'R$ 72', bazar:'Garimpeiro Feliz', dist:'1,1km', cat:'sapatos', badge:null,
+    imgs:['https://images.unsplash.com/photo-1515347619252-60a4bf4fff4f?w=700&q=80'],
+    cor:'Nude', tecido:'Sintético premium', desc:'Sandália plataforma de 5cm com tiras em nude e fivela dourada. Número 37. Pouco uso — solado em ótimo estado. Uma peça que eleva qualquer look de verão.' },
+  { nome:'Camiseta Oversized', preco:'R$ 48', bazar:'Brechó das Artes', dist:'1,2km', cat:'camisetas', badge:null,
+    imgs:['https://images.unsplash.com/photo-1554568218-0f1715e72254?w=700&q=80','https://images.unsplash.com/photo-1562157873-818bc0726f68?w=700&q=80'],
+    cor:'Off-white', tecido:'Algodão 100%', desc:'Camiseta oversized em algodão pesado, lavagem especial para efeito envelhecido. Tamanho único (equivale M-G). Perfeita com calça de alfaiataria ou shorts.' },
+  { nome:'Brincos Art Déco', preco:'R$ 32', bazar:'Mercado Retrô', dist:'3,2km', cat:'acessorios', badge:'Exclusivo',
+    imgs:['https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=700&q=80'],
+    cor:'Dourado', tecido:'Liga metálica', desc:'Brincos pendentes em estilo Art Déco com cristais champanhe e folheado a ouro. Comprimento 6cm. Sem uso. Perfeitos para eventos formais ou para sofisticar o look casual.' },
+];
+
+const CAL_EVENTS = {
+  '2025-06-12': [{ nome:'Bazar das Artes', hora:'9h–18h', cidade:'São Paulo', exp:32 }],
+  '2025-06-14': [{ nome:'Eco Bazar', hora:'10h–17h', cidade:'Campinas', exp:18 }],
+  '2025-06-19': [{ nome:'Feirinha Vintage', hora:'8h–16h', cidade:'Santos', exp:24 }, { nome:'Arte & Moda', hora:'10h–19h', cidade:'SP', exp:29 }],
+  '2025-06-21': [{ nome:'Mercado Retrô', hora:'9h–18h', cidade:'Ribeirão Preto', exp:41 }],
+  '2025-06-28': [{ nome:'Bazar das Artes', hora:'9h–18h', cidade:'São Paulo', exp:32 }],
+  '2025-07-05': [{ nome:'Feirinha Vintage', hora:'10h–17h', cidade:'Campinas', exp:18 }],
+  '2025-07-12': [{ nome:'Eco Bazar', hora:'9h–17h', cidade:'Santos', exp:24 }],
+};
+
+/* ════════ HERO CAROUSEL ════════ */
+let heroIdx = 0, heroTimer;
+function goHeroSlide(i) {
+  heroIdx = i;
+  document.getElementById('heroSlides').style.transform = `translateX(-${i * 33.333}%)`;
+  document.querySelectorAll('.hero-dot').forEach((d,j) => d.classList.toggle('active', j===i));
+}
+function nextHeroSlide() { goHeroSlide((heroIdx+1)%3); }
+heroTimer = setInterval(nextHeroSlide, 4000);
+
+/* ════════ INFINITE CAROUSEL ════════ */
+const CARD_W = 320;
+let infOffset = 0, infDragging = false, infStartX = 0, infScrollStart = 0;
+let infCards = [];
+
+function buildInfiniteCarousel() {
+  const track = document.getElementById('infiniteTrack');
+  // triple clone for infinite illusion
+  const triple = [...EVENTOS_DATA, ...EVENTOS_DATA, ...EVENTOS_DATA];
+  track.innerHTML = triple.map((e, i) => `
+    <div class="event-card" data-idx="${i % EVENTOS_DATA.length}">
+      <div class="event-card-img">
+        <img src="${e.img}" alt="${e.nome}" loading="lazy">
+        <div class="event-date-badge">${e.data}</div>
+      </div>
+      <div class="event-card-body">
+        <h3>${e.nome}</h3>
+        <div class="event-meta">
+          <span>📍 ${e.cidade}</span>
+          <span>🏪 ${e.expositores} expositores</span>
+        </div>
+        <button class="btn-sm" onclick="openEvento(${i % EVENTOS_DATA.length})">Saiba Mais</button>
+      </div>
+    </div>`).join('');
+
+  // start in the middle set
+  infOffset = EVENTOS_DATA.length * (CARD_W + 20);
+  track.style.transform = `translateX(-${infOffset}px)`;
+}
+
+function slideInfinite(dir) {
+  const track = document.getElementById('infiniteTrack');
+  const step = CARD_W + 20;
+  infOffset += dir * step;
+  track.classList.add('animating');
+  track.style.transform = `translateX(-${infOffset}px)`;
+  track.addEventListener('transitionend', function handler() {
+    track.removeEventListener('transitionend', handler);
+    track.classList.remove('animating');
+    const min = (CARD_W + 20);
+    const max = EVENTOS_DATA.length * 2 * (CARD_W + 20);
+    if (infOffset < EVENTOS_DATA.length * (CARD_W + 20) - step) {
+      infOffset += EVENTOS_DATA.length * (CARD_W + 20);
+      track.style.transform = `translateX(-${infOffset}px)`;
+    } else if (infOffset > max) {
+      infOffset -= EVENTOS_DATA.length * (CARD_W + 20);
+      track.style.transform = `translateX(-${infOffset}px)`;
+    }
+  }, {once:true});
+}
+document.getElementById('prevBtn').addEventListener('click', () => slideInfinite(-1));
+document.getElementById('nextBtn').addEventListener('click', () => slideInfinite(1));
+
+/* Touch on carousel */
+(function() {
+  const wrapper = document.getElementById('infiniteWrapper');
+  let sx = 0;
+  wrapper.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+  wrapper.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) slideInfinite(dx < 0 ? 1 : -1);
+  }, {passive:true});
+})();
+
+/* ════════ BRECHÓS ════════ */
+function renderBrechos() {
+  document.getElementById('brechosGrid').innerHTML = BRECHOS_DATA.map((b,i) => `
+    <div class="brecho-card fade-in" onclick="openBrecho(${i})" style="transition-delay:${i*0.08}s">
+      <div class="brecho-img">
+        <img src="${b.img}" alt="${b.nome}" loading="lazy">
+        <div class="brecho-tag">${b.tag}</div>
+      </div>
+      <div class="brecho-body">
+        <h3>${b.nome}</h3>
+        <div class="brecho-meta">
+          <span>📍 ${b.cidade}</span>
+          <span class="stars">${'★'.repeat(Math.floor(b.rating))}${b.rating%1?'☆':''} ${b.rating}</span>
+          <span>👗 ${b.produtos} produtos · 📅 Próx. ${b.evento}</span>
+        </div>
+        <button class="btn-sm btn-brecho">Visitar Brechó</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ════════ PRODUTOS ════════ */
+let activeCat = 'todos', prodPage = 8;
+function renderProdutos(reset) {
+  if (reset) prodPage = 8;
+  const filtered = activeCat==='todos' ? ALL_PRODUTOS : ALL_PRODUTOS.filter(p=>p.cat===activeCat);
+  const toShow = filtered.slice(0, prodPage);
+  document.getElementById('produtosGrid').innerHTML = toShow.map((p,i)=>`
+    <div class="produto-card fade-in" onclick="openProduto(${ALL_PRODUTOS.indexOf(p)})" style="transition-delay:${(i%4)*0.06}s">
+      <div class="produto-img">
+        <img src="${p.imgs[0]}" alt="${p.nome}" loading="lazy">
+        ${p.badge ? `<div class="produto-badge">${p.badge}</div>` : ''}
+      </div>
+      <div class="produto-body">
+        <h4>${p.nome}</h4>
+        <div class="produto-price">${p.preco}</div>
+        <div class="produto-info">🏪 ${p.bazar} · 📍 ${p.dist}</div>
+        <button class="btn-sm" style="width:100%;text-align:center" onclick="event.stopPropagation();openProduto(${ALL_PRODUTOS.indexOf(p)})">Ver Produto</button>
+      </div>
+    </div>`).join('');
+  document.getElementById('btnVerMais').style.display = toShow.length < filtered.length ? 'flex' : 'none';
+  observeFadeIns();
+}
+function loadMoreProdutos() {
+  prodPage += 4;
+  const filtered = activeCat==='todos' ? ALL_PRODUTOS : ALL_PRODUTOS.filter(p=>p.cat===activeCat);
+  renderProdutos(false);
+}
+document.getElementById('categoryFilters').addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-chip')) return;
+  document.querySelectorAll('#categoryFilters .filter-chip').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  activeCat = e.target.dataset.cat;
+  renderProdutos(true);
+});
+
+/* ════════ CALENDÁRIO ════════ */
+let calYear=2025, calMonth=5;
+function buildCalendar() {
+  const months=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  document.getElementById('calTitle').textContent = `${months[calMonth]} ${calYear}`;
+  const grid = document.getElementById('calGrid');
+  const days=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  let html = days.map(d=>`<div class="cal-day-label">${d}</div>`).join('');
+  const first = new Date(calYear,calMonth,1).getDay();
+  const total = new Date(calYear,calMonth+1,0).getDate();
+  for(let i=0;i<first;i++) html+=`<div class="cal-day empty"></div>`;
+  for(let d=1;d<=total;d++){
+    const key=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const hasEvent=!!CAL_EVENTS[key];
+    html+=`<div class="cal-day${hasEvent?' has-event':''}" onclick="showCalEvents('${key}',${d})">${d}</div>`;
+  }
+  grid.innerHTML=html;
+}
+function changeMonth(dir){ calMonth+=dir; if(calMonth>11){calMonth=0;calYear++;} if(calMonth<0){calMonth=11;calYear--;} buildCalendar(); }
+function showCalEvents(key,day){
+  document.querySelectorAll('.cal-day').forEach(d=>d.classList.remove('selected'));
+  event.target.classList.add('selected');
+  const months=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  document.getElementById('eventPanelTitle').textContent=`${day} de ${months[calMonth]}`;
+  const evs=CAL_EVENTS[key];
+  const body=document.getElementById('eventPanelBody');
+  if(!evs){body.innerHTML='<p class="no-events">Nenhum evento neste dia.</p>';return;}
+  body.innerHTML=evs.map(ev=>`
+    <div class="event-item">
+      <h5>${ev.nome}</h5>
+      <div class="event-detail">⏰ ${ev.hora}</div>
+      <div class="event-detail">📍 ${ev.cidade} · 🏪 ${ev.exp} expositores</div>
+    </div>`).join('');
+}
+
+/* ════════ IMPACTO COUNTERS ════════ */
+let countersDone=false;
+const impactObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!countersDone){
+    countersDone=true;
+    document.querySelectorAll('.impacto-num').forEach(el=>{
+      const target=parseFloat(el.dataset.target);
+      const suffix=el.dataset.suffix||'';
+      const isDec=!!el.dataset.decimal;
+      let cur=0;
+      const step=target/60;
+      const iv=setInterval(()=>{
+        cur+=step;
+        if(cur>=target){cur=target;clearInterval(iv);}
+        el.textContent=isDec?cur.toFixed(1)+suffix:Math.floor(cur).toLocaleString('pt-BR')+suffix;
+      },24);
+    });
+  }
+},{threshold:.3});
+impactObs.observe(document.getElementById('impacto'));
+
+/* ════════ MAPA ════════ */
+function showPopup(ev,pin,nome,info){
+  const popup=document.getElementById('mapPopup');
+  document.getElementById('popupName').textContent=nome;
+  document.getElementById('popupInfo').textContent=info;
+  const pRect=pin.getBoundingClientRect();
+  const wRect=pin.closest('.map-wrapper').getBoundingClientRect();
+  let left=pRect.left-wRect.left+42;
+  let top=pRect.top-wRect.top-10;
+  if(left+220>wRect.width) left=left-270;
+  popup.style.left=left+'px';
+  popup.style.top=top+'px';
+  popup.classList.add('visible');
+  ev.stopPropagation();
+}
+document.addEventListener('click',()=>document.getElementById('mapPopup').classList.remove('visible'));
+function setRadius(btn){ document.querySelectorAll('.radius-chip').forEach(c=>c.classList.remove('active')); btn.classList.add('active'); }
+
+/* ════════ SCROLL & HEADER ════════ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('header').classList.toggle('scrolled',window.scrollY>40);
+});
+function observeFadeIns(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} });
+  },{threshold:.1});
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el=>obs.observe(el));
+}
+function setMobileActive(el){ document.querySelectorAll('.mobile-nav-item').forEach(i=>i.classList.remove('active')); el.classList.add('active'); }
+
+/* ════════ MODAL HELPERS ════════ */
+function openOverlay(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeOverlayById(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function closeOverlay(id,e){ if(e.target===document.getElementById(id)) closeOverlayById(id); }
+
+/* ════════ MODAL EVENTO ════════ */
+function openEvento(idx){
+  const e=EVENTOS_DATA[idx];
+  document.getElementById('modalEventoImg').src=e.img;
+  document.getElementById('modalEventoNome').textContent=e.nome;
+  document.getElementById('modalEventoLocal').textContent=e.local;
+  document.getElementById('modalEventoData').textContent=e.data;
+  document.getElementById('modalEventoHora').textContent=e.hora;
+  document.getElementById('modalEventoExp').textContent=e.expositores+' expositores';
+  document.getElementById('modalEventoDesc').textContent=e.desc;
+  openOverlay('overlayEvento');
+}
+
+/* ════════ MODAL BRECHÓ ════════ */
+let currentBrechoData=null;
+function openBrecho(idx){
+  const b=BRECHOS_DATA[idx];
+  currentBrechoData=b;
+  document.getElementById('modalBrechoAvatar').src=b.img;
+  document.getElementById('modalBrechoNome').textContent=b.nome;
+  document.getElementById('modalBrechoStars').textContent='★'.repeat(Math.floor(b.rating))+(b.rating%1?'☆':'')+'  '+b.rating;
+  document.getElementById('modalBrechoLocal').textContent='📍 '+b.local;
+  document.getElementById('modalContato').innerHTML=b.contato.map(c=>`<a href="${c.link}" class="contato-chip">${c.icon} ${c.tipo}</a>`).join('');
+  const favBtn=document.getElementById('favBtn');
+  favBtn.classList.remove('faved');
+  favBtn.textContent='♡';
+  renderModalProdutos('todos');
+  openOverlay('overlayBrecho');
+}
+function toggleFav(){
+  const btn=document.getElementById('favBtn');
+  btn.classList.toggle('faved');
+  btn.textContent=btn.classList.contains('faved')?'♥':'♡';
+}
+function filterModalProd(btn){
+  document.querySelectorAll('#modalProdFilters .filter-chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  renderModalProdutos(btn.dataset.cat);
+}
+function renderModalProdutos(cat){
+  if(!currentBrechoData) return;
+  const prods=cat==='todos'?currentBrechoData.produtosModal:currentBrechoData.produtosModal.filter(p=>p.cat===cat);
+  document.getElementById('modalProdGrid').innerHTML=prods.map((p,i)=>`
+    <div class="modal-prod-card" onclick="openProdutoFromBrecho(${i})">
+      <div class="modal-prod-img"><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
+      <div class="modal-prod-info"><h4>${p.nome}</h4><div class="price">${p.preco}</div></div>
+    </div>`).join('');
+}
+function openProdutoFromBrecho(i){
+  if(!currentBrechoData) return;
+  const p=currentBrechoData.produtosModal[i];
+  const match=ALL_PRODUTOS.find(ap=>ap.nome===p.nome);
+  if(match){ closeOverlayById('overlayBrecho'); openProduto(ALL_PRODUTOS.indexOf(match)); }
+}
+
+/* ════════ MODAL PRODUTO ════════ */
+let prodSlideIdx=0, prodImgs=[];
+function openProduto(idx){
+  const p=ALL_PRODUTOS[idx];
+  prodImgs=p.imgs;
+  prodSlideIdx=0;
+  // slides
+  document.getElementById('prodSlides').innerHTML=p.imgs.map(src=>`
+    <div class="produto-slide"><img src="${src}" alt="${p.nome}"></div>`).join('');
+  // dots
+  document.getElementById('prodDots').innerHTML=p.imgs.map((_,i)=>`
+    <button class="prod-slide-dot${i===0?' active':''}" onclick="goToProdSlide(${i})"></button>`).join('');
+  // info
+  document.getElementById('modalProdNome').textContent=p.nome;
+  document.getElementById('modalProdPreco').textContent=p.preco;
+  document.getElementById('modalProdEspec').innerHTML=`
+    <div class="espec-item"><div class="label">🎨 Cor</div><div class="value">${p.cor}</div></div>
+    <div class="espec-item"><div class="label">🧵 Tecido</div><div class="value">${p.tecido}</div></div>
+    <div class="espec-item"><div class="label">🏪 Brechó</div><div class="value">${p.bazar}</div></div>`;
+  document.getElementById('modalProdDesc').textContent=p.desc;
+  // reset payment
+  document.querySelectorAll('.pag-opcao').forEach((o,i)=>o.classList.toggle('selected',i===0));
+  openOverlay('overlayProduto');
+}
+function slideProd(dir){
+  prodSlideIdx=(prodSlideIdx+dir+prodImgs.length)%prodImgs.length;
+  goToProdSlide(prodSlideIdx);
+}
+function goToProdSlide(i){
+  prodSlideIdx=i;
+  document.getElementById('prodSlides').style.transform=`translateX(-${i*100}%)`;
+  document.querySelectorAll('.prod-slide-dot').forEach((d,j)=>d.classList.toggle('active',j===i));
+}
+// touch swipe on product carousel
+(function(){
+  let sx=0;
+  const el=document.getElementById('prodCarousel');
+  el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+  el.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40) slideProd(dx<0?1:-1);
+  },{passive:true});
+})();
+function selectPag(btn){ document.querySelectorAll('.pag-opcao').forEach(o=>o.classList.remove('selected')); btn.classList.add('selected'); }
+
+/* ════════ INIT ════════ */
+buildInfiniteCarousel();
+renderBrechos();
+renderProdutos(true);
+buildCalendar();
+observeFadeIns();
+
+// Keyboard close modals
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') ['overlayEvento','overlayBrecho','overlayProduto'].forEach(closeOverlayById);
+});
+</script>
+</body>
+</html>
