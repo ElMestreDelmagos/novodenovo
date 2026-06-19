@@ -1,0 +1,50 @@
+{
+  "usuarios": [
+    {
+      "id": "usr_exemplo",
+      "tipo": "usuario",
+      "nome": "Maria Exemplo",
+      "email": "maria@exemplo.com",
+      "senha": "1234567",
+      "criadoEm": "2025-01-01T00:00:00.000Z"
+    }
+  ],
+  "brechos": [
+    {
+      "id": "brecho_exemplo",
+      "tipo": "brecho",
+      "nomeBrecho": "Brechó das Artes",
+      "responsavel": "João Exemplo",
+      "email": "joao@exemplo.com",
+      "senha": "123456",
+      "endereco": {
+        "rua": "Rua Augusta",
+        "numero": "1200",
+        "bairro": "Consolação",
+        "cep": "01304-001"
+      },
+      "perfil": {
+        "descricao": "",
+        "whatsapp": "",
+        "instagram": "",
+        "facebook": "",
+        "emailContato": "",
+        "avatarUrl": null,
+        "fotosLoja": []
+      },
+      "posts": [],
+      "criadoEm": "2025-01-01T00:00:00.000Z"
+    }
+  ],
+  "bazares": [
+    {
+      "id": "bazar_exemplo",
+      "tipo": "bazar",
+      "nomeResponsavel": "Ana Exemplo",
+      "email": "ana@exemplo.com",
+      "senha": "123456",
+      "eventos": [],
+      "criadoEm": "2025-01-01T00:00:00.000Z"
+    }
+  ]
+}

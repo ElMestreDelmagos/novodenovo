@@ -6,410 +6,44 @@
 <title>NovoDeNovo – Brechós, Bazares e Eventos Sustentáveis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --chocolate: #4A3428; --bordeaux: #6A2F36;
-  --beige: #EAE2D6; --offwhite: #F7F4EF;
-  --black: #222222; --olive: #70815D;
-  --T: 300ms ease;
-}
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--black); overflow-x: hidden; }
-h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
-img { display: block; width: 100%; height: 100%; object-fit: cover; }
-
-/* ─── HEADER ─── */
-#header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  padding: 16px 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background var(--T), box-shadow var(--T);
-}
-#header.scrolled { background: rgba(247,244,239,0.97); box-shadow: 0 2px 20px rgba(74,52,40,0.1); }
-.logo { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--chocolate); text-decoration:none; }
-.logo span { color: var(--olive); }
-.nav-desktop { display:flex; gap:28px; align-items:center; }
-.nav-desktop a { font-size:.875rem; font-weight:500; color:var(--chocolate); text-decoration:none; transition:color var(--T); }
-.nav-desktop a:hover { color:var(--bordeaux); }
-.btn-header { background:var(--chocolate); color:var(--offwhite)!important; padding:10px 20px; border-radius:6px; font-size:.85rem!important; transition:background var(--T)!important; }
-.btn-header:hover { background:var(--bordeaux)!important; }
-
-/* Mobile header bottom bar */
-.mobile-nav-bar {
-  display: none;
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: rgba(247,244,239,0.98);
-  box-shadow: 0 -2px 16px rgba(74,52,40,0.12);
-  padding: 8px 0 max(8px, env(safe-area-inset-bottom));
-  justify-content: space-around; align-items: center;
-}
-.mobile-nav-item {
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
-  color: var(--chocolate); text-decoration: none; font-size: .65rem; font-weight:500;
-  opacity: .65; transition: opacity var(--T);
-  min-width: 48px;
-}
-.mobile-nav-item:hover, .mobile-nav-item.active { opacity: 1; }
-.mobile-nav-item svg { width:22px; height:22px; }
-.mobile-nav-cta {
-  background: var(--chocolate); color: var(--offwhite)!important;
-  border-radius: 12px; padding: 8px 14px; font-size:.65rem!important;
-  opacity: 1!important;
-}
-
-/* ─── SHARED ─── */
-section { padding: 80px 5%; }
-.container { max-width: 1200px; margin: 0 auto; }
-.section-header { text-align:center; margin-bottom:48px; }
-.section-eyebrow { font-size:.72rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--olive); margin-bottom:10px; }
-.section-title { font-size:clamp(1.6rem,3vw,2.4rem); color:var(--chocolate); line-height:1.2; }
-.section-sub { margin-top:10px; color:#6a5a50; font-size:1rem; line-height:1.6; }
-.fade-in { opacity:0; transform:translateY(22px); transition:opacity .6s ease,transform .6s ease; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
-.btn-primary { background:var(--chocolate); color:var(--offwhite); padding:13px 26px; border-radius:6px; font-size:.95rem; font-weight:500; cursor:pointer; border:none; transition:background var(--T),transform var(--T); text-decoration:none; display:inline-block; }
-.btn-primary:hover { background:var(--bordeaux); transform:translateY(-1px); }
-.btn-secondary { background:transparent; color:var(--chocolate); padding:13px 26px; border-radius:6px; font-size:.95rem; font-weight:500; cursor:pointer; border:1.5px solid var(--chocolate); transition:all var(--T); text-decoration:none; display:inline-block; }
-.btn-secondary:hover { background:var(--chocolate); color:var(--offwhite); }
-.btn-sm { background:var(--chocolate); color:var(--offwhite); padding:9px 18px; border-radius:6px; font-size:.82rem; font-weight:500; cursor:pointer; border:none; transition:background var(--T); display:inline-block; text-decoration:none; }
-.btn-sm:hover { background:var(--bordeaux); }
-
-/* ─── HERO ─── */
-#hero {
-  min-height: 100vh; padding: 90px 5% 60px;
-  display: flex; align-items: center;
-  background: linear-gradient(135deg,var(--offwhite) 55%,var(--beige) 100%);
-}
-.hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; width:100%; }
-.hero-text h1 { font-size:clamp(1.9rem,3.8vw,3.1rem); line-height:1.15; color:var(--chocolate); margin-bottom:18px; }
-.hero-text h1 em { font-style:italic; color:var(--bordeaux); }
-.hero-text p { font-size:1.05rem; line-height:1.7; color:#5a4a40; margin-bottom:32px; }
-.hero-btns { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px; }
-.trust-badges { display:flex; flex-direction:column; gap:9px; }
-.trust-badge { display:flex; align-items:center; gap:9px; font-size:.86rem; color:#5a4a40; }
-.trust-badge .check { width:19px; height:19px; background:var(--olive); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:.65rem; flex-shrink:0; }
-
-/* Hero image carousel */
-.hero-visual { position:relative; }
-.hero-carousel { border-radius:16px; overflow:hidden; position:relative; height: 420px; }
-.hero-slides { display:flex; width:300%; height:100%; transition:transform .7s cubic-bezier(.4,0,.2,1); }
-.hero-slide { width:33.333%; height:100%; flex-shrink:0; position:relative; }
-.hero-slide img { width:100%; height:100%; object-fit:cover; }
-.hero-slide-overlay {
-  position:absolute; bottom:0; left:0; right:0;
-  background:linear-gradient(transparent,rgba(74,52,40,.65));
-  padding:28px 22px 20px; color:white;
-}
-.hero-slide-overlay h3 { font-size:1.15rem; font-style:italic; }
-.hero-slide-overlay p { font-size:.8rem; opacity:.85; margin-top:4px; }
-.hero-carousel-dots { display:flex; justify-content:center; gap:8px; margin-top:14px; }
-.hero-dot { width:7px; height:7px; border-radius:50%; background:rgba(74,52,40,.25); border:none; cursor:pointer; transition:background var(--T); padding:0; }
-.hero-dot.active { background:var(--chocolate); }
-.hero-tag { position:absolute; bottom:-14px; right:-14px; background:var(--chocolate); color:var(--offwhite); padding:14px 18px; border-radius:12px; font-size:.85rem; font-family:'Playfair Display',serif; font-style:italic; z-index:1; }
-
-/* ─── EVENTOS ─── */
-#eventos { background:var(--beige); }
-.infinite-carousel-wrapper { overflow:hidden; position:relative; }
-.infinite-carousel-track { display:flex; gap:20px; width:max-content; }
-.infinite-carousel-track.animating { transition: transform .45s ease; }
-.event-card { flex:0 0 300px; background:var(--offwhite); border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(74,52,40,.08); transition:transform var(--T),box-shadow var(--T); }
-.event-card:hover { transform:translateY(-4px); box-shadow:0 8px 30px rgba(74,52,40,.15); }
-.event-card-img { height:160px; position:relative; overflow:hidden; background:var(--beige); }
-.event-card-img img { width:100%; height:100%; object-fit:cover; }
-.event-date-badge { position:absolute; top:12px; left:12px; background:var(--chocolate); color:var(--offwhite); padding:5px 11px; border-radius:6px; font-size:.72rem; font-weight:600; }
-.event-card-body { padding:18px; }
-.event-card-body h3 { font-size:1.05rem; color:var(--chocolate); margin-bottom:8px; }
-.event-meta { display:flex; flex-direction:column; gap:4px; margin-bottom:14px; }
-.event-meta span { font-size:.8rem; color:#7a6a60; display:flex; align-items:center; gap:6px; }
-.carousel-arrows { display:flex; justify-content:center; gap:12px; margin-top:24px; }
-.carousel-btn { width:42px; height:42px; border-radius:50%; background:var(--chocolate); color:var(--offwhite); border:none; cursor:pointer; font-size:1.1rem; transition:background var(--T); display:flex; align-items:center; justify-content:center; }
-.carousel-btn:hover { background:var(--bordeaux); }
-
-/* ─── BRECHÓS ─── */
-#brechos { background:var(--offwhite); }
-.brechos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
-.brecho-card { background:var(--offwhite); border:1px solid rgba(74,52,40,.1); border-radius:12px; overflow:hidden; transition:transform var(--T),box-shadow var(--T); cursor:pointer; }
-.brecho-card:hover { transform:translateY(-4px); box-shadow:0 10px 32px rgba(74,52,40,.14); }
-.brecho-img { height:170px; position:relative; overflow:hidden; background:var(--beige); }
-.brecho-img img { width:100%; height:100%; object-fit:cover; }
-.brecho-tag { position:absolute; bottom:10px; left:10px; background:var(--olive); color:white; padding:3px 10px; border-radius:20px; font-size:.7rem; font-weight:600; }
-.brecho-body { padding:16px; }
-.brecho-body h3 { font-size:1rem; color:var(--chocolate); margin-bottom:5px; }
-.brecho-meta { font-size:.8rem; color:#7a6a60; margin-bottom:12px; display:flex; flex-direction:column; gap:3px; }
-.stars { color:#c49a3c; font-size:.85rem; }
-.btn-brecho { width:100%; text-align:center; display:block; }
-
-/* ─── PRODUTOS ─── */
-#produtos { background:var(--beige); }
-.filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
-.filter-chip { padding:7px 16px; border-radius:20px; border:1.5px solid rgba(74,52,40,.25); background:transparent; color:var(--chocolate); font-size:.82rem; font-weight:500; cursor:pointer; transition:all var(--T); }
-.filter-chip:hover,.filter-chip.active { background:var(--chocolate); color:var(--offwhite); border-color:var(--chocolate); }
-.produtos-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:18px; margin-bottom:28px; }
-.produto-card { background:var(--offwhite); border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(74,52,40,.07); transition:transform var(--T),box-shadow var(--T); cursor:pointer; }
-.produto-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(74,52,40,.14); }
-.produto-img { height:190px; position:relative; overflow:hidden; background:var(--beige); }
-.produto-img img { width:100%; height:100%; object-fit:cover; }
-.produto-badge { position:absolute; top:10px; right:10px; background:var(--bordeaux); color:white; padding:3px 8px; border-radius:4px; font-size:.68rem; font-weight:600; }
-.produto-body { padding:13px; }
-.produto-body h4 { font-size:.92rem; color:var(--chocolate); margin-bottom:3px; font-family:'Inter',sans-serif; font-weight:600; }
-.produto-price { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--bordeaux); margin-bottom:3px; }
-.produto-info { font-size:.73rem; color:#8a7060; margin-bottom:10px; }
-.btn-ver-mais { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; max-width:220px; margin:0 auto; padding:12px 24px; border-radius:8px; border:1.5px solid var(--chocolate); background:transparent; color:var(--chocolate); font-size:.88rem; font-weight:500; cursor:pointer; transition:all var(--T); }
-.btn-ver-mais:hover { background:var(--chocolate); color:var(--offwhite); }
-.btn-ver-mais svg { width:16px; height:16px; transition:transform var(--T); }
-.btn-ver-mais:hover svg { transform:translateY(2px); }
-
-/* ─── CALENDÁRIO ─── */
-#calendario { background:var(--offwhite); padding:60px 5%; }
-.calendar-layout { display:grid; grid-template-columns:1fr 320px; gap:36px; align-items:start; }
-.calendar-widget { background:var(--beige); border-radius:16px; padding:22px; }
-.cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
-.cal-header h3 { font-size:1.05rem; color:var(--chocolate); }
-.cal-nav-btn { background:none; border:none; cursor:pointer; color:var(--chocolate); font-size:1.1rem; padding:4px 10px; transition:color var(--T); }
-.cal-nav-btn:hover { color:var(--bordeaux); }
-.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; text-align:center; }
-.cal-day-label { font-size:.68rem; font-weight:600; color:#8a7060; padding:5px 0; text-transform:uppercase; }
-.cal-day { aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:.8rem; border-radius:50%; cursor:pointer; transition:all var(--T); color:var(--chocolate); position:relative; }
-.cal-day:hover { background:rgba(74,52,40,.1); }
-.cal-day.has-event { font-weight:600; }
-.cal-day.has-event::after { content:''; position:absolute; bottom:3px; left:50%; transform:translateX(-50%); width:4px; height:4px; border-radius:50%; background:var(--olive); }
-.cal-day.selected { background:var(--chocolate); color:white!important; }
-.cal-day.selected::after { background:white; }
-.cal-day.empty { cursor:default; }
-.cal-day.other-month { color:#c0b0a8; }
-.event-panel { background:var(--beige); border-radius:16px; padding:22px; min-height:180px; }
-.event-panel h4 { font-size:.95rem; color:var(--chocolate); margin-bottom:14px; border-bottom:1px solid rgba(74,52,40,.15); padding-bottom:10px; }
-.event-item { padding:10px 0; border-bottom:1px solid rgba(74,52,40,.1); }
-.event-item:last-child { border-bottom:none; }
-.event-item h5 { font-size:.88rem; color:var(--chocolate); margin-bottom:3px; }
-.event-item .event-detail { font-size:.76rem; color:#7a6a60; }
-.no-events { color:#8a7060; font-size:.85rem; font-style:italic; }
-
-/* ─── IMPACTO ─── */
-#impacto { background:var(--chocolate); }
-#impacto .section-eyebrow { color:var(--olive); }
-#impacto .section-title { color:var(--offwhite); }
-#impacto .section-sub { color:rgba(234,226,214,.75); }
-.impacto-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; margin-top:44px; }
-.impacto-card { background:rgba(255,255,255,.06); border:1px solid rgba(234,226,214,.15); border-radius:14px; padding:26px 22px; text-align:center; transition:transform var(--T),background var(--T); }
-.impacto-card:hover { transform:translateY(-4px); background:rgba(255,255,255,.1); }
-.impacto-icon { font-size:2rem; margin-bottom:12px; }
-.impacto-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:700; color:var(--offwhite); line-height:1; }
-.impacto-label { font-size:.85rem; color:rgba(234,226,214,.8); margin-top:7px; line-height:1.4; }
-
-/* ─── MAPA ─── */
-#mapa { background:var(--beige); padding:80px 0; }
-#mapa .container { padding:0 5%; }
-.map-wrapper { position:relative; background:#d4c8b8; border-radius:16px; overflow:hidden; height:440px; margin-top:36px; }
-.map-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#d4c8b8,#c4b8a8); position:relative; overflow:hidden; }
-.map-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(74,52,40,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(74,52,40,.06) 1px,transparent 1px); background-size:48px 48px; }
-.map-pin { position:absolute; cursor:pointer; display:flex; flex-direction:column; align-items:center; transition:transform var(--T); }
-.map-pin:hover { transform:scale(1.15); z-index:2; }
-.map-pin-icon { width:34px; height:34px; background:var(--chocolate); border-radius:50% 50% 50% 0; transform:rotate(-45deg); border:3px solid white; box-shadow:0 2px 8px rgba(0,0,0,.25); }
-.map-pin-label { margin-top:8px; background:white; padding:3px 8px; border-radius:4px; font-size:.68rem; font-weight:600; color:var(--chocolate); box-shadow:0 2px 6px rgba(0,0,0,.1); white-space:nowrap; }
-.map-popup { position:absolute; background:white; border-radius:12px; padding:14px; width:210px; box-shadow:0 8px 28px rgba(0,0,0,.18); pointer-events:none; opacity:0; transition:opacity var(--T); z-index:10; }
-.map-popup.visible { opacity:1; pointer-events:auto; }
-.map-popup h4 { font-size:.92rem; color:var(--chocolate); margin-bottom:5px; }
-.map-popup p { font-size:.76rem; color:#7a6a60; line-height:1.5; }
-.map-filters { display:flex; align-items:center; gap:8px; margin-top:18px; flex-wrap:wrap; }
-.map-filters span { font-size:.82rem; color:#6a5a50; font-weight:500; }
-.radius-chip { padding:6px 14px; border-radius:20px; border:1.5px solid rgba(74,52,40,.25); background:transparent; color:var(--chocolate); font-size:.8rem; cursor:pointer; transition:all var(--T); }
-.radius-chip.active,.radius-chip:hover { background:var(--chocolate); color:white; border-color:var(--chocolate); }
-
-/* ─── CTA PARCEIROS ─── */
-#parceiros { background:var(--bordeaux); padding:90px 5%; text-align:center; position:relative; overflow:hidden; }
-#parceiros::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 80% 50%,rgba(255,255,255,.06),transparent 60%); }
-.parceiros-content { position:relative; max-width:580px; margin:0 auto; }
-.parceiros-content h2 { font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--offwhite); margin-bottom:14px; }
-.parceiros-content p { color:rgba(234,226,214,.85); font-size:1rem; line-height:1.7; margin-bottom:32px; }
-.btn-large { background:var(--offwhite); color:var(--bordeaux); padding:15px 34px; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; border:none; transition:all var(--T); display:inline-block; text-decoration:none; }
-.btn-large:hover { background:var(--beige); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.15); }
-.parceiros-badges { display:flex; justify-content:center; gap:24px; margin-top:36px; flex-wrap:wrap; }
-.p-badge { display:flex; align-items:center; gap:7px; color:rgba(234,226,214,.75); font-size:.85rem; }
-
-/* ─── FOOTER ─── */
-footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28px; }
-.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:36px; max-width:1200px; margin:0 auto; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.08); }
-.footer-brand .logo { color:var(--beige); font-size:1.25rem; }
-.footer-brand p { font-size:.83rem; line-height:1.7; margin-top:10px; max-width:230px; }
-.footer-social { display:flex; gap:10px; margin-top:14px; }
-.social-btn { width:34px; height:34px; border-radius:8px; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; color:var(--beige); font-size:.85rem; cursor:pointer; transition:background var(--T); text-decoration:none; border:none; }
-.social-btn:hover { background:rgba(255,255,255,.18); }
-.footer-col h4 { color:var(--beige); font-size:.85rem; font-family:'Inter',sans-serif; font-weight:600; margin-bottom:12px; letter-spacing:.4px; }
-.footer-col a { display:block; color:rgba(234,226,214,.6); text-decoration:none; font-size:.8rem; margin-bottom:7px; transition:color var(--T); }
-.footer-col a:hover { color:var(--beige); }
-.footer-bottom { display:flex; justify-content:space-between; align-items:center; margin-top:22px; font-size:.76rem; max-width:1200px; margin-left:auto; margin-right:auto; flex-wrap:wrap; gap:6px; }
-
-/* ════════════════════════════════════════
-   MODAIS / OVERLAYS
-════════════════════════════════════════ */
-.overlay {
-  position:fixed; inset:0; z-index:500;
-  background:rgba(34,26,22,.65); backdrop-filter:blur(4px);
-  opacity:0; pointer-events:none; transition:opacity .3s ease;
-  display:flex; align-items:center; justify-content:center; padding:16px;
-}
-.overlay.open { opacity:1; pointer-events:all; }
-.modal {
-  background:var(--offwhite); border-radius:20px; overflow:hidden;
-  width:100%; max-width:680px; max-height:90vh; overflow-y:auto;
-  transform:translateY(30px) scale(.97); transition:transform .35s cubic-bezier(.4,0,.2,1);
-  position:relative;
-}
-.overlay.open .modal { transform:translateY(0) scale(1); }
-.modal-close {
-  position:absolute; top:14px; right:14px; z-index:2;
-  width:36px; height:36px; border-radius:50%;
-  background:rgba(255,255,255,.85); border:none; cursor:pointer;
-  font-size:1.1rem; display:flex; align-items:center; justify-content:center;
-  color:var(--chocolate); transition:background var(--T); backdrop-filter:blur(4px);
-}
-.modal-close:hover { background:white; }
-
-/* ── Modal Evento ── */
-.modal-event-img { height:240px; overflow:hidden; position:relative; background:var(--beige); }
-.modal-event-img img { width:100%; height:100%; object-fit:cover; }
-.modal-event-body { padding:28px; }
-.modal-event-body h2 { font-size:1.6rem; color:var(--chocolate); margin-bottom:18px; }
-.modal-info-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px; }
-.modal-info-item { background:var(--beige); border-radius:10px; padding:14px; }
-.modal-info-item .label { font-size:.7rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--olive); margin-bottom:4px; }
-.modal-info-item .value { font-size:.9rem; color:var(--chocolate); font-weight:500; }
-.modal-event-desc { font-size:.9rem; line-height:1.7; color:#5a4a40; }
-
-/* ── Modal Brechó ── */
-.modal-brecho-header { background:var(--beige); padding:24px 28px; display:flex; align-items:center; gap:18px; border-bottom:1px solid rgba(74,52,40,.1); }
-.modal-brecho-avatar { width:72px; height:72px; border-radius:14px; overflow:hidden; flex-shrink:0; background:var(--beige); border:2px solid rgba(74,52,40,.12); }
-.modal-brecho-avatar img { width:100%; height:100%; object-fit:cover; }
-.modal-brecho-info h2 { font-size:1.35rem; color:var(--chocolate); }
-.modal-brecho-info .stars { font-size:.95rem; }
-.modal-brecho-info p { font-size:.82rem; color:#6a5a50; margin-top:3px; }
-.modal-fav-btn {
-  margin-left:auto; background:none; border:1.5px solid rgba(74,52,40,.2);
-  border-radius:50%; width:42px; height:42px; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem; transition:all var(--T); flex-shrink:0;
-}
-.modal-fav-btn:hover,.modal-fav-btn.faved { background:var(--bordeaux); border-color:var(--bordeaux); }
-.modal-fav-btn.faved { color:white; }
-.modal-brecho-body { padding:24px 28px; }
-.modal-contato { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; }
-.contato-chip { display:flex; align-items:center; gap:7px; padding:9px 14px; border-radius:8px; background:var(--beige); font-size:.82rem; color:var(--chocolate); font-weight:500; text-decoration:none; transition:background var(--T); }
-.contato-chip:hover { background:#ddd5c6; }
-.modal-brecho-produtos h3 { font-size:1.1rem; color:var(--chocolate); margin-bottom:14px; }
-.modal-produtos-filters { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
-.modal-prod-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:13px; }
-.modal-prod-card { background:var(--beige); border-radius:10px; overflow:hidden; cursor:pointer; transition:transform var(--T); }
-.modal-prod-card:hover { transform:translateY(-3px); }
-.modal-prod-img { height:120px; overflow:hidden; background:#d4c8b8; }
-.modal-prod-img img { width:100%; height:100%; object-fit:cover; }
-.modal-prod-info { padding:9px; }
-.modal-prod-info h4 { font-size:.78rem; color:var(--chocolate); font-family:'Inter',sans-serif; font-weight:600; margin-bottom:2px; }
-.modal-prod-info .price { font-size:.88rem; color:var(--bordeaux); font-family:'Playfair Display',serif; }
-
-/* ── Modal Produto ── */
-.modal-produto { max-width:760px; }
-.produto-img-carousel { position:relative; height:300px; background:var(--beige); overflow:hidden; }
-.produto-slides { display:flex; height:100%; transition:transform .4s ease; }
-.produto-slide { flex:0 0 100%; height:100%; }
-.produto-slide img { width:100%; height:100%; object-fit:cover; }
-.prod-slide-btn {
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:38px; height:38px; border-radius:50%;
-  background:rgba(255,255,255,.85); border:none; cursor:pointer;
-  font-size:1rem; display:flex; align-items:center; justify-content:center;
-  color:var(--chocolate); transition:background var(--T); z-index:2;
-}
-.prod-slide-btn:hover { background:white; }
-.prod-slide-btn.prev { left:12px; }
-.prod-slide-btn.next { right:12px; }
-.prod-slide-dots { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
-.prod-slide-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.55); border:none; cursor:pointer; transition:background var(--T); }
-.prod-slide-dot.active { background:white; }
-.modal-produto-body { padding:26px 28px; }
-.modal-produto-body h2 { font-size:1.5rem; color:var(--chocolate); margin-bottom:6px; }
-.modal-produto-price { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--bordeaux); margin-bottom:18px; }
-.especificacoes { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; }
-.espec-item { background:var(--beige); border-radius:9px; padding:12px; }
-.espec-item .label { font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--olive); margin-bottom:4px; }
-.espec-item .value { font-size:.88rem; color:var(--chocolate); font-weight:500; }
-.produto-descricao { font-size:.88rem; line-height:1.7; color:#5a4a40; margin-bottom:22px; padding:16px; background:var(--beige); border-radius:10px; }
-.pagamento-section h3 { font-size:1rem; color:var(--chocolate); margin-bottom:14px; }
-.pagamento-opcoes { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.pag-opcao {
-  border:2px solid rgba(74,52,40,.15); border-radius:12px; padding:16px;
-  cursor:pointer; transition:all var(--T); background:transparent;
-  text-align:left; position:relative;
-}
-.pag-opcao:hover { border-color:var(--chocolate); background:rgba(74,52,40,.03); }
-.pag-opcao.selected { border-color:var(--chocolate); background:rgba(74,52,40,.05); }
-.pag-opcao .pag-title { font-size:.88rem; font-weight:600; color:var(--chocolate); margin-bottom:4px; display:flex; align-items:center; gap:8px; }
-.pag-opcao .pag-desc { font-size:.76rem; color:#7a6a60; line-height:1.5; }
-.pag-radio { width:16px; height:16px; border-radius:50%; border:2px solid rgba(74,52,40,.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; }
-.pag-opcao.selected .pag-radio { border-color:var(--chocolate); background:var(--chocolate); }
-.pag-opcao.selected .pag-radio::after { content:''; width:6px; height:6px; border-radius:50%; background:white; }
-.btn-comprar { width:100%; margin-top:16px; padding:15px; border-radius:10px; background:var(--chocolate); color:white; font-size:1rem; font-weight:600; border:none; cursor:pointer; transition:background var(--T); }
-.btn-comprar:hover { background:var(--bordeaux); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width:1100px) {
-  .brechos-grid { grid-template-columns:repeat(2,1fr); }
-}
-@media (max-width:900px) {
-  .nav-desktop { display:none; }
-  .mobile-nav-bar { display:flex; }
-  body { padding-bottom:72px; }
-  .hero-inner { grid-template-columns:1fr; gap:36px; padding-top:20px; }
-  .hero-visual { order:-1; }
-  .hero-carousel { height:300px; }
-  .hero-tag { display:none; }
-  .calendar-layout { grid-template-columns:1fr; }
-  .footer-grid { grid-template-columns:1fr 1fr; }
-  .modal-info-grid { grid-template-columns:1fr; }
-  .pagamento-opcoes { grid-template-columns:1fr; }
-  .especificacoes { grid-template-columns:1fr 1fr; }
-}
-@media (max-width:600px) {
-  section { padding:56px 4%; }
-  #calendario { padding:56px 4%; }
-  #mapa { padding:56px 0; }
-  .brechos-grid { grid-template-columns:1fr 1fr; gap:14px; }
-  .footer-grid { grid-template-columns:1fr; }
-  .hero-btns { flex-direction:column; }
-  .hero-btns a { text-align:center; }
-  .modal-brecho-header { flex-wrap:wrap; }
-  .modal-fav-btn { margin-left:auto; }
-  .evento-img-carousel { height:200px; }
-  .modal-prod-grid { grid-template-columns:repeat(2,1fr); }
-  .modal-produto-body { padding:18px; }
-  .especificacoes { grid-template-columns:1fr; }
-}
-@media (max-width:400px) {
-  .brechos-grid { grid-template-columns:1fr; }
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- ══════════ HEADER ══════════ -->
 <header id="header">
-  <a href="#" class="logo">Novo<span>De</span>Novo</a>
+  <a href="#" class="logo-wrap">
+    <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="9" fill="#4A3428"/>
+      <path d="M9 13c0-2.2 1.8-4 4-4h10c2.2 0 4 1.8 4 4v2c0 1-.4 2-1 2.7L22 22H14l-4-4.3A4 4 0 019 15v-2z" fill="#EAE2D6" opacity=".9"/>
+      <path d="M14 22h8l1 5a1 1 0 01-1 1H14a1 1 0 01-1-1l1-5z" fill="#70815D"/>
+      <circle cx="15" cy="11" r="1.5" fill="#4A3428"/>
+      <circle cx="21" cy="11" r="1.5" fill="#4A3428"/>
+    </svg>
+    <span class="logo">Novo<span>De</span>Novo</span>
+  </a>
   <nav class="nav-desktop">
-    <a href="#produtos">Produtos</a>
     <a href="#brechos">Brechós</a>
     <a href="#eventos">Eventos</a>
     <a href="#impacto">Impacto</a>
     <a href="#mapa">Mapa</a>
-    <a href="#parceiros" class="btn-header">Quero Participar</a>
+    <a href="#parceiros" class="btn-header" onclick="openOverlay('overlayParceiros');return false;">Quero Participar</a>
   </nav>
+  <div class="header-actions">
+    <button class="btn-fav-header" onclick="openOverlay('overlayFavs')" title="Meus Favoritos">
+      ♡
+      <span class="fav-count" id="favCount">0</span>
+    </button>
+    <button class="btn-login-header" id="btnLoginHeader" onclick="openOverlay('overlayLogin')">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      <span>Entrar</span>
+    </button>
+    <button class="avatar-btn" id="avatarBtn" onclick="logoutUser()" title="Sair"></button>
+  </div>
 </header>
 
 <!-- Mobile Bottom Nav -->
 <nav class="mobile-nav-bar" id="mobileNav">
-  <a href="#produtos" class="mobile-nav-item" onclick="setMobileActive(this)">
-    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18"/></svg>
-    Produtos
-  </a>
   <a href="#brechos" class="mobile-nav-item" onclick="setMobileActive(this)">
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
     Brechós
@@ -418,11 +52,16 @@ footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
     Eventos
   </a>
+  <button class="mobile-nav-item" onclick="openOverlay('overlayFavs');setMobileActive(this)" style="background:none;border:none;cursor:pointer;position:relative;">
+    <span id="mobileNavHeart" style="font-size:22px;line-height:1">♡</span>
+    <span id="mobileFavBadge" style="display:none;position:absolute;top:0;right:8px;background:var(--bordeaux);color:white;font-size:.5rem;font-weight:700;width:14px;height:14px;border-radius:50%;align-items:center;justify-content:center;font-family:'Inter',sans-serif;">0</span>
+    Favoritos
+  </button>
   <a href="#mapa" class="mobile-nav-item" onclick="setMobileActive(this)">
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
     Mapa
   </a>
-  <a href="#parceiros" class="mobile-nav-item mobile-nav-cta" onclick="setMobileActive(this)">
+  <a href="#parceiros" class="mobile-nav-item mobile-nav-cta" onclick="openOverlay('overlayParceiros');setMobileActive(this);return false;">
     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
     Participar
   </a>
@@ -435,7 +74,7 @@ footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28
       <h1>Descubra peças únicas e apoie <em>brechós</em> da sua região.</h1>
       <p>Conectamos pessoas a bazares, brechós e eventos sustentáveis. Moda consciente ao alcance de todos.</p>
       <div class="hero-btns">
-        <a href="#produtos" class="btn-primary">Explorar Produtos</a>
+        <a href="#brechos-preco" class="btn-primary">Explorar Brechós</a>
         <a href="#eventos" class="btn-secondary">Ver Eventos</a>
       </div>
       <div class="trust-badges">
@@ -501,27 +140,40 @@ footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28
   </div>
 </section>
 
-<!-- ══════════ PRODUTOS ══════════ -->
-<section id="produtos">
+<!-- ══════════ BRECHÓS POR PREÇO ══════════ -->
+<section id="brechos-preco">
   <div class="container">
     <div class="section-header fade-in">
       <p class="section-eyebrow">Garimpo do dia</p>
-      <h2 class="section-title">Produtos em Destaque</h2>
+      <h2 class="section-title">Brechós</h2>
     </div>
-    <div class="filters fade-in" id="categoryFilters">
-      <button class="filter-chip active" data-cat="todos">Todos</button>
-      <button class="filter-chip" data-cat="camisetas">Camisetas</button>
-      <button class="filter-chip" data-cat="calcas">Calças</button>
-      <button class="filter-chip" data-cat="jaquetas">Jaquetas</button>
-      <button class="filter-chip" data-cat="vestidos">Vestidos</button>
-      <button class="filter-chip" data-cat="sapatos">Sapatos</button>
-      <button class="filter-chip" data-cat="acessorios">Acessórios</button>
+    <!-- filtros desktop -->
+    <div class="filters fade-in" id="precoFilters">
+      <button class="filter-chip active" data-preco="todos">Todos</button>
+      <button class="filter-chip" data-preco="ate50">Até R$ 50</button>
+      <button class="filter-chip" data-preco="50a100">R$ 50 – R$ 100</button>
+      <button class="filter-chip" data-preco="100a200">R$ 100 – R$ 200</button>
+      <button class="filter-chip" data-preco="acima200">Acima de R$ 200</button>
     </div>
-    <div class="produtos-grid" id="produtosGrid"></div>
+    <!-- filtro mobile -->
+    <div class="filter-mobile-wrap fade-in" id="filterMobileWrap">
+      <button class="filter-mobile-btn" id="filterMobileBtn" onclick="toggleMobileFilter()">
+        <span id="filterMobileLabel">Filtrar por preço: Todos</span>
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+      <div class="filter-mobile-dropdown" id="filterMobileDropdown">
+        <button class="filter-mobile-opt active" data-preco="todos" data-label="Todos" onclick="selectMobileFilter(this)"><span class="opt-check"></span>Todos</button>
+        <button class="filter-mobile-opt" data-preco="ate50" data-label="Até R$ 50" onclick="selectMobileFilter(this)"><span class="opt-check"></span>Até R$ 50</button>
+        <button class="filter-mobile-opt" data-preco="50a100" data-label="R$ 50 – R$ 100" onclick="selectMobileFilter(this)"><span class="opt-check"></span>R$ 50 – R$ 100</button>
+        <button class="filter-mobile-opt" data-preco="100a200" data-label="R$ 100 – R$ 200" onclick="selectMobileFilter(this)"><span class="opt-check"></span>R$ 100 – R$ 200</button>
+        <button class="filter-mobile-opt" data-preco="acima200" data-label="Acima de R$ 200" onclick="selectMobileFilter(this)"><span class="opt-check"></span>Acima de R$ 200</button>
+      </div>
+    </div>
+    <div class="brechos-preco-grid" id="brechoPrecoGrid"></div>
     <div style="text-align:center">
-      <button class="btn-ver-mais" id="btnVerMais" onclick="loadMoreProdutos()">
+      <button class="btn-ver-mais" id="btnVerMaisBrechos" onclick="loadMoreBrechosPreco()">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        Ver mais produtos
+        Ver mais brechós
       </button>
     </div>
   </div>
@@ -602,9 +254,9 @@ footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28
 <!-- ══════════ CTA PARCEIROS ══════════ -->
 <section id="parceiros">
   <div class="parceiros-content fade-in">
-    <h2>Seu brechó merece ser descoberto.</h2>
-    <p>Cadastre seu brechó gratuitamente e alcance mais pessoas que valorizam moda consciente e produtos únicos.</p>
-    <a href="#" class="btn-large">Quero me tornar parceiro</a>
+    <h2>Seu brechó ou bazar merece ser descoberto.</h2>
+    <p>Cadastre seu brechó ou seu bazar e alcance mais pessoas que valorizam moda consciente e produtos únicos.</p>
+    <a href="#" class="btn-large" onclick="openOverlay('overlayParceiros');return false;">Quero me tornar parceiro</a>
     <div class="parceiros-badges">
       <div class="p-badge">✓ Cadastro gratuito</div>
       <div class="p-badge">✓ Visibilidade regional</div>
@@ -612,6 +264,410 @@ footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28
     </div>
   </div>
 </section>
+
+<!-- ══════════ MODAL PARCEIROS ══════════ -->
+<div class="overlay" id="overlayParceiros" onclick="closeOverlay('overlayParceiros',event)">
+  <div class="modal modal-parceiros" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayParceiros')">✕</button>
+    <div class="modal-parceiros-header">
+      <h2>Como você deseja participar do NovoDeNovo?</h2>
+      <p>Escolha o perfil que melhor representa o seu negócio</p>
+    </div>
+    <div class="parceiros-cards">
+      <div class="parceiro-card">
+        <div class="parceiro-card-icon">🏪</div>
+        <h3>Sou um Brechó</h3>
+        <p>Divulgue e apresente o seu brechó.</p>
+        <div class="parceiro-checks">
+          <div class="parceiro-check"><div class="check-ico">✓</div> Espaço permanente no mapa</div>
+          <div class="parceiro-check"><div class="check-ico">✓</div> Perfil personalizado</div>
+          <div class="parceiro-check"><div class="check-ico">✓</div> Receba reservas online</div>
+        </div>
+        <button class="btn-parceiro" onclick="abrirCadastroBrecho()">Cadastrar Brechó</button>
+      </div>
+      <div class="parceiro-card">
+        <div class="parceiro-card-icon">🎪</div>
+        <h3>Sou um Bazar</h3>
+        <p>Divulgue eventos e conecte expositores.</p>
+        <div class="parceiro-checks">
+          <div class="parceiro-check"><div class="check-ico">✓</div> Calendário de eventos</div>
+          <div class="parceiro-check"><div class="check-ico">✓</div> Divulgação na plataforma</div>
+          <div class="parceiro-check"><div class="check-ico">✓</div> Espaço temporário no mapa</div>
+          <div class="parceiro-check"><div class="check-ico">✓</div> Gestão de eventos</div>
+        </div>
+        <button class="btn-parceiro" onclick="abrirCadastroBazar()">Cadastrar Bazar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL LOGIN ══════════ -->
+<div class="overlay" id="overlayLogin" onclick="closeOverlay('overlayLogin',event)">
+  <div class="modal modal-login" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayLogin')">✕</button>
+    <div class="modal-login-body">
+      <h2 id="loginTitle">Bem-vindo de volta</h2>
+      <p class="login-sub" id="loginSub">Entre na sua conta NovoDeNovo</p>
+      <div id="loginFormRegister" style="display:none">
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input class="form-input" id="inputNome" type="text" placeholder="Seu nome">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input class="form-input" id="inputEmail" type="email" placeholder="seu@email.com">
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input class="form-input" id="inputSenha" type="password" placeholder="••••••••">
+      </div>
+      <button class="btn-login-submit" id="btnSubmitLogin" onclick="submitLogin()">Entrar</button>
+      <div class="login-divider">ou</div>
+      <div class="login-switch">
+        <span id="loginSwitchText">Não tem conta? </span>
+        <button onclick="toggleLoginMode()">Criar conta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL FAVORITOS ══════════ -->
+<div class="overlay" id="overlayFavs" onclick="closeOverlay('overlayFavs',event)">
+  <div class="modal modal-favs" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayFavs')">✕</button>
+    <div class="modal-favs-header">
+      <h2>♥ Meus Favoritos</h2>
+      <p>Brechós que você salvou</p>
+    </div>
+    <div id="favsContent"></div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL CADASTRO BRECHÓ ══════════ -->
+<div class="overlay" id="overlayCadastro" onclick="closeOverlay('overlayCadastro',event)">
+  <div class="modal modal-cadastro" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayCadastro')">✕</button>
+    <div class="cadastro-header">
+      <h2 id="cadastroTitle">Cadastrar Brechó</h2>
+      <p id="cadastroSub">Crie sua conta gratuita</p>
+    </div>
+    <!-- Stepper -->
+    <div class="stepper">
+      <div class="step-dot active" id="sdot1">1</div>
+      <div class="step-line" id="sline1"></div>
+      <div class="step-dot" id="sdot2">2</div>
+    </div>
+    <div class="cadastro-body">
+      <!-- Passo 1 -->
+      <div class="cadastro-step active" id="cadStep1">
+        <div class="form-group">
+          <label class="ab-label" for="cadNomeBrecho">Nome do brechó</label>
+          <input class="form-input" id="cadNomeBrecho" type="text" placeholder="Ex: Brechó das Artes">
+        </div>
+        <div class="form-group">
+          <label class="ab-label" for="cadEmail">E-mail</label>
+          <input class="form-input" id="cadEmail" type="email" placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label class="ab-label" for="cadSenha">Criar senha</label>
+          <input class="form-input" id="cadSenha" type="password" placeholder="Mínimo 6 caracteres">
+        </div>
+        <button class="btn-cadastro-next" onclick="cadAvancar()">Avançar →</button>
+      </div>
+      <!-- Passo 2 -->
+      <div class="cadastro-step" id="cadStep2">
+        <div class="form-group">
+          <label class="ab-label" for="cadBairro">Bairro</label>
+          <input class="form-input" id="cadBairro" type="text" placeholder="Ex: Vila Madalena">
+        </div>
+        <div class="form-group">
+          <label class="ab-label" for="cadRua">Rua</label>
+          <input class="form-input" id="cadRua" type="text" placeholder="Ex: Rua Augusta">
+        </div>
+        <div class="cadastro-row">
+          <div class="form-group">
+            <label class="ab-label" for="cadNum">Número</label>
+            <input class="form-input" id="cadNum" type="text" placeholder="1200">
+          </div>
+          <div class="form-group">
+            <label class="ab-label" for="cadCep">CEP</label>
+            <input class="form-input" id="cadCep" type="text" placeholder="00000-000">
+          </div>
+        </div>
+        <button class="btn-cadastro-next" onclick="cadConcluir()">Criar conta</button>
+        <div style="text-align:center"><button class="btn-cadastro-back" onclick="cadVoltar()">← Voltar</button></div>
+      </div>
+      <!-- Sucesso -->
+      <div class="cadastro-step" id="cadSucesso">
+        <div class="cadastro-sucesso">
+          <div class="check-grande">✓</div>
+          <h3>Conta criada!</h3>
+          <p>Bem-vindo ao NovoDeNovo, <strong id="cadNomeDisplay"></strong>! Seu brechó já tem espaço aqui. Agora personalize seu perfil e comece a publicar.</p>
+          <button class="btn-area-brecho" onclick="entrarAreaBrecho()">Acessar Área do Brechó →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ÁREA DO BRECHÓ ══════════ -->
+<div id="areaBrecho">
+  <!-- Top bar -->
+  <div class="ab-topbar">
+    <a href="#" class="logo" style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--chocolate);text-decoration:none">Novo<span style="color:var(--olive)">De</span>Novo</a>
+    <div class="ab-topbar-right">
+      <span style="font-size:.8rem;color:#7a6a60" id="abUserLabel"></span>
+      <button class="ab-exit" onclick="sairAreaBrecho()">← Sair da área</button>
+    </div>
+  </div>
+
+  <!-- Hero do brechó -->
+  <div class="ab-hero">
+    <div class="ab-hero-inner">
+      <div class="ab-avatar" id="abAvatar" onclick="document.getElementById('abAvatarInput').click()">
+        <span id="abAvatarInitial">B</span>
+        <div class="ab-avatar-edit">📷</div>
+        <input type="file" id="abAvatarInput" accept="image/*" style="display:none" onchange="previewAvatar(this)">
+      </div>
+      <div class="ab-hero-info">
+        <h1 id="abNomeBrecho">Meu Brechó</h1>
+        <p id="abEnderecoBrecho">Configure seu endereço no perfil</p>
+        <div class="ab-hero-fotos" id="abFotosLoja">
+          <div class="ab-foto-thumb" title="Adicionar foto da loja" onclick="document.getElementById('abFotoInput').click()">+</div>
+          <input type="file" id="abFotoInput" accept="image/*" multiple style="display:none" onchange="previewFotosLoja(this)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="ab-tabs-bar">
+    <div class="ab-tabs">
+      <button class="ab-tab active" onclick="abrirAbTab(this,'panelPerfil')">🏪 Perfil & Configurações</button>
+      <button class="ab-tab" onclick="abrirAbTab(this,'panelComunidade')">💬 Comunidade</button>
+    </div>
+  </div>
+
+  <div class="ab-content">
+    <!-- ── Painel Perfil ── -->
+    <div class="ab-panel active" id="panelPerfil">
+      <div class="ab-section">
+        <div class="ab-section-title">Informações do Brechó</div>
+        <div class="ab-card">
+          <div class="ab-form-grid">
+            <div class="span2">
+              <label class="ab-label">Nome do brechó</label>
+              <input class="ab-input" id="pfNome" type="text" placeholder="Nome do seu brechó">
+            </div>
+            <div>
+              <label class="ab-label">Bairro</label>
+              <input class="ab-input" id="pfBairro" type="text" placeholder="Bairro">
+            </div>
+            <div>
+              <label class="ab-label">CEP</label>
+              <input class="ab-input" id="pfCep" type="text" placeholder="00000-000">
+            </div>
+            <div>
+              <label class="ab-label">Rua</label>
+              <input class="ab-input" id="pfRua" type="text" placeholder="Rua / Avenida">
+            </div>
+            <div>
+              <label class="ab-label">Número</label>
+              <input class="ab-input" id="pfNum" type="text" placeholder="Nº">
+            </div>
+            <div class="span2">
+              <label class="ab-label">Descrição do brechó</label>
+              <textarea class="ab-input" id="pfDesc" rows="3" placeholder="Fale um pouco sobre o seu brechó..."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-section">
+        <div class="ab-section-title">Redes Sociais & Contato</div>
+        <div class="ab-card">
+          <div class="redes-grid">
+            <div>
+              <label class="ab-label">WhatsApp</label>
+              <div class="ab-input-icon"><span class="ico">💬</span><input class="ab-input" id="pfWhats" type="text" placeholder="(11) 99999-9999"></div>
+            </div>
+            <div>
+              <label class="ab-label">Instagram</label>
+              <div class="ab-input-icon"><span class="ico">📸</span><input class="ab-input" id="pfInsta" type="text" placeholder="@seubrechodasartes"></div>
+            </div>
+            <div>
+              <label class="ab-label">Facebook</label>
+              <div class="ab-input-icon"><span class="ico">👤</span><input class="ab-input" id="pfFb" type="text" placeholder="facebook.com/seubrechodasartes"></div>
+            </div>
+            <div>
+              <label class="ab-label">E-mail de contato</label>
+              <div class="ab-input-icon"><span class="ico">✉️</span><input class="ab-input" id="pfEmailContato" type="email" placeholder="contato@seubrechodasartes.com"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-section">
+        <div class="ab-section-title">Horários de Funcionamento</div>
+        <div class="ab-card" id="horarioCard"></div>
+      </div>
+
+      <button class="ab-save-btn" onclick="salvarPerfil()">Salvar alterações</button>
+      <span class="ab-save-toast" id="saveToast">✓ Salvo com sucesso!</span>
+    </div>
+
+    <!-- ── Painel Comunidade ── -->
+    <div class="ab-panel" id="panelComunidade">
+      <div class="comunidade-layout">
+        <div>
+          <!-- Caixa de publicação -->
+          <div class="com-post-box">
+            <textarea class="com-post-textarea" id="postTexto" placeholder="Compartilhe novidades, peças novas ou promoções com sua comunidade..."></textarea>
+            <div id="comMediaPreview" class="com-media-preview"></div>
+            <div class="com-post-actions">
+              <div class="com-attach-btns">
+                <button class="com-attach-btn" title="Adicionar imagem" onclick="document.getElementById('comImgInput').click()">🖼️</button>
+                <button class="com-attach-btn" title="Adicionar vídeo" onclick="document.getElementById('comVidInput').click()">🎬</button>
+                <input type="file" id="comImgInput" accept="image/*" multiple style="display:none" onchange="addComMedia(this,'img')">
+                <input type="file" id="comVidInput" accept="video/*" style="display:none" onchange="addComMedia(this,'vid')">
+              </div>
+              <button class="com-publish-btn" onclick="publicarPost()">Publicar</button>
+            </div>
+          </div>
+          <!-- Feed de posts -->
+          <div class="post-feed" id="postFeed"></div>
+        </div>
+        <!-- Sidebar -->
+        <div>
+          <div class="com-sidebar-card">
+            <h4>Sua Vitrine</h4>
+            <div class="com-stat"><span class="label">Visualizações hoje</span><span class="value" id="statViews">0</span></div>
+            <div class="com-stat"><span class="label">Seguidores</span><span class="value">0</span></div>
+            <div class="com-stat"><span class="label">Posts publicados</span><span class="value" id="statPosts">0</span></div>
+            <div class="com-stat"><span class="label">Reações recebidas</span><span class="value" id="statReacoes">0</span></div>
+          </div>
+          <div class="com-sidebar-card">
+            <h4>Dica da Semana</h4>
+            <p class="com-dica">Poste <strong>ao menos 3 vezes por semana</strong> para manter sua vitrine ativa e aparecer em mais buscas. Fotos com boa iluminação geram até <strong>2× mais cliques</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL CADASTRO BAZAR ══════════ -->
+<div class="overlay" id="overlayCadBazar" onclick="closeOverlay('overlayCadBazar',event)" style="z-index:1100">
+  <div class="modal modal-cad-bazar" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayCadBazar')">✕</button>
+    <div class="cadastro-header">
+      <h2>Cadastrar Bazar</h2>
+      <p>Crie sua conta gratuita e comece a divulgar seus eventos</p>
+    </div>
+    <div class="cadastro-body">
+      <div class="form-group">
+        <label class="ab-label" for="bazNome">Nome do responsável</label>
+        <input class="form-input" id="bazNome" type="text" placeholder="Seu nome completo">
+      </div>
+      <div class="form-group">
+        <label class="ab-label" for="bazEmail">E-mail</label>
+        <input class="form-input" id="bazEmail" type="email" placeholder="seu@email.com">
+      </div>
+      <div class="form-group">
+        <label class="ab-label" for="bazSenha">Criar senha</label>
+        <input class="form-input" id="bazSenha" type="password" placeholder="Mínimo 6 caracteres">
+      </div>
+      <button class="btn-cadastro-next" onclick="cadBazarConcluir()">Criar conta e acessar →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL CRIAR/EDITAR EVENTO (Bazar) ══════════ -->
+<div class="overlay" id="overlayEventoForm" onclick="closeOverlay('overlayEventoForm',event)" style="z-index:1100">
+  <div class="modal modal-evento-form" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeOverlayById('overlayEventoForm')">✕</button>
+    <div class="mef-header">
+      <h2 id="mefTitle">Novo Evento</h2>
+      <p id="mefSub">Preencha as informações do seu bazar</p>
+    </div>
+    <div class="mef-body">
+      <!-- Imagem -->
+      <div class="mef-img-area" id="mefImgArea" onclick="document.getElementById('mefImgInput').click()">
+        <div class="mef-img-label"><span>🖼️</span>Clique para adicionar uma imagem</div>
+        <input type="file" id="mefImgInput" accept="image/*" style="display:none" onchange="previewMefImg(this)">
+      </div>
+      <!-- Nome -->
+      <div class="form-group">
+        <label class="ab-label" for="mefNomeBazar">Nome do bazar</label>
+        <input class="form-input" id="mefNomeBazar" type="text" placeholder="Ex: Feirinha Vintage de Julho">
+      </div>
+      <!-- Local -->
+      <div class="form-group">
+        <label class="ab-label" for="mefLocal">Localização</label>
+        <input class="form-input" id="mefLocal" type="text" placeholder="Ex: Parque Augusta, São Paulo – SP">
+      </div>
+      <!-- Data e horários -->
+      <div class="mef-row">
+        <div class="form-group">
+          <label class="ab-label" for="mefData">Data</label>
+          <input class="form-input" id="mefData" type="date">
+        </div>
+        <div class="form-group" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div>
+            <label class="ab-label" for="mefHoraIni">Início</label>
+            <input class="form-input" id="mefHoraIni" type="time" value="09:00">
+          </div>
+          <div>
+            <label class="ab-label" for="mefHoraFim">Fim</label>
+            <input class="form-input" id="mefHoraFim" type="time" value="18:00">
+          </div>
+        </div>
+      </div>
+      <button class="mef-save" onclick="salvarEvento()">Salvar evento</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ÁREA DO BAZAR ══════════ -->
+<div id="areaBazar">
+  <div class="az-topbar">
+    <a href="#" class="logo" style="text-decoration:none">Novo<span style="color:var(--olive)">De</span>Novo</a>
+    <div class="az-topbar-right">
+      <span style="font-size:.8rem;color:#7a6a60" id="azUserLabel"></span>
+      <button class="az-exit" onclick="sairAreaBazar()">← Sair da área</button>
+    </div>
+  </div>
+
+  <div class="az-hero">
+    <div class="az-hero-inner">
+      <div class="az-hero-left">
+        <h1 id="azNomeResp">Área do Bazar</h1>
+        <p id="azSubtitle">Gerencie seus eventos e alcance mais pessoas</p>
+      </div>
+      <div class="az-hero-stats">
+        <div class="az-stat"><div class="num" id="azStatEventos">0</div><div class="lbl">eventos</div></div>
+        <div class="az-stat"><div class="num" id="azStatProximos">0</div><div class="lbl">próximos</div></div>
+        <div class="az-stat"><div class="num" id="azStatViews">0</div><div class="lbl">visualizações</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="az-content">
+    <button class="az-new-btn" onclick="abrirFormEvento()">
+      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+      Criar novo evento
+    </button>
+
+    <div class="az-events-grid" id="azGrid"></div>
+
+    <div class="az-empty" id="azEmpty">
+      <div class="az-empty-icon">🎪</div>
+      <h3>Nenhum evento criado ainda</h3>
+      <p>Clique em "Criar novo evento" para adicionar seu primeiro bazar e aparecer no calendário da plataforma.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
@@ -626,7 +682,7 @@ footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28
         <a href="#" class="social-btn">tw</a>
       </div>
     </div>
-    <div class="footer-col"><h4>Links Rápidos</h4><a href="#produtos">Produtos</a><a href="#brechos">Brechós</a><a href="#eventos">Eventos</a><a href="#impacto">Impacto</a><a href="#mapa">Mapa</a></div>
+    <div class="footer-col"><h4>Links Rápidos</h4><a href="#brechos-preco">Brechós</a><a href="#brechos">Curadoria</a><a href="#eventos">Eventos</a><a href="#impacto">Impacto</a><a href="#mapa">Mapa</a></div>
     <div class="footer-col"><h4>Para Brechós</h4><a href="#parceiros">Seja Parceiro</a><a href="#">Como Funciona</a><a href="#">Planos</a><a href="#">Suporte</a></div>
     <div class="footer-col"><h4>Contato</h4><a href="mailto:oi@novodenovo.com.br">oi@novodenovo.com.br</a><a href="tel:+551140028922">(11) 4002-8922</a><a href="#">Central de Ajuda</a></div>
   </div>
@@ -650,6 +706,9 @@ footer { background:var(--black); color:rgba(234,226,214,.7); padding:56px 5% 28
         <div class="modal-info-item"><div class="label">🏪 Expositores</div><div class="value" id="modalEventoExp"></div></div>
       </div>
       <p class="modal-event-desc" id="modalEventoDesc"></p>
+      <button class="event-alert-btn" id="modalAlertBtn" onclick="toggleEventAlert()">
+        🔔 Quero ser avisado deste evento
+      </button>
     </div>
   </div>
 </div>
@@ -937,39 +996,64 @@ function renderBrechos() {
     </div>`).join('');
 }
 
-/* ════════ PRODUTOS ════════ */
-let activeCat = 'todos', prodPage = 8;
-function renderProdutos(reset) {
-  if (reset) prodPage = 8;
-  const filtered = activeCat==='todos' ? ALL_PRODUTOS : ALL_PRODUTOS.filter(p=>p.cat===activeCat);
-  const toShow = filtered.slice(0, prodPage);
-  document.getElementById('produtosGrid').innerHTML = toShow.map((p,i)=>`
-    <div class="produto-card fade-in" onclick="openProduto(${ALL_PRODUTOS.indexOf(p)})" style="transition-delay:${(i%4)*0.06}s">
-      <div class="produto-img">
-        <img src="${p.imgs[0]}" alt="${p.nome}" loading="lazy">
-        ${p.badge ? `<div class="produto-badge">${p.badge}</div>` : ''}
+/* ════════ BRECHÓS POR PREÇO ════════ */
+BRECHOS_DATA.forEach(b => {
+  const prices = b.produtosModal.map(p => parseInt(p.preco.replace(/\D/g,'')));
+  b.minPreco = prices.length ? Math.min(...prices) : 0;
+  b.maxPreco = prices.length ? Math.max(...prices) : 0;
+});
+
+const PRECO_RANGES = {
+  'todos':    () => true,
+  'ate50':    b => b.minPreco <= 50,
+  '50a100':   b => b.minPreco > 50 && b.minPreco <= 100,
+  '100a200':  b => b.minPreco > 100 && b.minPreco <= 200,
+  'acima200': b => b.minPreco > 200,
+};
+
+let brechoPrecoPage = 8, brechoPrecoFilter = 'todos';
+
+function renderBrechosPreco(reset) {
+  if (reset) brechoPrecoPage = 8;
+  const filtered = BRECHOS_DATA.filter(PRECO_RANGES[brechoPrecoFilter]);
+  const toShow = filtered.slice(0, brechoPrecoPage);
+  document.getElementById('brechoPrecoGrid').innerHTML = toShow.map((b,i) => {
+    const realIdx = BRECHOS_DATA.indexOf(b);
+    const isFaved = favBrechos.has(realIdx);
+    return `<div class="breco-preco-card fade-in" style="transition-delay:${(i%4)*0.06}s">
+      <div class="breco-preco-img" onclick="openBrecho(${realIdx})" style="cursor:pointer">
+        <img src="${b.img}" alt="${b.nome}" loading="lazy">
+        <span class="breco-preco-badge">${b.tag}</span>
+        <span class="breco-preco-range">R$ ${b.minPreco}–${b.maxPreco}</span>
       </div>
-      <div class="produto-body">
-        <h4>${p.nome}</h4>
-        <div class="produto-price">${p.preco}</div>
-        <div class="produto-info">🏪 ${p.bazar} · 📍 ${p.dist}</div>
-        <button class="btn-sm" style="width:100%;text-align:center" onclick="event.stopPropagation();openProduto(${ALL_PRODUTOS.indexOf(p)})">Ver Produto</button>
+      <div class="breco-preco-body">
+        <h3 onclick="openBrecho(${realIdx})" style="cursor:pointer">${b.nome}</h3>
+        <div class="breco-preco-meta">
+          <span>📍 ${b.cidade}</span>
+          <span>👕 ${b.produtos} produtos</span>
+        </div>
+        <div class="breco-preco-footer">
+          <span class="stars">${'★'.repeat(Math.floor(b.rating))}${b.rating%1?'☆':''}  ${b.rating}</span>
+          <button onclick="quickFav(${realIdx},this)" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:${isFaved?'var(--bordeaux)':'#c0a898'};transition:color var(--T)">${isFaved?'♥':'♡'}</button>
+        </div>
       </div>
-    </div>`).join('');
-  document.getElementById('btnVerMais').style.display = toShow.length < filtered.length ? 'flex' : 'none';
+    </div>`;
+  }).join('');
+  document.getElementById('btnVerMaisBrechos').style.display =
+    toShow.length < filtered.length ? 'flex' : 'none';
   observeFadeIns();
 }
-function loadMoreProdutos() {
-  prodPage += 4;
-  const filtered = activeCat==='todos' ? ALL_PRODUTOS : ALL_PRODUTOS.filter(p=>p.cat===activeCat);
-  renderProdutos(false);
+function loadMoreBrechosPreco() {
+  brechoPrecoPage += 4;
+  renderBrechosPreco(false);
 }
-document.getElementById('categoryFilters').addEventListener('click', e => {
-  if (!e.target.classList.contains('filter-chip')) return;
-  document.querySelectorAll('#categoryFilters .filter-chip').forEach(c=>c.classList.remove('active'));
-  e.target.classList.add('active');
-  activeCat = e.target.dataset.cat;
-  renderProdutos(true);
+document.getElementById('precoFilters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-chip');
+  if (!btn) return;
+  document.querySelectorAll('#precoFilters .filter-chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  brechoPrecoFilter = btn.dataset.preco;
+  renderBrechosPreco(true);
 });
 
 /* ════════ CALENDÁRIO ════════ */
@@ -986,7 +1070,13 @@ function buildCalendar() {
   for(let d=1;d<=total;d++){
     const key=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const hasEvent=!!CAL_EVENTS[key];
-    html+=`<div class="cal-day${hasEvent?' has-event':''}" onclick="showCalEvents('${key}',${d})">${d}</div>`;
+    // check if any alerted event falls on this date
+    const isAlerted = hasEvent && [...alertedEvents].some(i => {
+      const eData = EVENTOS_DATA[i].data;
+      const evs = CAL_EVENTS[key];
+      return evs && evs.some(ev => EVENTOS_DATA[i].nome === ev.nome);
+    });
+    html+=`<div class="cal-day${hasEvent?' has-event':''}${isAlerted?' alerted':''}" onclick="showCalEvents('${key}',${d})">${d}</div>`;
   }
   grid.innerHTML=html;
 }
@@ -1059,44 +1149,365 @@ function observeFadeIns(){
 function setMobileActive(el){ document.querySelectorAll('.mobile-nav-item').forEach(i=>i.classList.remove('active')); el.classList.add('active'); }
 
 /* ════════ MODAL HELPERS ════════ */
-function openOverlay(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function openOverlay(id){
+  if(id==='overlayFavs') renderFavsList();
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
 function closeOverlayById(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
 function closeOverlay(id,e){ if(e.target===document.getElementById(id)) closeOverlayById(id); }
 
-/* ════════ MODAL EVENTO ════════ */
-function openEvento(idx){
-  const e=EVENTOS_DATA[idx];
-  document.getElementById('modalEventoImg').src=e.img;
-  document.getElementById('modalEventoNome').textContent=e.nome;
-  document.getElementById('modalEventoLocal').textContent=e.local;
-  document.getElementById('modalEventoData').textContent=e.data;
-  document.getElementById('modalEventoHora').textContent=e.hora;
-  document.getElementById('modalEventoExp').textContent=e.expositores+' expositores';
-  document.getElementById('modalEventoDesc').textContent=e.desc;
-  openOverlay('overlayEvento');
+/* ════════ MODAL EVENTO – definido acima ════════ */
+
+/* ════════ FAVORITOS ════════ */
+let favBrechos = new Set();
+
+function updateFavUI() {
+  const count = favBrechos.size;
+  const countEl = document.getElementById('favCount');
+  countEl.textContent = count;
+  countEl.classList.toggle('show', count > 0);
+  // header heart
+  document.querySelector('.btn-fav-header').textContent = count > 0 ? '♥' : '♡';
+  document.querySelector('.btn-fav-header').style.color = count > 0 ? 'var(--bordeaux)' : '';
+  // mobile
+  document.getElementById('mobileNavHeart').textContent = count > 0 ? '♥' : '♡';
+  const badge = document.getElementById('mobileFavBadge');
+  badge.textContent = count;
+  badge.style.display = count > 0 ? 'flex' : 'none';
+}
+
+function renderFavsList() {
+  const el = document.getElementById('favsContent');
+  if (favBrechos.size === 0) {
+    el.innerHTML = '<div class="favs-empty">Você ainda não salvou nenhum brechó. Explore e clique em ♡ para favoritar!</div>';
+    return;
+  }
+  el.innerHTML = '<div class="favs-list">' +
+    [...favBrechos].map(idx => {
+      const b = BRECHOS_DATA[idx];
+      return `<div class="fav-item">
+        <div class="fav-item-img"><img src="${b.img}" alt="${b.nome}" loading="lazy"></div>
+        <div class="fav-item-info"><h4>${b.nome}</h4><span>📍 ${b.cidade} · ${'★'.repeat(Math.floor(b.rating))} ${b.rating}</span></div>
+        <button class="btn-fav-remove" onclick="removeFav(${idx})" title="Remover favorito">♥</button>
+      </div>`;
+    }).join('') + '</div>';
+}
+
+function quickFav(idx, btn) {
+  if (favBrechos.has(idx)) {
+    favBrechos.delete(idx);
+    btn.textContent = '♡';
+    btn.style.color = '#c0a898';
+  } else {
+    favBrechos.add(idx);
+    btn.textContent = '♥';
+    btn.style.color = 'var(--bordeaux)';
+  }
+  updateFavUI();
+}
+
+function removeFav(idx) {
+  favBrechos.delete(idx);
+  updateFavUI();
+  renderFavsList();
+  renderBrechosPreco(false);
 }
 
 /* ════════ MODAL BRECHÓ ════════ */
-let currentBrechoData=null;
-function openBrecho(idx){
-  const b=BRECHOS_DATA[idx];
-  currentBrechoData=b;
-  document.getElementById('modalBrechoAvatar').src=b.img;
-  document.getElementById('modalBrechoNome').textContent=b.nome;
-  document.getElementById('modalBrechoStars').textContent='★'.repeat(Math.floor(b.rating))+(b.rating%1?'☆':'')+'  '+b.rating;
-  document.getElementById('modalBrechoLocal').textContent='📍 '+b.local;
-  document.getElementById('modalContato').innerHTML=b.contato.map(c=>`<a href="${c.link}" class="contato-chip">${c.icon} ${c.tipo}</a>`).join('');
-  const favBtn=document.getElementById('favBtn');
-  favBtn.classList.remove('faved');
-  favBtn.textContent='♡';
+let currentBrechoIdx = null, currentBrechoData = null;
+function openBrecho(idx) {
+  const b = BRECHOS_DATA[idx];
+  currentBrechoIdx = idx;
+  currentBrechoData = b;
+  document.getElementById('modalBrechoAvatar').src = b.img;
+  document.getElementById('modalBrechoNome').textContent = b.nome;
+  document.getElementById('modalBrechoStars').textContent = '★'.repeat(Math.floor(b.rating)) + (b.rating%1?'☆':'') + '  ' + b.rating;
+  document.getElementById('modalBrechoLocal').textContent = '📍 ' + b.local;
+  document.getElementById('modalContato').innerHTML = b.contato.map(c => `<a href="${c.link}" class="contato-chip">${c.icon} ${c.tipo}</a>`).join('');
+  const favBtn = document.getElementById('favBtn');
+  const isFaved = favBrechos.has(idx);
+  favBtn.classList.toggle('faved', isFaved);
+  favBtn.textContent = isFaved ? '♥' : '♡';
   renderModalProdutos('todos');
   openOverlay('overlayBrecho');
 }
-function toggleFav(){
-  const btn=document.getElementById('favBtn');
-  btn.classList.toggle('faved');
-  btn.textContent=btn.classList.contains('faved')?'♥':'♡';
+
+function toggleFav() {
+  if (currentBrechoIdx === null) return;
+  const btn = document.getElementById('favBtn');
+  if (favBrechos.has(currentBrechoIdx)) {
+    favBrechos.delete(currentBrechoIdx);
+    btn.classList.remove('faved');
+    btn.textContent = '♡';
+  } else {
+    favBrechos.add(currentBrechoIdx);
+    btn.classList.add('faved');
+    btn.textContent = '♥';
+  }
+  updateFavUI();
+  renderBrechosPreco(false);
 }
+
+/* ════════ ALERTAS DE EVENTO ════════ */
+let alertedEvents = new Set();
+let currentEventoIdx = null;
+
+function toggleEventAlert() {
+  if (currentEventoIdx === null) return;
+  const btn = document.getElementById('modalAlertBtn');
+  const key = EVENTOS_DATA[currentEventoIdx].data;
+  if (alertedEvents.has(currentEventoIdx)) {
+    alertedEvents.delete(currentEventoIdx);
+    btn.classList.remove('alerted');
+    btn.innerHTML = '🔔 Quero ser avisado deste evento';
+  } else {
+    alertedEvents.add(currentEventoIdx);
+    btn.classList.add('alerted');
+    btn.innerHTML = '✓ Lembrete ativado! Você será notificado.';
+  }
+  buildCalendar();
+}
+
+/* ════════ MODAL EVENTO ════════ */
+function openEvento(idx) {
+  const e = EVENTOS_DATA[idx];
+  currentEventoIdx = idx;
+  document.getElementById('modalEventoImg').src = e.img;
+  document.getElementById('modalEventoNome').textContent = e.nome;
+  document.getElementById('modalEventoLocal').textContent = e.local;
+  document.getElementById('modalEventoData').textContent = e.data;
+  document.getElementById('modalEventoHora').textContent = e.hora;
+  document.getElementById('modalEventoExp').textContent = e.expositores + ' expositores';
+  document.getElementById('modalEventoDesc').textContent = e.desc;
+  const btn = document.getElementById('modalAlertBtn');
+  const alerted = alertedEvents.has(idx);
+  btn.classList.toggle('alerted', alerted);
+  btn.innerHTML = alerted ? '✓ Lembrete ativado! Você será notificado.' : '🔔 Quero ser avisado deste evento';
+  openOverlay('overlayEvento');
+}
+
+/* ════════════════════════════════════════════
+   BANCO DE DADOS — localStorage (schema = banco.json)
+   ════════════════════════════════════════════ */
+const DB_KEY = 'novodenovo_banco';
+
+function dbCarregar() {
+  try {
+    const raw = localStorage.getItem(DB_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  // Estrutura inicial espelhando banco.json
+  return { usuarios: [], brechos: [], bazares: [] };
+}
+
+function dbSalvar(banco) {
+  localStorage.setItem(DB_KEY, JSON.stringify(banco));
+}
+
+function dbGerarId(prefixo) {
+  return prefixo + '_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+}
+
+/** Busca usuário em qualquer tabela pelo e-mail */
+function dbBuscarPorEmail(email) {
+  const banco = dbCarregar();
+  const e = email.toLowerCase();
+  return (
+    banco.usuarios.find(u => u.email.toLowerCase() === e) ||
+    banco.brechos.find(u => u.email.toLowerCase() === e)  ||
+    banco.bazares.find(u => u.email.toLowerCase() === e)  ||
+    null
+  );
+}
+
+/** Verifica login: retorna o registro ou null */
+function dbAutenticar(email, senha) {
+  const banco = dbCarregar();
+  const e = email.toLowerCase();
+  return (
+    banco.usuarios.find(u => u.email.toLowerCase() === e && u.senha === senha) ||
+    banco.brechos.find(u => u.email.toLowerCase() === e && u.senha === senha)  ||
+    banco.bazares.find(u => u.email.toLowerCase() === e && u.senha === senha)  ||
+    null
+  );
+}
+
+function dbRegistrarUsuario(nome, email, senha) {
+  const banco = dbCarregar();
+  const reg = {
+    id: dbGerarId('usr'),
+    tipo: 'usuario',
+    nome,
+    email,
+    senha,
+    criadoEm: new Date().toISOString()
+  };
+  banco.usuarios.push(reg);
+  dbSalvar(banco);
+  return reg;
+}
+
+function dbRegistrarBrecho(nomeBrecho, email, senha, endereco) {
+  const banco = dbCarregar();
+  const reg = {
+    id: dbGerarId('brecho'),
+    tipo: 'brecho',
+    nomeBrecho,
+    email,
+    senha,
+    endereco,
+    perfil: { descricao:'', whatsapp:'', instagram:'', facebook:'', emailContato:'', avatarUrl:null, fotosLoja:[] },
+    posts: [],
+    criadoEm: new Date().toISOString()
+  };
+  banco.brechos.push(reg);
+  dbSalvar(banco);
+  return reg;
+}
+
+function dbRegistrarBazar(nomeResponsavel, email, senha) {
+  const banco = dbCarregar();
+  const reg = {
+    id: dbGerarId('bazar'),
+    tipo: 'bazar',
+    nomeResponsavel,
+    email,
+    senha,
+    eventos: [],
+    criadoEm: new Date().toISOString()
+  };
+  banco.bazares.push(reg);
+  dbSalvar(banco);
+  return reg;
+}
+
+/** Persiste alterações num registro já existente (por id) */
+function dbAtualizarRegistro(id, dados) {
+  const banco = dbCarregar();
+  for (const tabela of ['usuarios','brechos','bazares']) {
+    const idx = banco[tabela].findIndex(r => r.id === id);
+    if (idx !== -1) {
+      banco[tabela][idx] = { ...banco[tabela][idx], ...dados };
+      dbSalvar(banco);
+      return banco[tabela][idx];
+    }
+  }
+}
+
+/* ════════ LOGIN ════════ */
+let loginMode = 'login';
+let currentUser = null;
+
+function loginMsgErro(msg) {
+  let el = document.getElementById('loginErro');
+  if (!el) {
+    el = document.createElement('p');
+    el.id = 'loginErro';
+    el.style.cssText = 'color:#c0392b;font-size:.8rem;margin-top:8px;text-align:center';
+    document.getElementById('btnSubmitLogin').after(el);
+  }
+  el.textContent = msg;
+}
+
+function toggleLoginMode() {
+  loginMode = loginMode === 'login' ? 'register' : 'login';
+  const isReg = loginMode === 'register';
+  document.getElementById('loginTitle').textContent   = isReg ? 'Criar conta' : 'Bem-vindo de volta';
+  document.getElementById('loginSub').textContent     = isReg ? 'Junte-se à comunidade NovoDeNovo' : 'Entre na sua conta NovoDeNovo';
+  document.getElementById('loginFormRegister').style.display = isReg ? 'block' : 'none';
+  document.getElementById('btnSubmitLogin').textContent = isReg ? 'Criar conta' : 'Entrar';
+  document.getElementById('loginSwitchText').textContent = isReg ? 'Já tem conta? ' : 'Não tem conta? ';
+  document.querySelector('#overlayLogin .login-switch button').textContent = isReg ? 'Entrar' : 'Criar conta';
+  const el = document.getElementById('loginErro');
+  if (el) el.textContent = '';
+}
+
+function submitLogin() {
+  const email = document.getElementById('inputEmail').value.trim();
+  const senha = document.getElementById('inputSenha').value;
+
+  if (!email) { document.getElementById('inputEmail').focus(); return; }
+  if (!senha)  { document.getElementById('inputSenha').focus(); return; }
+
+  if (loginMode === 'register') {
+    // Cadastro de usuário comum
+    const nome = document.getElementById('inputNome').value.trim();
+    if (!nome) { document.getElementById('inputNome').focus(); return; }
+    if (senha.length < 6) { loginMsgErro('A senha precisa ter no mínimo 6 caracteres.'); return; }
+    if (dbBuscarPorEmail(email)) { loginMsgErro('Este e-mail já está cadastrado.'); return; }
+    const reg = dbRegistrarUsuario(nome, email, senha);
+    autenticarNaTela(reg);
+  } else {
+    // Login
+    const reg = dbAutenticar(email, senha);
+    if (!reg) { loginMsgErro('E-mail ou senha incorretos.'); return; }
+    autenticarNaTela(reg);
+  }
+}
+
+function autenticarNaTela(reg) {
+  currentUser = reg;
+  const nomeCurto = (reg.nomeBrecho || reg.nomeResponsavel || reg.nome || reg.email.split('@')[0]);
+  const initials  = nomeCurto.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  const avatarBtn = document.getElementById('avatarBtn');
+  avatarBtn.textContent = initials;
+  avatarBtn.classList.add('show');
+  document.getElementById('btnLoginHeader').style.display = 'none';
+  closeOverlayById('overlayLogin');
+  const el = document.getElementById('loginErro');
+  if (el) el.textContent = '';
+
+  // Redireciona para área correta se for brechó ou bazar
+  if (reg.tipo === 'brecho') {
+    cadData = { nome: reg.nomeBrecho, email: reg.email, bairro: reg.endereco?.bairro, rua: reg.endereco?.rua, num: reg.endereco?.numero, cep: reg.endereco?.cep };
+    entrarAreaBrecho();
+  } else if (reg.tipo === 'bazar') {
+    bazData = { nome: reg.nomeResponsavel, email: reg.email };
+    bazEventos = reg.eventos || [];
+    entrarAreaBazar();
+  }
+}
+
+function logoutUser() {
+  if (!confirm('Deseja sair da sua conta?')) return;
+  currentUser = null;
+  document.getElementById('avatarBtn').classList.remove('show');
+  document.getElementById('btnLoginHeader').style.display = '';
+  // Fecha áreas caso abertas
+  document.getElementById('areaBrecho').classList.remove('open');
+  document.getElementById('areaBazar').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ════════ FILTRO MOBILE ════════ */
+function toggleMobileFilter() {
+  const btn = document.getElementById('filterMobileBtn');
+  const dd = document.getElementById('filterMobileDropdown');
+  btn.classList.toggle('open');
+  dd.classList.toggle('open');
+}
+
+function selectMobileFilter(opt) {
+  document.querySelectorAll('.filter-mobile-opt').forEach(o => o.classList.remove('active'));
+  opt.classList.add('active');
+  // sync desktop
+  document.querySelectorAll('#precoFilters .filter-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.preco === opt.dataset.preco);
+  });
+  document.getElementById('filterMobileLabel').textContent = 'Filtrar por preço: ' + opt.dataset.label;
+  toggleMobileFilter();
+  brechoPrecoFilter = opt.dataset.preco;
+  renderBrechosPreco(true);
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.getElementById('filterMobileWrap');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('filterMobileBtn').classList.remove('open');
+    document.getElementById('filterMobileDropdown').classList.remove('open');
+  }
+});
 function filterModalProd(btn){
   document.querySelectorAll('#modalProdFilters .filter-chip').forEach(c=>c.classList.remove('active'));
   btn.classList.add('active');
@@ -1163,17 +1574,495 @@ function goToProdSlide(i){
 })();
 function selectPag(btn){ document.querySelectorAll('.pag-opcao').forEach(o=>o.classList.remove('selected')); btn.classList.add('selected'); }
 
+/* ════════ CADASTRO BRECHÓ ════════ */
+let cadData = {};
+let comMediaFiles = [];
+
+function abrirCadastroBrecho() {
+  closeOverlayById('overlayParceiros');
+  // reset
+  ['cadNomeBrecho','cadEmail','cadSenha','cadBairro','cadRua','cadNum','cadCep'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('cadStep1').classList.add('active');
+  document.getElementById('cadStep2').classList.remove('active');
+  document.getElementById('cadSucesso').classList.remove('active');
+  document.getElementById('sdot1').className='step-dot active';
+  document.getElementById('sdot2').className='step-dot';
+  document.getElementById('sline1').className='step-line';
+  document.getElementById('cadastroTitle').textContent='Cadastrar Brechó';
+  document.getElementById('cadastroSub').textContent='Crie sua conta gratuita';
+  openOverlay('overlayCadastro');
+}
+
+function cadAvancar() {
+  const nome = document.getElementById('cadNomeBrecho').value.trim();
+  const email = document.getElementById('cadEmail').value.trim();
+  const senha = document.getElementById('cadSenha').value;
+  if (!nome) { document.getElementById('cadNomeBrecho').focus(); return; }
+  if (!email) { document.getElementById('cadEmail').focus(); return; }
+  if (senha.length < 6) { document.getElementById('cadSenha').focus(); return; }
+  cadData = { nome, email, _senha: senha };
+  document.getElementById('cadStep1').classList.remove('active');
+  document.getElementById('cadStep2').classList.add('active');
+  document.getElementById('sdot1').className='step-dot done'; document.getElementById('sdot1').textContent='✓';
+  document.getElementById('sdot2').className='step-dot active';
+  document.getElementById('sline1').className='step-line done';
+  document.getElementById('cadastroTitle').textContent='Onde fica seu brechó?';
+  document.getElementById('cadastroSub').textContent='Informe o endereço para aparecer no mapa';
+}
+
+function cadVoltar() {
+  document.getElementById('cadStep2').classList.remove('active');
+  document.getElementById('cadStep1').classList.add('active');
+  document.getElementById('sdot1').className='step-dot active'; document.getElementById('sdot1').textContent='1';
+  document.getElementById('sdot2').className='step-dot';
+  document.getElementById('sline1').className='step-line';
+  document.getElementById('cadastroTitle').textContent='Cadastrar Brechó';
+  document.getElementById('cadastroSub').textContent='Crie sua conta gratuita';
+}
+
+function cadConcluir() {
+  const bairro = document.getElementById('cadBairro').value.trim();
+  const rua    = document.getElementById('cadRua').value.trim();
+  if (!bairro || !rua) { return; }
+  cadData.bairro = bairro;
+  cadData.rua    = rua;
+  cadData.num    = document.getElementById('cadNum').value.trim();
+  cadData.cep    = document.getElementById('cadCep').value.trim();
+
+  // Verifica duplicidade de e-mail
+  if (dbBuscarPorEmail(cadData.email)) {
+    alert('Este e-mail já está cadastrado. Faça login para acessar sua conta.');
+    return;
+  }
+
+  // Salva no banco
+  const reg = dbRegistrarBrecho(
+    cadData.nome,
+    cadData.email,
+    cadData._senha,
+    { rua: cadData.rua, numero: cadData.num, bairro: cadData.bairro, cep: cadData.cep }
+  );
+  cadData._regId = reg.id;
+
+  document.getElementById('cadNomeDisplay').textContent = cadData.nome;
+  document.getElementById('cadStep2').classList.remove('active');
+  document.getElementById('cadSucesso').classList.add('active');
+  document.getElementById('sdot2').className='step-dot done'; document.getElementById('sdot2').textContent='✓';
+  document.getElementById('sline1').className='step-line done';
+  document.getElementById('cadastroTitle').textContent='Tudo certo!';
+  document.getElementById('cadastroSub').textContent='';
+}
+
+/* ════════ ÁREA DO BRECHÓ ════════ */
+function entrarAreaBrecho() {
+  closeOverlayById('overlayCadastro');
+  // Marcar usuário logado se ainda não estiver
+  if (!currentUser && cadData._regId) {
+    const banco = dbCarregar();
+    currentUser = banco.brechos.find(b => b.id === cadData._regId) || null;
+    if (currentUser) {
+      const initials = cadData.nome.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+      const avatarBtn = document.getElementById('avatarBtn');
+      avatarBtn.textContent = initials;
+      avatarBtn.classList.add('show');
+      document.getElementById('btnLoginHeader').style.display = 'none';
+    }
+  }
+  // Preencher dados da área
+  document.getElementById('abNomeBrecho').textContent = cadData.nome || 'Meu Brechó';
+  document.getElementById('abAvatarInitial').textContent = (cadData.nome||'B')[0].toUpperCase();
+  document.getElementById('abUserLabel').textContent = cadData.email || '';
+  const end = [cadData.rua, cadData.num, cadData.bairro].filter(Boolean).join(', ');
+  document.getElementById('abEnderecoBrecho').textContent = end || 'Configure seu endereço no perfil';
+  // Preencher campos do perfil
+  document.getElementById('pfNome').value = cadData.nome || '';
+  document.getElementById('pfBairro').value = cadData.bairro || '';
+  document.getElementById('pfCep').value = cadData.cep || '';
+  document.getElementById('pfRua').value = cadData.rua || '';
+  document.getElementById('pfNum').value = cadData.num || '';
+  // Horários
+  buildHorarioCard();
+  // Posts demo
+  if (document.getElementById('postFeed').children.length === 0) renderDemoPosts();
+  // Atualizar views
+  document.getElementById('statViews').textContent = Math.floor(Math.random()*40+10);
+  document.getElementById('areaBrecho').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function sairAreaBrecho() {
+  document.getElementById('areaBrecho').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function abrirAbTab(btn, panelId) {
+  document.querySelectorAll('.ab-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+function previewAvatar(input) {
+  if (!input.files[0]) return;
+  const url = URL.createObjectURL(input.files[0]);
+  const av = document.getElementById('abAvatar');
+  const existing = av.querySelector('img');
+  if (existing) existing.remove();
+  const img = document.createElement('img');
+  img.src = url; img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:13px;';
+  av.insertBefore(img, av.firstChild);
+  document.getElementById('abAvatarInitial').style.display='none';
+}
+
+function previewFotosLoja(input) {
+  const wrap = document.getElementById('abFotosLoja');
+  Array.from(input.files).slice(0,4).forEach(file=>{
+    const url = URL.createObjectURL(file);
+    const div = document.createElement('div'); div.className='ab-foto-thumb';
+    const img = document.createElement('img'); img.src=url;
+    div.appendChild(img); wrap.insertBefore(div, wrap.lastElementChild);
+  });
+}
+
+function salvarPerfil() {
+  const nome = document.getElementById('pfNome').value.trim();
+  const bairro = document.getElementById('pfBairro').value.trim();
+  const rua = document.getElementById('pfRua').value.trim();
+  const num = document.getElementById('pfNum').value.trim();
+  if (nome) document.getElementById('abNomeBrecho').textContent = nome;
+  const end = [rua, num, bairro].filter(Boolean).join(', ');
+  if (end) document.getElementById('abEnderecoBrecho').textContent = end;
+  const toast = document.getElementById('saveToast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),2500);
+}
+
+/* Horários */
+const DIAS = ['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
+function buildHorarioCard() {
+  const card = document.getElementById('horarioCard');
+  card.innerHTML = DIAS.map((d,i)=>`
+    <div class="horario-grid" style="margin-bottom:10px">
+      <span class="horario-dia">${d}</span>
+      <label class="horario-check"><input type="checkbox" id="hc${i}" ${i<5?'checked':''}> Aberto</label>
+      <div style="display:flex;gap:6px;align-items:center">
+        <input class="ab-input" style="padding:7px 8px;font-size:.78rem" value="${i<5?'09:00':'10:00'}" type="time">
+        <span style="font-size:.8rem;color:#a09080">–</span>
+        <input class="ab-input" style="padding:7px 8px;font-size:.78rem" value="${i<5?'18:00':'16:00'}" type="time">
+      </div>
+    </div>`).join('');
+}
+
+/* Comunidade: mídia */
+function addComMedia(input, type) {
+  Array.from(input.files).forEach(file=>{
+    const url = URL.createObjectURL(file);
+    comMediaFiles.push({ url, type, name: file.name });
+    renderComMediaPreview();
+  });
+  input.value='';
+}
+function renderComMediaPreview() {
+  const wrap = document.getElementById('comMediaPreview');
+  wrap.innerHTML = comMediaFiles.map((m,i)=>`
+    <div class="com-media-item">
+      ${m.type==='img'?`<img src="${m.url}">`:`<video src="${m.url}"></video>`}
+      <button class="com-media-remove" onclick="removeComMedia(${i})">✕</button>
+    </div>`).join('');
+}
+function removeComMedia(i) {
+  comMediaFiles.splice(i,1);
+  renderComMediaPreview();
+}
+
+/* Publicar post */
+let postCount = 0, totalReacoes = 0;
+function publicarPost() {
+  const texto = document.getElementById('postTexto').value.trim();
+  if (!texto && comMediaFiles.length===0) return;
+  const feed = document.getElementById('postFeed');
+  const initial = (cadData.nome||'B')[0].toUpperCase();
+  const nome = cadData.nome || 'Meu Brechó';
+  const agora = 'agora mesmo';
+  let mediaHTML = '';
+  if (comMediaFiles.length>0) {
+    const cls = comMediaFiles.length===1?'one':'two';
+    mediaHTML = `<div class="post-card-media ${cls}">${comMediaFiles.map(m=>m.type==='img'?`<img src="${m.url}" loading="lazy">`:`<video src="${m.url}" controls></video>`).join('')}</div>`;
+  }
+  const card = document.createElement('div');
+  card.className='post-card';
+  card.innerHTML=`
+    <div class="post-card-header">
+      <div class="post-card-avatar">${initial}</div>
+      <div class="post-card-meta"><h4>${nome}</h4><span>${agora}</span></div>
+    </div>
+    ${texto?`<p class="post-card-text">${texto.replace(/\n/g,'<br>')}</p>`:''}
+    ${mediaHTML}
+    <div class="post-card-reactions">
+      <button class="reaction-btn" onclick="reagir(this,'❤️')"><span>❤️</span><span class="rcount">0</span></button>
+      <button class="reaction-btn" onclick="reagir(this,'🔥')"><span>🔥</span><span class="rcount">0</span></button>
+      <button class="reaction-btn" onclick="reagir(this,'👏')"><span>👏</span><span class="rcount">0</span></button>
+    </div>`;
+  feed.insertBefore(card, feed.firstChild);
+  document.getElementById('postTexto').value='';
+  comMediaFiles=[];
+  renderComMediaPreview();
+  postCount++;
+  document.getElementById('statPosts').textContent=postCount;
+}
+
+function reagir(btn, emoji) {
+  const wasReacted = btn.classList.contains('reacted');
+  const count = btn.querySelector('.rcount');
+  let n = parseInt(count.textContent)||0;
+  if (wasReacted) { btn.classList.remove('reacted'); count.textContent=n-1; totalReacoes--; }
+  else { btn.classList.add('reacted'); count.textContent=n+1; totalReacoes++; }
+  document.getElementById('statReacoes').textContent=totalReacoes;
+}
+
+function renderDemoPosts() {
+  const feed = document.getElementById('postFeed');
+  const demo = [
+    { text:'Acabamos de receber uma nova leva de peças incríveis! Blazers, vestidos e acessórios dos anos 80 e 90. Venha conferir! 🛍️', time:'há 2 dias', media:[] },
+    { text:'Este final de semana temos 20% de desconto em toda a sessão de jaquetas. Não perca! 🎉', time:'há 4 dias', media:[] },
+  ];
+  demo.forEach(d=>{
+    const card = document.createElement('div');
+    card.className='post-card';
+    card.innerHTML=`
+      <div class="post-card-header">
+        <div class="post-card-avatar">B</div>
+        <div class="post-card-meta"><h4>Meu Brechó</h4><span>${d.time}</span></div>
+      </div>
+      <p class="post-card-text">${d.text}</p>
+      <div class="post-card-reactions">
+        <button class="reaction-btn" onclick="reagir(this,'❤️')"><span>❤️</span><span class="rcount">${Math.floor(Math.random()*15+2)}</span></button>
+        <button class="reaction-btn" onclick="reagir(this,'🔥')"><span>🔥</span><span class="rcount">${Math.floor(Math.random()*8+1)}</span></button>
+        <button class="reaction-btn" onclick="reagir(this,'👏')"><span>👏</span><span class="rcount">${Math.floor(Math.random()*6+1)}</span></button>
+      </div>`;
+    feed.appendChild(card);
+  });
+}
+
 /* ════════ INIT ════════ */
 buildInfiniteCarousel();
 renderBrechos();
-renderProdutos(true);
+renderBrechosPreco(true);
 buildCalendar();
 observeFadeIns();
 
+// open favs: render list first
+document.getElementById('overlayFavs').addEventListener('click', e => {
+  if (e.target === document.getElementById('overlayFavs')) return;
+});
+document.querySelector('[onclick*="overlayFavs"]')?.addEventListener('click', renderFavsList);
+
 // Keyboard close modals
 document.addEventListener('keydown', e => {
-  if(e.key==='Escape') ['overlayEvento','overlayBrecho','overlayProduto'].forEach(closeOverlayById);
+  if(e.key==='Escape') ['overlayEvento','overlayBrecho','overlayProduto','overlayParceiros','overlayLogin','overlayFavs','overlayCadBazar','overlayEventoForm'].forEach(closeOverlayById);
 });
+
+/* ════════ CADASTRO BAZAR ════════ */
+let bazData = {};
+
+function abrirCadastroBazar() {
+  // Fecha o modal de parceiros primeiro
+  document.getElementById('overlayParceiros').classList.remove('open');
+  // Limpa campos
+  ['bazNome','bazEmail','bazSenha'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  // Abre modal do bazar
+  const overlay = document.getElementById('overlayCadBazar');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function cadBazarConcluir() {
+  const nome  = document.getElementById('bazNome').value.trim();
+  const email = document.getElementById('bazEmail').value.trim();
+  const senha = document.getElementById('bazSenha').value;
+  if (!nome)          { document.getElementById('bazNome').focus(); return; }
+  if (!email)         { document.getElementById('bazEmail').focus(); return; }
+  if (senha.length<6) {
+    let el = document.getElementById('bazErro');
+    if (!el) { el = document.createElement('p'); el.id='bazErro'; el.style.cssText='color:#c0392b;font-size:.8rem;margin-top:6px'; document.getElementById('bazSenha').after(el); }
+    el.textContent = 'A senha precisa ter no mínimo 6 caracteres.';
+    document.getElementById('bazSenha').focus(); return;
+  }
+  if (dbBuscarPorEmail(email)) {
+    let el = document.getElementById('bazErro');
+    if (!el) { el = document.createElement('p'); el.id='bazErro'; el.style.cssText='color:#c0392b;font-size:.8rem;margin-top:6px'; document.getElementById('bazSenha').after(el); }
+    el.textContent = 'Este e-mail já está cadastrado. Faça login.';
+    return;
+  }
+  const reg = dbRegistrarBazar(nome, email, senha);
+  bazData = { nome, email, _regId: reg.id };
+  currentUser = reg;
+  const initials = nome.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('avatarBtn').textContent = initials;
+  document.getElementById('avatarBtn').classList.add('show');
+  document.getElementById('btnLoginHeader').style.display = 'none';
+  closeOverlayById('overlayCadBazar');
+  entrarAreaBazar();
+}
+
+/* ════════ ÁREA DO BAZAR ════════ */
+let bazEventos = [];
+let mefEditIdx = null;
+let mefImgUrl  = null;
+
+function entrarAreaBazar() {
+  document.getElementById('azNomeResp').textContent = 'Olá, ' + (bazData.nome || 'Organizador') + '!';
+  document.getElementById('azSubtitle').textContent = bazData.email || 'Gerencie seus eventos e alcance mais pessoas';
+  document.getElementById('azUserLabel').textContent = bazData.email || '';
+  document.getElementById('azStatViews').textContent = Math.floor(Math.random()*80+20);
+  renderAzGrid();
+  document.getElementById('areaBazar').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function sairAreaBazar() {
+  document.getElementById('areaBazar').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── Formulário de evento ── */
+function abrirFormEvento(idx) {
+  mefEditIdx = (idx !== undefined) ? idx : null;
+  mefImgUrl  = null;
+  const mefArea = document.getElementById('mefImgArea');
+
+  if (mefEditIdx !== null) {
+    const ev = bazEventos[mefEditIdx];
+    document.getElementById('mefTitle').textContent   = 'Editar Evento';
+    document.getElementById('mefSub').textContent     = 'Atualize as informações do bazar';
+    document.getElementById('mefNomeBazar').value     = ev.nome;
+    document.getElementById('mefLocal').value         = ev.local;
+    document.getElementById('mefData').value          = ev.dataISO;
+    document.getElementById('mefHoraIni').value       = ev.horaIni;
+    document.getElementById('mefHoraFim').value       = ev.horaFim;
+    mefImgUrl = ev.img;
+  } else {
+    document.getElementById('mefTitle').textContent   = 'Novo Evento';
+    document.getElementById('mefSub').textContent     = 'Preencha as informações do seu bazar';
+    document.getElementById('mefNomeBazar').value     = '';
+    document.getElementById('mefLocal').value         = '';
+    document.getElementById('mefData').value          = '';
+    document.getElementById('mefHoraIni').value       = '09:00';
+    document.getElementById('mefHoraFim').value       = '18:00';
+  }
+
+  // Atualizar preview de imagem
+  const oldImg = mefArea.querySelector('img');
+  if (oldImg) oldImg.remove();
+  const label = mefArea.querySelector('.mef-img-label');
+  label.style.display = '';
+  if (mefImgUrl) {
+    const img = document.createElement('img');
+    img.src = mefImgUrl;
+    mefArea.appendChild(img);
+    label.style.display = 'none';
+  }
+  document.getElementById('mefImgInput').value = '';
+  openOverlay('overlayEventoForm');
+}
+
+function previewMefImg(input) {
+  if (!input.files[0]) return;
+  mefImgUrl = URL.createObjectURL(input.files[0]);
+  const area  = document.getElementById('mefImgArea');
+  const label = area.querySelector('.mef-img-label');
+  const old   = area.querySelector('img');
+  if (old) old.remove();
+  const img = document.createElement('img');
+  img.src = mefImgUrl;
+  area.appendChild(img);
+  label.style.display = 'none';
+}
+
+function salvarEvento() {
+  const nome    = document.getElementById('mefNomeBazar').value.trim();
+  const local   = document.getElementById('mefLocal').value.trim();
+  const dataISO = document.getElementById('mefData').value;
+  const horaIni = document.getElementById('mefHoraIni').value;
+  const horaFim = document.getElementById('mefHoraFim').value;
+  if (!nome)    { document.getElementById('mefNomeBazar').focus(); return; }
+  if (!local)   { document.getElementById('mefLocal').focus(); return; }
+  if (!dataISO) { document.getElementById('mefData').focus(); return; }
+
+  // Formatar data legível
+  const [y,m,d] = dataISO.split('-');
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const dataLabel = `${parseInt(d)} ${meses[parseInt(m)-1]} ${y}`;
+
+  const evento = { nome, local, dataISO, dataLabel, horaIni, horaFim, img: mefImgUrl };
+
+  if (mefEditIdx !== null) {
+    bazEventos[mefEditIdx] = evento;
+  } else {
+    bazEventos.unshift(evento);
+  }
+
+  closeOverlayById('overlayEventoForm');
+  renderAzGrid();
+  // Persiste eventos no banco
+  if (currentUser && currentUser.id) {
+    dbAtualizarRegistro(currentUser.id, { eventos: bazEventos });
+  }
+}
+
+function deletarEvento(idx) {
+  if (!confirm('Remover este evento?')) return;
+  bazEventos.splice(idx, 1);
+  renderAzGrid();
+  if (currentUser && currentUser.id) {
+    dbAtualizarRegistro(currentUser.id, { eventos: bazEventos });
+  }
+}
+
+function renderAzGrid() {
+  const grid  = document.getElementById('azGrid');
+  const empty = document.getElementById('azEmpty');
+  const hoje  = new Date().toISOString().slice(0,10);
+
+  if (bazEventos.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    document.getElementById('azStatEventos').textContent  = 0;
+    document.getElementById('azStatProximos').textContent = 0;
+    return;
+  }
+  empty.style.display = 'none';
+
+  const proximos = bazEventos.filter(e => e.dataISO >= hoje).length;
+  document.getElementById('azStatEventos').textContent  = bazEventos.length;
+  document.getElementById('azStatProximos').textContent = proximos;
+
+  grid.innerHTML = bazEventos.map((ev, i) => {
+    const isProximo = ev.dataISO >= hoje;
+    return `
+    <div class="az-event-card">
+      <div class="az-card-img">
+        ${ev.img ? `<img src="${ev.img}" alt="${ev.nome}" loading="lazy">` : '🎪'}
+        <div class="az-card-badge">${isProximo ? 'Próximo' : 'Encerrado'}</div>
+      </div>
+      <div class="az-card-body">
+        <h3>${ev.nome}</h3>
+        <div class="az-card-meta">
+          <span>📍 ${ev.local}</span>
+          <span>📅 ${ev.dataLabel}</span>
+          <span>⏰ ${ev.horaIni} – ${ev.horaFim}</span>
+        </div>
+        <div class="az-card-footer">
+          <button class="az-card-edit" onclick="abrirFormEvento(${i})">✏️ Editar</button>
+          <button class="az-card-del"  onclick="deletarEvento(${i})">🗑</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
 </script>
 </body>
 </html>
