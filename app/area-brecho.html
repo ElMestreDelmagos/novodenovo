@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Área do Brechó | NovoDeNovo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/brechos.css" />
+    <link rel="stylesheet" href="../css/areas.css" />
+  </head>
+  <body class="area-page">
+    <header class="area-header">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">N</span
+        ><span>Novo<span>De</span>Novo</span></a
+      >
+      <div class="area-header-actions">
+        <a class="area-back" href="index.html#brechos">← Voltar ao site</a
+        ><button class="button button-secondary area-logout" type="button">
+          Sair
+        </button>
+      </div>
+    </header>
+    <main class="area-shell">
+      <section class="area-intro">
+        <div>
+          <span class="eyebrow">PAINEL COMERCIAL</span>
+          <h1>Área do Brechó</h1>
+          <p>
+            Atualize as informações que aparecem no card público do seu brechó.
+            O preview ao lado mostra exatamente como os visitantes verão os
+            dados.
+          </p>
+        </div>
+        <span class="area-status">Perfil ativo</span>
+      </section>
+      <div class="area-layout">
+        <section class="area-panel">
+          <h2>Informações do brechó</h2>
+          <p class="panel-subtitle">
+            Os campos abaixo correspondem às informações exibidas nos cards.
+          </p>
+          <!-- Formulário de cadastro/edição de brechó. -->
+          <form class="area-form" id="brechoAreaForm">
+            <div class="area-field full">
+              <label>Nome do brechó</label><input name="nome_brecho" required />
+            </div>
+            <div class="area-field full">
+              <label>Descrição</label
+              ><textarea name="descricao" rows="4"></textarea>
+            </div>
+            <div class="area-field full">
+              <label>Endereço exibido</label><input name="endereco" />
+            </div>
+            <div class="area-field">
+              <label>Preço mínimo (R$)</label
+              ><input name="preco_min" type="number" min="0" step="0.01" />
+            </div>
+            <div class="area-field">
+              <label>Preço máximo (R$)</label
+              ><input name="preco_max" type="number" min="0" step="0.01" />
+            </div>
+            <div class="area-field">
+              <label>Estilo</label
+              ><select name="estilo">
+                <option value="">Selecione um estilo</option>
+                <option value="Vintage">Vintage</option>
+                <option value="Sustentável">Sustentável</option>
+                <option value="Artesanal">Artesanal</option>
+                <option value="Infantil">Infantil</option>
+              </select>
+            </div>
+            <div class="area-field">
+              <label>Categoria</label
+              ><select name="categoria">
+                <option value="">Selecione uma categoria</option>
+                <option value="Roupas">Roupas</option>
+                <option value="Calçados">Calçados</option>
+                <option value="Acessórios">Acessórios</option>
+                <option value="Roupas e acessórios">Roupas e acessórios</option>
+              </select>
+            </div>
+            <div class="area-field full">
+              <label>URL da imagem de capa</label
+              ><input name="imagem" type="url" />
+            </div>
+            <div class="area-form-actions">
+              <span class="save-feedback" id="brechoFeedback"></span
+              ><button
+                class="button button-secondary"
+                type="button"
+                id="brechoDelete"
+              >
+                Excluir brechó</button
+              ><button class="button button-primary" type="submit">
+                Salvar alterações
+              </button>
+            </div>
+          </form>
+          <div class="area-note">
+            As alterações desta área são salvas diretamente no Supabase e
+            atualizam o card público do brechó.
+          </div>
+        </section>
+        <aside class="area-panel preview-panel">
+          <div class="preview-label">
+            <h2>Preview do card</h2>
+            <span>Atualização em tempo real</span>
+          </div>
+          <!-- Pré-visualização do perfil de brechó. -->
+          <div class="area-preview" id="brechoPreview"></div>
+        </aside>
+      </div>
+    </main>
+    <script src="../data/mockData.js"></script>
+    <script src="../js/areas.js"></script>
+  </body>
+</html>

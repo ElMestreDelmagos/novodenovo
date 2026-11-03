@@ -1,0 +1,145 @@
+/* GUIA DE ESTILOS: Cartões, listas e apresentação dos brechós. */
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.brecho-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.brecho-card {
+  overflow: hidden;
+  background: #faf8f4;
+  border: 1px solid #e2d9ce;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(74, 53, 40, 0.06);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.brecho-image {
+  height: 180px;
+  position: relative;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.brecho-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tag,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.price {
+  position: absolute;
+  background: #6e8259;
+  color: white;
+  padding: 5px 9px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 700;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.tag {
+  left: 10px;
+  bottom: 10px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.price {
+  right: 10px;
+  bottom: 10px;
+  background: #503528;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.brecho-content {
+  padding: 15px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.rating {
+  color: #c49632 !important;
+  letter-spacing: 1px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.rating span {
+  color: #806e62;
+  letter-spacing: 0;
+  margin-left: 5px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.search-area {
+  max-width: 1100px;
+  margin: 0 auto 35px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #ddd3c8;
+  border-radius: 30px;
+  padding: 0 18px;
+  max-width: 560px;
+  margin: auto;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.search-box span {
+  font-size: 25px;
+  color: #9a897c;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.search-box input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 15px 0;
+  background: transparent;
+  color: #503528;
+}
+.filters,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.style-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 17px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.filters {
+  justify-content: center;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.style-filters {
+  justify-content: flex-start;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.style-filters > span {
+  font-size: 13px;
+  color: #806e62;
+  margin-right: 4px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.filter {
+  border: 1px solid #d0c4b6;
+  background: transparent;
+  color: #5e4b40;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 12px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.filter.active {
+  background: #503528;
+  color: white;
+  border-color: #503528;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.style.active {
+  background: #71835b;
+  border-color: #71835b;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.empty-state {
+  text-align: center;
+  color: #806e62;
+  padding: 30px;
+}

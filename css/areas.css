@@ -1,0 +1,385 @@
+/* GUIA DE ESTILOS: Estilos das páginas de área do usuário, bazar e brechó. */
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-page {
+  min-height: 100vh;
+  background: #f5f0e8;
+  color: #503528;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px clamp(20px, 5vw, 70px);
+  background: rgba(250, 248, 244, 0.96);
+  border-bottom: 1px solid #e0d6ca;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-shell {
+  width: min(1180px, calc(100% - 36px));
+  margin: 42px auto 70px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-intro h1 {
+  font: 600 clamp(34px, 5vw, 54px) "Playfair Display";
+  margin: 7px 0;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-intro p {
+  max-width: 650px;
+  color: #806e62;
+  line-height: 1.6;
+  margin: 0;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #e7eee0;
+  color: #5d704c;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-status:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #71835b;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+  gap: 24px;
+  align-items: start;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-panel {
+  background: #faf8f4;
+  border: 1px solid #dfd4c6;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(74, 53, 40, 0.05);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-panel h2 {
+  font: 600 25px "Playfair Display";
+  margin: 0 0 5px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-panel > .panel-subtitle {
+  color: #8a776b;
+  font-size: 13px;
+  margin: 0 0 23px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-field.full {
+  grid-column: 1/-1;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #675449;
+}
+.area-field input,
+.area-field select,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-field textarea {
+  width: 100%;
+  border: 1px solid #d9cfc3;
+  background: #fffdf9;
+  color: #503528;
+  border-radius: 10px;
+  padding: 12px 13px;
+  font: inherit;
+  outline: none;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.area-field input:focus,
+.area-field select:focus,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-field textarea:focus {
+  border-color: #71835b;
+  box-shadow: 0 0 0 3px rgba(113, 131, 91, 0.12);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-form-actions {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 5px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.preview-panel {
+  position: sticky;
+  top: 94px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.preview-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.preview-label span {
+  font-size: 12px;
+  color: #8a776b;
+}
+.area-preview .brecho-card,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-preview .event-card {
+  width: 100%;
+  min-width: 0;
+  flex: auto;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-preview .event-card {
+  background: #faf8f4;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-preview .card-actions {
+  display: none;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-note {
+  margin-top: 17px;
+  padding: 13px 14px;
+  border-radius: 10px;
+  background: #f1eadf;
+  color: #806e62;
+  font-size: 12px;
+  line-height: 1.5;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-back {
+  color: #503528;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-back:hover {
+  text-decoration: underline;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.save-feedback {
+  font-size: 12px;
+  color: #5d704c;
+  align-self: center;
+  opacity: 0;
+  transition: 0.2s;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.save-feedback.show {
+  opacity: 1;
+}
+@media (max-width: 850px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-layout {
+    grid-template-columns: 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .preview-panel {
+    position: static;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-intro {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-form {
+    grid-template-columns: 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-field.full {
+    grid-column: auto;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-form-actions {
+    grid-column: auto;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-header {
+    padding: 14px 18px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-header .brand > span:last-child {
+    display: none;
+  }
+}
+@media (max-width: 520px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-shell {
+    width: min(100% - 24px, 1180px);
+    margin-top: 26px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-panel {
+    padding: 18px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-form-actions {
+    flex-direction: column;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .area-form-actions .button {
+    width: 100%;
+  }
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.agenda-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.agenda-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  background: #fff;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.agenda-item p {
+  margin: 5px 0 0;
+  color: #666;
+}
+@media (max-width: 640px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .agenda-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.favorites-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.favorite-item {
+  display: grid;
+  grid-template-columns: 76px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  background: #fff;
+}
+.favorite-item > img,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.favorite-placeholder {
+  width: 76px;
+  height: 76px;
+  border-radius: 11px;
+  object-fit: cover;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.favorite-placeholder {
+  display: grid;
+  place-items: center;
+  background: #eee5d8;
+  font: 600 28px "Playfair Display";
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.favorite-item-body p {
+  margin: 5px 0;
+  color: #666;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.favorite-item-body small {
+  color: #8a776b;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.favorite-item-actions {
+  display: flex;
+  gap: 8px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-empty {
+  text-align: center;
+  padding: 30px 15px;
+  color: #806e62;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-empty > span {
+  display: block;
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.area-empty .button {
+  display: inline-flex;
+  margin-top: 10px;
+  text-decoration: none;
+}
+@media (max-width: 720px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .favorite-item {
+    grid-template-columns: 62px 1fr;
+  }
+  .favorite-item > img,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .favorite-placeholder {
+    width: 62px;
+    height: 62px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .favorite-item-actions {
+    grid-column: 1/-1;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .favorite-item-actions .button {
+    flex: 1;
+  }
+}

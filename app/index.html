@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="NovoDeNovo — encontre bazares, brechós e eventos sustentáveis perto de você."
+    />
+    <title>NovoDeNovo | Moda que circula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/brechos.css" />
+    <link rel="stylesheet" href="../css/eventos.css" />
+    <link rel="stylesheet" href="../css/impacto.css" />
+    <link rel="stylesheet" href="../css/responsivo.css" />
+  </head>
+  <body>
+    <!-- CONTEÚDO DA PÁGINA: os blocos abaixo organizam navegação, conteúdo principal, formulários e áreas interativas. -->
+    <!-- Cabeçalho e navegação principal, incluindo acesso às seções e ações de login/cadastro. -->
+    <header class="navbar" id="topo">
+      <a class="brand" href="#inicio" aria-label="NovoDeNovo - início">
+        <img src="img/logo.png" alt="Logo" class="brand-logo"/>
+        <span>Novo<span>De</span>Novo</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#eventos">Eventos</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#brechos">Brechós</a>
+        <a href="#mapa">Mapa</a>
+        <a href="#impacto">Impacto</a>
+        <button
+          class="nav-cta participation-trigger"
+          type="button"
+          aria-haspopup="dialog"
+        >
+          Quero Participar
+        </button>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="login-button" type="button">🌐 &nbsp; Entrar</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Seção inicial (hero), com apresentação do projeto e carrossel de destaque. -->
+      <section class="hero section" id="inicio">
+        <div class="hero-copy">
+          <span class="eyebrow">MODA QUE CIRCULA</span>
+          <h1>Descubra bazares únicos e <em>apoie</em> brechós da sua região.</h1>
+          <p>
+            Conectamos pessoas a bazares, brechós e eventos sustentáveis. Moda
+            consciente ao alcance de todos.
+          </p>
+          <div class="hero-buttons">
+            <a class="button button-primary" href="#brechos"
+              >Explorar Brechós</a
+            >
+            <a class="button button-secondary" href="#eventos">Ver Eventos</a>
+          </div>
+          <ul class="hero-points">
+            <li><span>✓</span> +40 brechós parceiros</li>
+            <li><span>✓</span> +10.000 produtos cadastrados</li>
+            <li><span>✓</span> Eventos na sua região</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-card" id="heroCard">
+            <img
+              id="heroImage"
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85"
+              alt="Roupas de brechó"
+            />
+            <div class="image-caption">
+              <strong id="heroTitle">Peças que têm história</strong>
+              <span id="heroSubtitle">Roupas vintage com personalidade</span>
+            </div>
+          </div>
+          <div class="hero-tag">Moda que conta histórias</div>
+          <div
+            class="carousel-dots"
+            id="heroDots"
+            aria-label="Slides do destaque"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Vitrine de eventos/bazares cadastrados. -->
+      <section class="events section section-beige" id="eventos">
+        <div class="section-heading centered">
+          <span class="eyebrow">NA SUA AGENDA</span>
+          <h2>Próximos Eventos</h2>
+          <p>Bazares e feiras sustentáveis acontecendo perto de você</p>
+        </div>
+        <div class="carousel-wrap">
+          <button
+            class="carousel-arrow prev"
+            data-carousel="eventsTrack"
+            aria-label="Evento anterior"
+          >
+            ←
+          </button>
+          <div class="card-track" id="eventsTrack"></div>
+          <button
+            class="carousel-arrow next"
+            data-carousel="eventsTrack"
+            aria-label="Próximo evento"
+          >
+            →
+          </button>
+        </div>
+      </section>
+
+      <!-- Calendário e lista de eventos adicionados à agenda. -->
+      <section class="calendar-section section" id="agenda">
+        <div class="section-heading centered">
+          <span class="eyebrow">ORGANIZE SEU GARIMPO</span>
+          <h2>Calendário de eventos</h2>
+          <p>
+            Consulte os dias em que há eventos cadastrados e encontre seu
+            próximo garimpo.
+          </p>
+        </div>
+        <div class="calendar-layout">
+          <div class="calendar-card">
+            <div class="calendar-header">
+              <button
+                class="calendar-nav"
+                id="calendarPrev"
+                aria-label="Mês anterior"
+              >
+                ‹
+              </button>
+              <h3 id="calendarMonth"></h3>
+              <button
+                class="calendar-nav"
+                id="calendarNext"
+                aria-label="Próximo mês"
+              >
+                ›
+              </button>
+            </div>
+            <button class="calendar-today" id="calendarToday">Hoje</button>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="calendar-legend">
+              <span><i></i> Evento disponível</span>
+            </div>
+          </div>
+          <aside class="calendar-details">
+            <span class="eyebrow">SUA AGENDA</span>
+            <h3 id="calendarSelectedDate">Selecione uma data</h3>
+            <div id="calendarDayEvents" class="calendar-day-events"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Área de brechós em destaque. -->
+      <section class="featured section" id="brechos">
+        <div class="section-heading centered">
+          <span class="eyebrow">CURADORIA ESPECIAL</span>
+          <h2>Brechós em Destaque</h2>
+          <p>Os brechós mais bem avaliados pela nossa comunidade</p>
+        </div>
+        <div class="brecho-grid" id="featuredGrid"></div>
+      </section>
+
+      <section class="discover section section-beige">
+        <div class="section-heading centered">
+          <span class="eyebrow">GARIMPO DO DIA</span>
+          <h2>Encontre seu próximo achado</h2>
+          <p>Pesquise por nome, cidade, estilo ou faixa de preço.</p>
+        </div>
+        <div class="search-area">
+          <label class="search-box">
+            <span>⌕</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Buscar brechó pelo nome ou cidade..."
+              aria-label="Buscar brechó"
+            />
+          </label>
+          <button
+            class="filters-toggle"
+            id="filtersToggle"
+            aria-expanded="false"
+            aria-controls="filtersPanel"
+          >
+            <span class="hamburger-icon"><i></i><i></i><i></i></span>
+            <span>Filtrar brechós</span>
+            <span class="filters-chevron">⌄</span>
+          </button>
+          <div class="filters-panel" id="filtersPanel">
+            <div class="filters" id="priceFilters">
+              <span class="filter-label">Faixa de preço</span>
+              <button class="filter active" data-price="all">Todos</button>
+              <button class="filter" data-price="50">Até R$ 50</button>
+              <button class="filter" data-price="100">R$ 50 – R$ 100</button>
+              <button class="filter" data-price="200">R$ 100 – R$ 200</button>
+              <button class="filter" data-price="high">Acima de R$ 200</button>
+            </div>
+            <div class="style-filters">
+              <span class="filter-label">Estilo</span>
+              <button class="filter style active" data-style="all">
+                Todos
+              </button>
+              <button class="filter style" data-style="Vintage">Vintage</button>
+              <button class="filter style" data-style="Sustentável">
+                Sustentável
+              </button>
+              <button class="filter style" data-style="Artesanal">
+                Artesanal
+              </button>
+              <button class="filter style" data-style="Infantil">
+                Infantil
+              </button>
+            </div>
+            <div class="category-filters" id="categoryFilters">
+              <span class="filter-label">Categoria</span>
+              <button class="filter category active" data-category="all">
+                Todas
+              </button>
+              <button class="filter category" data-category="Roupas">
+                Roupas
+              </button>
+              <button class="filter category" data-category="Calçados">
+                Calçados
+              </button>
+              <button class="filter category" data-category="Acessórios">
+                Acessórios
+              </button>
+              <button
+                class="filter category"
+                data-category="Roupas e acessórios"
+              >
+                Roupas e acessórios
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="brecho-grid" id="allBrechosGrid"></div>
+        <p class="empty-state hidden" id="emptyState">
+          Nenhum brechó encontrado com esses filtros.
+        </p>
+      </section>
+
+      <!-- Área de mapa e informações de localização dos estabelecimentos. -->
+      <section class="map-section section" id="mapa">
+        <div class="map-copy">
+          <span class="eyebrow">PERTO DE VOCÊ</span>
+          <h2>Encontre brechós no mapa.</h2>
+          <p>
+            Veja onde estão os pontos de moda circular e planeje seu próximo
+            garimpo.
+          </p>
+        </div>
+        <div class="real-map">
+          <iframe
+            id="googleMap"
+            title="Mapa da Etec Sylvio de Mattos Carvalho em Matão, Brasil"
+            src="https://maps.google.com/maps?q=-21.604108,-48.367649&z=16&hl=pt-BR&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Indicadores e conteúdo sobre o impacto socioambiental da moda circular. -->
+      <section class="impact section" id="impacto">
+        <div class="section-heading centered light">
+          <span class="eyebrow">NOSSA PEGADA VERDE</span>
+          <h2>Impacto Real</h2>
+          <p>Cada compra é um passo rumo a um futuro mais sustentável</p>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <span>♻</span><strong>3.500</strong
+            ><small>peças reutilizadas</small>
+          </div>
+          <div class="impact-card">
+            <span>🌱</span><strong>1,2 t</strong
+            ><small>de resíduos evitados</small>
+          </div>
+          <div class="impact-card">
+            <span>🤝</span><strong>40+</strong><small>brechós parceiros</small>
+          </div>
+          <div class="impact-card">
+            <span>👕</span><strong>12.000</strong
+            ><small>produtos anunciados</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Área que explica como participar da plataforma. -->
+      <section class="join section" id="participar">
+        <div class="section-heading centered">
+          <span class="eyebrow">FAÇA PARTE DA COMUNIDADE</span>
+          <h2>Faça parte do NovoDeNovo</h2>
+          <p>Escolha como você quer participar da moda circular.</p>
+        </div>
+        <div class="join-grid">
+          <article class="join-card">
+            <span class="join-icon">♡</span>
+            <span class="join-label">USUÁRIO</span>
+            <h3>Encontre seus próximos achados</h3>
+            <p>
+              Descubra brechós próximos, salve seus favoritos e acompanhe seus
+              próximos bazares.
+            </p>
+            <button
+              class="button button-primary"
+              type="button"
+              data-cadastro-tipo="usuario"
+            >
+              Criar conta
+            </button>
+          </article>
+          <article class="join-card featured-join">
+            <span class="join-icon">♧</span>
+            <span class="join-label">BRECHÓ</span>
+            <h3>Dê visibilidade ao seu brechó</h3>
+            <p>
+              Dê mais visibilidade ao seu brechó e ajude a fortalecer a moda
+              circular em Matão.
+            </p>
+            <button
+              class="button button-primary"
+              type="button"
+              data-cadastro-tipo="brecho"
+            >
+              Cadastrar brechó
+            </button>
+          </article>
+          <article class="join-card">
+            <span class="join-icon">✦</span>
+            <span class="join-label">BAZAR</span>
+            <h3>Divulgue seu próximo evento</h3>
+            <p>
+              Divulgue seu próximo evento e faça novas pessoas encontrarem seu
+              bazar.
+            </p>
+            <button
+              class="button button-primary"
+              type="button"
+              data-cadastro-tipo="bazar"
+            >
+              Cadastrar bazar
+            </button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Janela/modal de participação e escolha do tipo de cadastro. -->
+    <div
+      class="participation-overlay"
+      id="participationOverlay"
+      aria-hidden="true"
+    >
+      <div
+        class="participation-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="participationTitle"
+      >
+        <button
+          class="detail-close"
+          id="participationClose"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+        <div class="participation-heading">
+          <span class="eyebrow">FAÇA PARTE DA COMUNIDADE</span>
+          <h2 id="participationTitle">Como você quer participar?</h2>
+          <p>Escolha uma opção para fazer parte do NovoDeNovo.</p>
+        </div>
+        <div class="join-grid participation-grid">
+          <article class="join-card">
+            <span class="join-icon">♡</span>
+            <span class="join-label">USUÁRIO</span>
+            <h3>Encontre seus próximos achados</h3>
+            <p>
+              Descubra brechós próximos, salve seus favoritos e acompanhe seus
+              próximos bazares.
+            </p>
+            <button
+              class="button button-primary"
+              type="button"
+              data-cadastro-tipo="usuario"
+            >
+              Criar conta
+            </button>
+          </article>
+          <article class="join-card featured-join">
+            <span class="join-icon">♧</span>
+            <span class="join-label">BRECHÓ</span>
+            <h3>Dê visibilidade ao seu brechó</h3>
+            <p>
+              Dê mais visibilidade ao seu brechó e ajude a fortalecer a moda
+              circular em Matão.
+            </p>
+            <button
+              class="button button-primary"
+              type="button"
+              data-cadastro-tipo="brecho"
+            >
+              Cadastrar brechó
+            </button>
+          </article>
+          <article class="join-card">
+            <span class="join-icon">✦</span>
+            <span class="join-label">BAZAR</span>
+            <h3>Divulgue seu próximo evento</h3>
+            <p>
+              Divulgue seu próximo evento e faça novas pessoas encontrarem seu
+              bazar.
+            </p>
+            <button
+              class="button button-primary"
+              type="button"
+              data-cadastro-tipo="bazar"
+            >
+              Cadastrar bazar
+            </button>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal com formulário de cadastro. -->
+    <div class="cadastro-overlay" id="cadastroOverlay" aria-hidden="true">
+      <div
+        class="cadastro-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cadastroTitle"
+      >
+        <button
+          class="detail-close"
+          id="cadastroClose"
+          type="button"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+        <span class="eyebrow">NOVO CADASTRO</span>
+        <h2 id="cadastroTitle">Criar conta</h2>
+        <p class="cadastro-subtitle">
+          Preencha os dados abaixo. Os campos com * são obrigatórios.
+        </p>
+        <form id="cadastroForm">
+          <input type="hidden" id="cadastroTipo" value="usuario" />
+          <fieldset class="cadastro-section">
+            <legend>Dados da conta</legend>
+            <div class="cadastro-grid">
+              <div class="cadastro-field full">
+                <label>Nome do responsável *</label
+                ><input name="nome" maxlength="150" required />
+              </div>
+              <div class="cadastro-field full">
+                <label>E-mail *</label
+                ><input name="email" type="email" maxlength="255" required />
+              </div>
+              <div class="cadastro-field">
+                <label>Senha *</label
+                ><input name="senha" type="password" minlength="8" required />
+              </div>
+              <div class="cadastro-field">
+                <label>Confirmar senha *</label
+                ><input
+                  name="confirmar_senha"
+                  type="password"
+                  minlength="8"
+                  required
+                />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="cadastro-section">
+            <legend>Endereço</legend>
+            <div class="cadastro-grid">
+              <div class="cadastro-field">
+                <label>CEP *</label
+                ><input
+                  name="cep"
+                  maxlength="9"
+                  placeholder="15990-000"
+                  required
+                />
+              </div>
+              <div class="cadastro-field">
+                <label>Número</label><input name="numero" maxlength="10" />
+              </div>
+              <div class="cadastro-field full">
+                <label>Rua *</label
+                ><input name="rua" maxlength="150" required />
+              </div>
+              <div class="cadastro-field">
+                <label>Bairro *</label
+                ><input name="bairro" maxlength="100" required />
+              </div>
+              <div class="cadastro-field">
+                <label>Cidade *</label
+                ><input name="cidade" maxlength="100" value="Matão" required />
+              </div>
+              <div class="cadastro-field">
+                <label>Estado *</label
+                ><input name="estado" maxlength="2" value="SP" required />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="cadastro-section hidden" id="cadastroUsuarioExtra">
+            <legend>Conta de usuário</legend>
+            <p class="cadastro-note">
+              Com esta conta você poderá usar os recursos destinados aos
+              visitantes do NovoDeNovo.
+            </p>
+          </fieldset>
+          <fieldset class="cadastro-section hidden" id="cadastroBrechoExtra">
+            <legend>Dados do brechó</legend>
+            <div class="cadastro-grid">
+              <div class="cadastro-field full">
+                <label>Nome do brechó *</label
+                ><input name="nome_brecho" maxlength="150" />
+              </div>
+              <div class="cadastro-field full">
+                <label>Descrição</label
+                ><textarea name="brecho_descricao"></textarea>
+              </div>
+              <div class="cadastro-field full">
+                <label>URL da imagem</label
+                ><input name="brecho_imagem" type="url" />
+              </div>
+              <div class="cadastro-field full">
+                <label>Endereço para exibição</label
+                ><input
+                  name="brecho_endereco"
+                  placeholder="Ex.: Rua X, 123 - Centro"
+                />
+              </div>
+              <div class="cadastro-field">
+                <label>Preço mínimo (R$)</label
+                ><input name="preco_min" type="number" min="0" step="0.01" />
+              </div>
+              <div class="cadastro-field">
+                <label>Preço máximo (R$)</label
+                ><input name="preco_max" type="number" min="0" step="0.01" />
+              </div>
+              <div class="cadastro-field">
+                <label>Estilo</label
+                ><select name="estilo">
+                  <option value="">Selecione um estilo</option>
+                  <option value="Vintage">Vintage</option>
+                  <option value="Sustentável">Sustentável</option>
+                  <option value="Artesanal">Artesanal</option>
+                  <option value="Infantil">Infantil</option>
+                </select>
+              </div>
+              <div class="cadastro-field">
+                <label>Categoria</label
+                ><select name="categoria">
+                  <option value="">Selecione uma categoria</option>
+                  <option value="Roupas">Roupas</option>
+                  <option value="Calçados">Calçados</option>
+                  <option value="Acessórios">Acessórios</option>
+                  <option value="Roupas e acessórios">
+                    Roupas e acessórios
+                  </option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="cadastro-section hidden" id="cadastroBazarExtra">
+            <legend>Dados do bazar</legend>
+            <div class="cadastro-grid">
+              <div class="cadastro-field full">
+                <label>Nome do bazar *</label
+                ><input name="nome_bazar" maxlength="150" />
+              </div>
+              <div class="cadastro-field full">
+                <label>Descrição</label
+                ><textarea name="bazar_descricao"></textarea>
+              </div>
+              <div class="cadastro-field full">
+                <label>URL da imagem</label
+                ><input name="bazar_imagem" type="url" />
+              </div>
+              <div class="cadastro-field">
+                <label>Data de início *</label
+                ><input name="data_inicio" type="date" />
+              </div>
+              <div class="cadastro-field">
+                <label>Data de término</label
+                ><input name="data_termino" type="date" />
+              </div>
+              <div class="cadastro-field">
+                <label>Horário de início *</label
+                ><input name="horario_inicio" type="time" />
+              </div>
+              <div class="cadastro-field">
+                <label>Horário de término</label
+                ><input name="horario_termino" type="time" />
+              </div>
+            </div>
+          </fieldset>
+          <div class="cadastro-actions">
+            <span
+              id="cadastroFeedback"
+              class="cadastro-feedback"
+              aria-live="polite"
+            ></span
+            ><button class="button button-primary" type="submit">
+              Finalizar cadastro
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="detail-overlay" id="detailOverlay" aria-hidden="true">
+      <div
+        class="detail-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detailTitle"
+      >
+        <button class="detail-close" id="detailClose" aria-label="Fechar">
+          ×
+        </button>
+        <div class="detail-modal-image">
+          <img id="detailImage" src="" alt="" />
+        </div>
+        <div class="detail-modal-content">
+          <span class="eyebrow" id="detailEyebrow">DETALHES</span>
+          <h2 id="detailTitle"></h2>
+          <p class="detail-location" id="detailLocation"></p>
+          <div class="detail-info-grid" id="detailInfo"></div>
+          <p id="detailDescription"></p>
+          <div class="detail-actions">
+            <button class="button button-primary" id="detailMainButton">
+              Ver localização
+            </button>
+            <button class="button button-secondary" id="detailFavorite">
+              ♡ Favoritar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav
+      class="mobile-bottom-nav"
+      id="mobileBottomNav"
+      aria-label="Navegação mobile"
+    >
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="mobileMenuLinks" aria-label="Abrir menu">
+        <span class="mobile-hamburger-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Menu</span>
+      </button>
+      <div class="mobile-menu-links" id="mobileMenuLinks">
+        <a href="#eventos" data-mobile-nav="eventos"
+        ><span class="mobile-nav-icon">▣</span><span>Eventos</span></a
+      >
+      <a href="#brechos" data-mobile-nav="brechos"
+        ><span class="mobile-nav-icon">⌂</span><span>Brechós</span></a
+      >
+      <a href="#mapa" data-mobile-nav="mapa"
+        ><span class="mobile-nav-icon">⌖</span><span>Mapa</span></a
+      >
+      <a href="/app/area-usuario.html#favoritos" data-mobile-nav="favoritos"
+        ><span class="mobile-nav-icon">♡</span><span>Favoritos</span></a
+      >
+      
+      <button
+        type="button"
+        class="mobile-nav-participate participation-trigger"
+        aria-haspopup="dialog"
+      >
+        <span class="mobile-nav-icon">＋</span><span>Participar</span>
+      </button>
+      </div>
+    </nav>
+
+    <footer class="footer">
+      <div>
+        <a class="brand" href="#topo"
+          ><img src="img/logo.png" alt="Logo NovoDeNovo" class="brand-logo" />
+          <span>Novo<span>De</span>Novo</span></a
+        >
+        <p>Moda que circula. Histórias que continuam.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#brechos">Brechós</a><a href="#eventos">Eventos</a
+        ><a href="#agenda">Agenda</a><a href="#impacto">Impacto</a
+        ><a href="#mapa">Mapa</a>
+      </div>
+      <small>© 2026 NovoDeNovo.</small>
+    </footer>
+
+    <script src="../data/mockData.js"></script>
+    <script src="../js/dynamicData.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/cadastro.js"></script>
+    <script src="../js/carousel.js"></script>
+    <script src="../js/cardActions.js"></script>
+    <script src="../js/filters.js"></script>
+    <script src="../js/calendar.js"></script>
+
+    <div class="login-overlay" id="loginOverlay" aria-hidden="true">
+      <div class="login-card" role="dialog" aria-modal="true">
+        <button class="login-close" id="loginClose" type="button">×</button
+        ><span class="eyebrow">MINHA CONTA</span>
+        <h2>Entrar no NovoDeNovo</h2>
+        <p>Acesse seu perfil ou o painel do seu brechó/bazar.</p>
+        <form id="loginForm">
+          <label>E-mail</label
+          ><input
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+          /><label>Senha</label
+          ><input
+            name="senha"
+            type="password"
+            required
+            autocomplete="current-password"
+          /><button class="button button-primary" type="submit">Entrar</button
+          ><span class="login-feedback" id="loginFeedback"></span>
+        </form>
+      </div>
+    </div>
+    <script src="../js/auth.js"></script>
+    
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    
+    <script>
+      (() => {
+        const toggle = document.getElementById("mobileMenuToggle");
+        const links = document.getElementById("mobileMenuLinks");
+        if (!toggle || !links) return;
+        toggle.addEventListener("click", () => {
+          const opened = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", String(!opened));
+          toggle.setAttribute("aria-label", opened ? "Abrir menu" : "Fechar menu");
+          links.classList.toggle("open", !opened);
+        });
+        links.querySelectorAll("a, button").forEach((item) => item.addEventListener("click", () => {
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Abrir menu");
+          links.classList.remove("open");
+        }));
+      })();
+    </script>
+  </body>
+</html>

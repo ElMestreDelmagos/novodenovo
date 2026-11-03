@@ -1,0 +1,17 @@
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import session from "express-session";
+import path from "path";
+import { fileURLToPath } from "url";
+import cadastroRoutes from "./src/routes/cadastro.routes.js";
+import catalogoRoutes from "./src/routes/catalogo.routes.js";
+import authRoutes from "./src/routes/auth.routes.js";
+import { errorHandler } from "./src/middlewares/errorHandler.js";
+const app=express(), __dirname=path.dirname(fileURLToPath(import.meta.url));
+const origins=(process.env.CORS_ORIGIN||"").split(",").map(v=>v.trim()).filter(Boolean);
+app.use(cors({origin:origins.length?origins:true,credentials:true})); app.use(express.json({limit:"1mb"})); app.use(express.urlencoded({extended:true}));
+app.use(session({secret:process.env.SESSION_SECRET||"troque-esta-chave-no-env",resave:false,saveUninitialized:false,cookie:{httpOnly:true,sameSite:"lax",secure:false,maxAge:1000*60*60*24*7}}));
+app.use("/api/cadastro",cadastroRoutes); app.use("/api/auth",authRoutes); app.use("/api",catalogoRoutes);
+app.get("/api/health",(_req,res)=>res.json({ok:true,projeto:"NovoDeNovo"})); app.use(express.static(__dirname)); app.get("/",(_req,res)=>res.sendFile(path.join(__dirname,"app","index.html"))); app.use(errorHandler);
+app.listen(Number(process.env.PORT||3000),()=>console.log(`NovoDeNovo: http://localhost:${process.env.PORT||3000}`));

@@ -1,0 +1,621 @@
+/* GUIA DE ESTILOS: Estilos globais, tipografia, cores, botões, cartões e componentes compartilhados. */
+* {
+  box-sizing: border-box;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+html {
+  scroll-behavior: smooth;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+body {
+  margin: 0;
+  background: #f8f5ef;
+  color: #4d3529;
+  font-family: "DM Sans", Arial, sans-serif;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+input {
+  font: inherit;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+button {
+  cursor: pointer;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.section {
+  padding: 92px max(6vw, 32px);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.section-beige {
+  background: #eee5d6;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.section-heading {
+  margin-bottom: 46px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.centered {
+  text-align: center;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.eyebrow {
+  color: #71835b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+h1,
+h2,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+h3 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+h2 {
+  margin: 8px 0;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.05;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.section-heading p {
+  color: #755f51;
+  font-size: 16px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.button {
+  border-radius: 6px;
+  padding: 13px 22px;
+  border: 1px solid #52372a;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  transition: 0.2s;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.button-primary {
+  color: #fff;
+  background: #503528;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.button-primary:hover {
+  background: #684638;
+  transform: translateY(-1px);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.button-secondary {
+  background: transparent;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.button.small {
+  padding: 9px 14px;
+  font-size: 13px;
+  flex: 1;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  align-items: center;
+}
+.mini-button,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.icon-button {
+  background: transparent;
+  border: 1px solid #d8cec1;
+  color: #614c40;
+  border-radius: 7px;
+  min-width: 38px;
+  height: 38px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.mini-button.selected {
+  background: #6e8259;
+  color: white;
+  border-color: #6e8259;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.hidden {
+  display: none !important;
+}
+
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+body.modal-open {
+  overflow: hidden;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(37, 25, 19, 0.62);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-modal {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  background: #faf8f4;
+  border-radius: 16px;
+  box-shadow: 0 25px 80px rgba(25, 15, 10, 0.3);
+  transform: translateY(14px) scale(0.98);
+  transition: 0.2s;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-overlay.show .detail-modal {
+  transform: translateY(0) scale(1);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #503528;
+  font-size: 25px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-modal-image {
+  min-height: 450px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-modal-content {
+  padding: 48px 38px 35px;
+  align-self: center;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-modal-content h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  margin: 8px 0;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-location {
+  color: #806e62;
+  margin: 0 0 25px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-info-grid div {
+  border: 1px solid #e0d6ca;
+  border-radius: 9px;
+  padding: 13px;
+  background: #f4eee5;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-info-grid strong {
+  display: block;
+  font: 700 18px "Playfair Display";
+  color: #503528;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-info-grid small {
+  color: #806e62;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-modal-content > p:not(.detail-location) {
+  color: #6f5c50;
+  line-height: 1.65;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.detail-actions .button {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Filtros mobile */
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.filters-toggle {
+  display: none;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.filters-panel {
+  display: block;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.filter-label {
+  color: #705c4f;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* Calendário */
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-section {
+  background: #eee5d6;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-layout {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.calendar-card,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-details {
+  background: #faf8f4;
+  border: 1px solid #dfd4c6;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 22px rgba(74, 53, 40, 0.05);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-header {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  align-items: center;
+  gap: 8px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-header h3 {
+  text-align: center;
+  margin: 0;
+  font-size: 25px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-nav {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #d9cfc1;
+  border-radius: 50%;
+  background: #fffdf9;
+  color: #503528;
+  font-size: 25px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-today {
+  display: block;
+  margin: 10px auto 18px;
+  border: 0;
+  background: transparent;
+  color: #71835b;
+  font-weight: 700;
+  font-size: 13px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-weekday {
+  text-align: center;
+  color: #8a776a;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 0;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day {
+  position: relative;
+  min-height: 52px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 9px;
+  color: #503528;
+  font-weight: 600;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day:hover {
+  background: #f1e9df;
+  border-color: #ded2c3;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day.today {
+  border-color: #71835b;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day.selected {
+  background: #503528;
+  color: white;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day.has-event::after {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #71835b;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day.selected.has-event::after {
+  background: #fff;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day i {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-style: normal;
+  font-size: 9px;
+  color: #71835b;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day.selected i {
+  color: #fff;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-legend {
+  display: flex;
+  gap: 18px;
+  margin-top: 17px;
+  color: #806e62;
+  font-size: 11px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-legend i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #71835b;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-legend i.saved {
+  background: #503528;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-details h3 {
+  font-size: 25px;
+  margin: 8px 0 16px;
+  text-transform: capitalize;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-day-events {
+  display: grid;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-event-item {
+  text-align: left;
+  border: 1px solid #ded4c8;
+  background: #f5efe7;
+  border-radius: 9px;
+  padding: 13px;
+  color: #503528;
+}
+.calendar-event-item strong,
+.calendar-event-item span,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-event-item small {
+  display: block;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-event-item strong {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-event-item span {
+  color: #806e62;
+  font-size: 12px;
+  margin-top: 3px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-event-item small {
+  color: #71835b;
+  font-weight: 700;
+  font-size: 10px;
+  margin-top: 7px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.calendar-empty {
+  color: #806e62;
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+/* Cadastro integrado ao Node.js/Express */
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(37, 25, 19, 0.65);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-modal {
+  position: relative;
+  width: min(760px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: #faf8f4;
+  border-radius: 16px;
+  padding: 38px;
+  box-shadow: 0 25px 80px rgba(25, 15, 10, 0.3);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-modal h2 {
+  font-size: 38px;
+  margin: 5px 0 8px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-subtitle {
+  color: #806e62;
+  margin: 0 0 24px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-section {
+  border: 0;
+  padding: 0;
+  margin: 0 0 24px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-section legend {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 13px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-field {
+  display: grid;
+  gap: 6px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-field.full {
+  grid-column: 1/-1;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #614c40;
+}
+.cadastro-field input,
+.cadastro-field textarea,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-field select {
+  width: 100%;
+  border: 1px solid #d8cec1;
+  border-radius: 7px;
+  background: #fffdf9;
+  padding: 12px;
+  color: #4d3529;
+  font: inherit;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.cadastro-field input:focus,
+.cadastro-field textarea:focus,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-field select:focus {
+  outline: 2px solid #a9b697;
+  outline-offset: 1px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  border-top: 1px solid #e3d9ce;
+  padding-top: 20px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-feedback {
+  flex: 1;
+  font-size: 13px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-feedback.error {
+  color: #9a3028;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-feedback.success {
+  color: #587043;
+  font-weight: 700;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.cadastro-note {
+  font-size: 11px;
+  color: #8a776a;
+  margin-top: 10px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+@media (max-width: 620px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .cadastro-modal {
+    padding: 28px 20px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .cadastro-grid {
+    grid-template-columns: 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .cadastro-field.full {
+    grid-column: auto;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .cadastro-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .cadastro-feedback {
+    min-height: 18px;
+  }
+}

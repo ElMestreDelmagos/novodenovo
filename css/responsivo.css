@@ -1,0 +1,506 @@
+/* GUIA DE ESTILOS: Ajustes de layout para telas menores e comportamento responsivo. */
+@media (max-width: 1050px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 65px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero-copy {
+    max-width: 800px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero-visual {
+    justify-self: center;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .brecho-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 760px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .event-card {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .map-section {
+    grid-template-columns: 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .map-copy {
+    max-width: 700px;
+  }
+}
+@media (max-width: 760px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .navbar {
+    height: 58px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .brand {
+    font-size: 20px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .nav-actions {
+    display: none;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .nav-links {
+    display: none;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .section {
+    padding: 65px 20px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero {
+    min-height: auto;
+    padding-top: 55px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero h1 {
+    font-size: 42px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero-buttons {
+    flex-direction: column;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero-image-card {
+    height: 300px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero-tag {
+    right: 0;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .brecho-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .event-card {
+    flex-basis: 82%;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .carousel-arrow {
+    display: none;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .impact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .footer {
+    grid-template-columns: 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 420px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero h1 {
+    font-size: 36px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hero-copy > p {
+    font-size: 15px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .real-map {
+    min-height: 310px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .fake-map {
+    min-height: 310px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .detail-modal {
+    grid-template-columns: 1fr;
+    max-height: 94vh;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .detail-modal-image {
+    height: 240px;
+    min-height: 0;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .detail-modal-content {
+    padding: 30px 22px 24px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .detail-modal-content h2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 760px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+    border: 1px solid #d9cfc1;
+    border-radius: 9px;
+    background: #faf8f4;
+    color: #503528;
+    padding: 12px 14px;
+    font-weight: 700;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hamburger-icon {
+    width: 22px;
+    display: grid;
+    gap: 4px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .hamburger-icon i {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: #503528;
+    transition:
+      transform 0.25s,
+      opacity 0.2s;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-toggle[aria-expanded="true"] .hamburger-icon i:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-toggle[aria-expanded="true"] .hamburger-icon i:nth-child(2) {
+    opacity: 0;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-toggle[aria-expanded="true"] .hamburger-icon i:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-chevron {
+    margin-left: auto;
+    transition: transform 0.25s;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-toggle[aria-expanded="true"] .filters-chevron {
+    transform: rotate(180deg);
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-panel {
+    display: grid;
+    gap: 16px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      margin-top 0.35s ease;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filters-panel.open {
+    max-height: 330px;
+    opacity: 1;
+    margin-top: 14px;
+  }
+  .filters,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .style-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .filter-label {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .calendar-layout {
+    grid-template-columns: 1fr;
+  }
+  .calendar-card,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .calendar-details {
+    padding: 18px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .calendar-day {
+    min-height: 45px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .join-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .join-card {
+    min-height: 0;
+  }
+}
+
+/* Barra inferior: somente em dispositivos móveis reais */
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.mobile-bottom-nav {
+  position: fixed;
+  left: 8px;
+  right: 8px;
+  bottom: max(8px, env(safe-area-inset-bottom));
+  z-index: 90;
+  min-height: 68px;
+  padding: 7px 7px calc(7px + env(safe-area-inset-bottom));
+  background: rgba(250, 248, 243, 0.97);
+  border: 1px solid #ddd3c7;
+  box-shadow: 0 10px 28px rgba(60, 40, 30, 0.16);
+  backdrop-filter: blur(12px);
+  border-radius: 2px;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 4px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+html.is-mobile-device .mobile-bottom-nav {
+  display: flex;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+html.is-mobile-device body {
+  padding-bottom: 88px;
+}
+.mobile-bottom-nav a,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.mobile-bottom-nav button {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: #806e62;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 9px;
+  padding: 4px 2px;
+}
+.mobile-bottom-nav a:hover,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.mobile-bottom-nav a:focus-visible {
+  color: #503528;
+  background: #f1e9df;
+  outline: none;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.mobile-nav-icon {
+  font-size: 21px;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.mobile-nav-participate {
+  flex: 0 0 74px !important;
+  color: #fff !important;
+  background: #503528 !important;
+  border-radius: 13px !important;
+  font-weight: 700 !important;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.mobile-nav-participate .mobile-nav-icon {
+  font-size: 22px;
+}
+
+/* Card/modal de participação */
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 105;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(37, 25, 19, 0.62);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-modal {
+  position: relative;
+  width: min(1080px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: #faf8f4;
+  border-radius: 16px;
+  padding: 42px 30px 30px;
+  box-shadow: 0 25px 80px rgba(25, 15, 10, 0.3);
+  transform: translateY(14px) scale(0.98);
+  transition: 0.2s;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-overlay.show .participation-modal {
+  transform: translateY(0) scale(1);
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-heading {
+  text-align: center;
+  margin: 0 auto 28px;
+  max-width: 700px;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-heading h2 {
+  margin: 8px 0;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-heading p {
+  color: #755f51;
+  margin: 0;
+}
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+.participation-grid {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .participation-overlay {
+    padding: 12px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .participation-modal {
+    max-height: calc(100vh - 24px);
+    padding: 42px 16px 20px;
+    border-radius: 14px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .participation-heading {
+    margin-bottom: 20px;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .participation-heading h2 {
+    font-size: 34px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-bottom-nav,
+  .participation-overlay,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .participation-modal {
+    transition: none;
+  }
+}
+
+
+/* Navegação mobile: login no topo e menu hambúrguer fixo embaixo */
+@media (max-width: 760px) {
+  .navbar { padding-left: 14px; padding-right: 14px; }
+  .navbar .nav-actions { display: flex; margin-left: auto; }
+  .navbar .login-button { padding: 8px 11px; white-space: nowrap; font-size: 13px; }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .mobile-bottom-nav {
+    display: flex;
+    left: 12px; right: 12px; bottom: max(10px, env(safe-area-inset-bottom));
+    min-height: 60px; padding: 7px; border-radius: 16px;
+    flex-direction: column; align-items: stretch; justify-content: flex-end;
+  }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .mobile-menu-toggle {
+    display: flex; width: 100%; min-height: 44px; flex: 0 0 44px;
+    align-items: center; justify-content: center; gap: 10px;
+    border: 0; border-radius: 11px; background: #503528; color: #fff;
+    font: 600 14px "DM Sans", sans-serif; cursor: pointer;
+  }
+  .mobile-hamburger-lines { width: 20px; display: grid; gap: 4px; }
+  .mobile-hamburger-lines i { display: block; height: 2px; background: currentColor; border-radius: 2px; transition: transform .2s, opacity .2s; }
+  .mobile-menu-toggle[aria-expanded="true"] .mobile-hamburger-lines i:first-child { transform: translateY(6px) rotate(45deg); }
+  .mobile-menu-toggle[aria-expanded="true"] .mobile-hamburger-lines i:nth-child(2) { opacity: 0; }
+  .mobile-menu-toggle[aria-expanded="true"] .mobile-hamburger-lines i:last-child { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu-links { display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; padding-top: 7px; }
+  .mobile-menu-links.open { display: grid; }
+  .mobile-menu-links a, .mobile-menu-links button { min-height: 52px; flex: initial; font-size: 11px; }
+  .mobile-menu-links .mobile-nav-participate { flex: initial !important; }
+  html.is-mobile-device body, body { padding-bottom: 100px; }
+}
+@media (min-width: 761px) {
+  .mobile-menu-toggle { display: none; }
+}
+
+/* Menu inferior mobile sempre expandido: todas as opções visíveis sem toque */
+@media (max-width: 760px) {
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .mobile-bottom-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: 2px;
+    min-height: 70px;
+    padding: 6px 5px calc(6px + env(safe-area-inset-bottom));
+    bottom: max(6px, env(safe-area-inset-bottom));
+  }
+  .mobile-menu-toggle { display: none !important; }
+  .mobile-menu-links,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .mobile-menu-links.open {
+    display: grid !important;
+    width: 100%;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 2px;
+    padding-top: 0;
+  }
+  .mobile-menu-links a,
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .mobile-menu-links button {
+    min-width: 0;
+    min-height: 56px;
+    padding: 4px 1px;
+    font-size: 10px;
+    overflow-wrap: anywhere;
+  }
+  .mobile-menu-links .mobile-nav-icon { font-size: 20px; }
+/* Regra visual: define aparência e/ou comportamento do seletor abaixo. */
+  .mobile-menu-links .mobile-nav-participate {
+    flex: 1 1 0 !important;
+    border-radius: 10px !important;
+  }
+  body { padding-bottom: 96px !important; }
+}

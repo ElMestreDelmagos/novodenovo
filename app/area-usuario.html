@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Meu Perfil | NovoDeNovo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/areas.css" />
+  </head>
+  <body class="area-page">
+    <header class="area-header">
+      <a class="brand" href="index.html"
+        ><img src="img/logo.jpg" alt="Logo NovoDeNovo" class="brand-logo" />
+        <span>Novo<span>De</span>Novo</span></a
+      >
+      <div class="area-header-actions">
+        <a class="area-back" href="index.html">← Voltar ao site</a>
+        <button class="button button-secondary" id="logout">Sair</button>
+      </div>
+    </header>
+    <main class="area-shell">
+      <section class="area-intro">
+        <div>
+          <span class="eyebrow">MINHA CONTA</span>
+          <h1>Meu perfil</h1>
+          <p>Consulte e altere suas informações cadastradas no NovoDeNovo.</p>
+        </div>
+      </section>
+      <section class="area-panel">
+        <!-- Formulário de edição dos dados da conta do usuário. -->
+        <form class="area-form" id="usuarioForm">
+          <div class="area-field full">
+            <label>Nome</label>
+            <input name="nome" required />
+          </div>
+          <div class="area-field full">
+            <label>E-mail</label><input name="email" type="email" required />
+          </div>
+          <div class="area-field"><label>CEP</label><input name="cep" /></div>
+          <div class="area-field"><label>Rua</label><input name="rua" /></div>
+          <div class="area-field">
+            <label>Número</label><input name="numero" />
+          </div>
+          <div class="area-field">
+            <label>Bairro</label><input name="bairro" />
+          </div>
+          <div class="area-field">
+            <label>Cidade</label><input name="cidade" />
+          </div>
+          <div class="area-field">
+            <label>Estado</label><input name="estado" maxlength="2" />
+          </div>
+          <div class="area-form-actions">
+            <span class="save-feedback" id="usuarioFeedback"></span
+            ><button
+              class="button button-secondary"
+              type="button"
+              id="usuarioDelete"
+            >
+              Excluir conta</button
+            ><button class="button button-primary" type="submit">
+              Salvar alterações
+            </button>
+          </div>
+        </form>
+      </section>
+      <!-- Lista de estabelecimentos/itens favoritos do usuário. -->
+      <section class="area-panel" id="favoritos">
+        <div class="area-intro">
+          <div>
+            <span class="eyebrow">MEUS FAVORITOS</span>
+            <h2>Brechós favoritos</h2>
+            <p>Brechós que você salvou para encontrar novamente.</p>
+          </div>
+        </div>
+        <div id="favoritosLista" class="favorites-list"></div>
+      </section>
+      <section class="area-panel">
+        <div class="area-intro">
+          <div>
+            <span class="eyebrow">MINHA AGENDA</span>
+            <h2>Bazares lembrados</h2>
+            <p>Eventos que você marcou para acompanhar.</p>
+          </div>
+        </div>
+        <div id="agendaLista" class="agenda-list"></div>
+      </section>
+    </main>
+    <script src="../js/usuario-area.js"></script>
+  </body>
+</html>

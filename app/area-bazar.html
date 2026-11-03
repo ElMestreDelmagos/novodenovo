@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Área do Bazar | NovoDeNovo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/eventos.css" />
+    <link rel="stylesheet" href="../css/areas.css" />
+  </head>
+  <body class="area-page">
+    <header class="area-header">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark">N</span
+        ><span>Novo<span>De</span>Novo</span></a
+      >
+      <div class="area-header-actions">
+        <a class="area-back" href="index.html#eventos">← Voltar ao site</a
+        ><button class="button button-secondary area-logout" type="button">
+          Sair
+        </button>
+      </div>
+    </header>
+    <main class="area-shell">
+      <section class="area-intro">
+        <div>
+          <span class="eyebrow">PAINEL DE EVENTO</span>
+          <h1>Área do Bazar</h1>
+          <p>
+            Edite as informações que aparecem no card público do seu
+            bazar/evento. O preview mostra o resultado antes da publicação.
+          </p>
+        </div>
+        <span class="area-status">Evento publicado</span>
+      </section>
+      <div class="area-layout">
+        <section class="area-panel">
+          <h2>Informações do bazar</h2>
+          <p class="panel-subtitle">
+            Os campos abaixo correspondem às informações exibidas nos cards de
+            eventos.
+          </p>
+          <!-- Formulário de cadastro/edição de bazar. -->
+          <form class="area-form" id="bazarAreaForm">
+            <div class="area-field full">
+              <label>Nome do bazar / evento</label
+              ><input name="nome_bazar" required />
+            </div>
+            <div class="area-field full">
+              <label>Descrição</label
+              ><textarea name="descricao" rows="4"></textarea>
+            </div>
+            <div class="area-field">
+              <label>Data de início</label
+              ><input name="data_inicio" type="date" required />
+            </div>
+            <div class="area-field">
+              <label>Data de término</label
+              ><input name="data_termino" type="date" />
+            </div>
+            <div class="area-field">
+              <label>Horário de início</label
+              ><input name="horario_inicio" type="time" required />
+            </div>
+            <div class="area-field">
+              <label>Horário de término</label
+              ><input name="horario_termino" type="time" />
+            </div>
+            <div class="area-field full">
+              <label>URL da imagem de capa</label
+              ><input name="imagem" type="url" />
+            </div>
+            <div class="area-form-actions">
+              <span class="save-feedback" id="bazarFeedback"></span
+              ><button
+                class="button button-secondary"
+                type="button"
+                id="bazarDelete"
+              >
+                Excluir bazar</button
+              ><button class="button button-primary" type="submit">
+                Salvar alterações
+              </button>
+            </div>
+          </form>
+          <div class="area-note">
+            As alterações desta área são salvas diretamente no Supabase e
+            atualizam o card público do bazar.
+          </div>
+        </section>
+        <aside class="area-panel preview-panel">
+          <div class="preview-label">
+            <h2>Preview do card</h2>
+            <span>Atualização em tempo real</span>
+          </div>
+          <!-- Pré-visualização do bazar antes de salvar. -->
+          <div class="area-preview" id="bazarPreview"></div>
+        </aside>
+      </div>
+    </main>
+    <script src="../data/mockData.js"></script>
+    <script src="../js/areas.js"></script>
+  </body>
+</html>
