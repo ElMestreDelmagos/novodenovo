@@ -10,6 +10,10 @@ import authRoutes from "./src/routes/auth.routes.js";
 import { errorHandler } from "./src/middlewares/errorHandler.js";
 const app=express(), __dirname=path.dirname(fileURLToPath(import.meta.url));
 const origins=(process.env.CORS_ORIGIN||"").split(",").map(v=>v.trim()).filter(Boolean);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
 app.use(cors({origin:origins.length?origins:true,credentials:true})); app.use(express.json({limit:"1mb"})); app.use(express.urlencoded({extended:true}));
 app.use(session({secret:process.env.SESSION_SECRET||"troque-esta-chave-no-env",resave:false,saveUninitialized:false,cookie:{httpOnly:true,sameSite:"lax",secure:false,maxAge:1000*60*60*24*7}}));
 app.use("/api/cadastro",cadastroRoutes); app.use("/api/auth",authRoutes); app.use("/api",catalogoRoutes);
